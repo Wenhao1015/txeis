@@ -1,0 +1,7 @@
+com\shinetech\model\AppUserEntity.class
+com\shinetech\service\IndexService.class
+com\shinetech\model\StudentInfoBean.class
+com\shinetech\controller\IndexController.class
+com\shinetech\dao\StudentDao.class
+com\shinetech\dao\BaseDao.class
+com\shinetech\dao\AppUserDao.class
