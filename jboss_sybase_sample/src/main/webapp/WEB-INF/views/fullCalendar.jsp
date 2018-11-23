@@ -71,8 +71,7 @@
         </nav>
     </header>
     <main role="main" class="container">
-        <h1 class="mt-5">Welcome123 <label name="user" id="user" value="${user}"></label></h1>
-        <h1 class="mt-5">Welcome again1111 ${user}</h1>
+        <h1 class="mt-5">Calendar: Today is ${today}</h1>
     </main>
     <footer class="footer">
         <div class="container">

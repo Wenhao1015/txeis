@@ -17,6 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -56,13 +58,27 @@ public class IndexController {
         String user = (String)session.getAttribute("user");
         ModelAndView mav = new ModelAndView();
         if(null == user){
-        	mav.setViewName("index");
-        	return mav;
+        	return this.getIndexPage(mav);
         }
         
         mav.setViewName("home");
         mav.addObject("user", user);
         
+        return mav;
+    }
+    
+    @RequestMapping("eventCalendar")
+    public ModelAndView getEventCalendar(HttpServletRequest req){
+        HttpSession session = req.getSession();
+        String user = (String)session.getAttribute("user");
+        ModelAndView mav = new ModelAndView();
+        if(null == user){
+        	return this.getIndexPage(mav);
+        }
+        
+        mav.setViewName("fullCalendar");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        mav.addObject("today", sdf.format(new Date()));    
         return mav;
     }
 }
