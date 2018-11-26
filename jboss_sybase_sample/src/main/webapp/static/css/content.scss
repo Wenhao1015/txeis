@@ -75,7 +75,7 @@
     line-height: 1.8rem;
 }
 .main-header {
-    z-index: 1000;
+    z-index: 90;
 }
 .main-header .navbar-nav .nav-item {
     margin: 0;
@@ -93,4 +93,33 @@
 }
 #calendar{
     margin: 25px 0;
+}
+.requestForm{
+    max-width: 500px;
+    margin: 50px;
+    .btm-button{
+        margin-top: 30px;
+        .btn{
+            width: 200px;
+        }
+    }
+    @media (max-width: 991.98px){
+        margin: 20px auto;
+    }
+}
+.date-group{
+    display: flex;
+    
+    .calendar-left{
+        flex: 1;
+        padding-right: 10px;
+    }
+    .time-right{
+        flex: 0 0 150px;
+    }
+    @media (max-width:425px){
+        .time-right{
+            flex: 0 0 80px;
+        }
+    }
 }

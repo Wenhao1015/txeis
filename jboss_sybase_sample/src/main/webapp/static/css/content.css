@@ -92,7 +92,7 @@
 }
 
 .main-header {
-  z-index: 1000;
+  z-index: 90;
 }
 
 .main-header .navbar-nav .nav-item {
@@ -115,4 +115,42 @@
 
 #calendar {
   margin: 25px 0;
+}
+
+.requestForm {
+  max-width: 500px;
+  margin: 50px;
+}
+
+.requestForm .btm-button {
+  margin-top: 30px;
+}
+
+.requestForm .btm-button .btn {
+  width: 200px;
+}
+
+@media (max-width: 991.98px) {
+  .requestForm {
+    margin: 20px auto;
+  }
+}
+
+.date-group {
+  display: flex;
+}
+
+.date-group .calendar-left {
+  flex: 1;
+  padding-right: 10px;
+}
+
+.date-group .time-right {
+  flex: 0 0 150px;
+}
+
+@media (max-width: 425px) {
+  .date-group .time-right {
+    flex: 0 0 80px;
+  }
 }
