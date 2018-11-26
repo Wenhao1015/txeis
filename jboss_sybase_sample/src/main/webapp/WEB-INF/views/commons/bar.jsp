@@ -144,7 +144,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/JBoss_Sybase_Sample/eventCalendar" class="nav-link">
+            <a href="eventCalendar" class="nav-link">
               <i class="nav-icon fa  fa-pencil-square-o text-info"></i>
               <p>Leave Requests</p>
             </a>

@@ -80,7 +80,7 @@
                     var userPwd = $('#inputPassword').val();
                     $.ajax({
                         type:'POST',
-                        url:'/JBoss_Sybase_Sample/login',
+                        url:'/login',
                         dataType:'JSON',
                         contentType:'application/json;charset=UTF-8',
                         data:JSON.stringify({
@@ -89,7 +89,7 @@
                         }),
                         success : function (res) {
                             if(res.isSuccess){
-                                document.location = './home'
+                                document.location = '/home'
                             }
                         }
                     });
