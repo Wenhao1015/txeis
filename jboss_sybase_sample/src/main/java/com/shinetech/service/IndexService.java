@@ -2,8 +2,10 @@ package com.shinetech.service;
 
 import com.shinetech.dao.AppUserDao;
 import com.shinetech.dao.BaseDao;
+import com.shinetech.dao.LeaveRequestDao;
 import com.shinetech.dao.StudentDao;
 import com.shinetech.model.AppUserEntity;
+import com.shinetech.model.LeaveRequests;
 import com.shinetech.model.StudentInfoBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +22,9 @@ public class IndexService {
     @Autowired
     private AppUserDao userDao;
 
+    @Autowired
+    private LeaveRequestDao leaveRequestDao;
+    
     public String getMessage(){
         String message = "Hello, JBoss has started!";
         logger.info("<<===========================  Logback Testing  ===========================>>");
@@ -29,5 +34,15 @@ public class IndexService {
     }
     public AppUserEntity getUserPwd(String Name){
         return userDao.getUserByName(Name);
+    }
+    
+    public LeaveRequests getleaveRequestById(int id) {
+    	return leaveRequestDao.getleaveRequestById(id);
+    }
+    public boolean saveLeaveRequest(LeaveRequests request) {
+    	return leaveRequestDao.saveLeaveRequest(request);
+    }
+    public boolean DeleteLeaveRequest(LeaveRequests request) {
+    	return leaveRequestDao.DeleteLeaveRequest(request);
     }
 }

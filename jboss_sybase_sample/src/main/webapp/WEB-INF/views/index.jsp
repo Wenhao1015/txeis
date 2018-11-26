@@ -87,20 +87,20 @@
                 if(bootstrapValidator.isValid()){
                     console.log("000")
                     $.ajax({
-                      type:'POST',
-                      url:'/login',
-                      dataType:'JSON',
-                      contentType:'application/json;charset=UTF-8',
-                      data:JSON.stringify({
-                          userName: userName,
-                          userPwd: userPwd
-                      }),
-                      success : function (res) {
-                          if(res.isSuccess){
-                              document.location = './home'
-                          }
-                      }
-                  });
+                        type:'POST',
+                        url:'/login',
+                        dataType:'JSON',
+                        contentType:'application/json;charset=UTF-8',
+                        data:JSON.stringify({
+                            userName: userName,
+                            userPwd: userPwd
+                        }),
+                        success : function (res) {
+                            if(res.isSuccess){
+                                document.location = '/home'
+                            }
+                        }
+                    });
                 }
             });
         });

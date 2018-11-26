@@ -2,6 +2,7 @@ package com.shinetech.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shinetech.model.AppUserEntity;
+import com.shinetech.model.LeaveRequests;
 import com.shinetech.service.IndexService;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.web.session.HttpServletSession;
@@ -77,6 +78,50 @@ public class IndexController {
         }
         
         mav.setViewName("fullCalendar");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        mav.addObject("today", sdf.format(new Date()));    
+        return mav;
+    }
+    
+    @RequestMapping("leaveRequest")
+    public ModelAndView applyLeaveRequest(HttpServletRequest req, String Id){
+        HttpSession session = req.getSession();
+        String user = (String)session.getAttribute("user");
+        ModelAndView mav = new ModelAndView();
+        if(null == user){
+        	return this.getIndexPage(mav);
+        }
+        
+        mav.setViewName("leaveRequest");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        mav.addObject("today", sdf.format(new Date()));    
+        return mav;
+    }
+    
+    @RequestMapping("submitLeaveRequest")
+    public ModelAndView submitLeaveRequest(HttpServletRequest req, String leaveType, Date LeaveStartDate, String LeaveStartDateType, Date LeaveEndDate,
+    		String LeaveEndDateType, String Remarks){
+        HttpSession session = req.getSession();
+        String user = (String)session.getAttribute("user");
+        ModelAndView mav = new ModelAndView();
+        if(null == user){
+        	return this.getIndexPage(mav);
+        }
+        LeaveRequests request = new LeaveRequests();
+        request.setLeaveType(leaveType);
+        request.setLeaveStartDate(LeaveStartDate);
+        request.setLeaveStartDateType(Integer.parseInt(LeaveStartDateType));
+        request.setLeaveEndDate(LeaveEndDate);
+        request.setLeaveEndDateType(Integer.parseInt(LeaveEndDateType));
+        request.setRemarks(Remarks);
+        request.setCreatedAt(new Date());
+        request.setCreatedBy("admin");
+        request.setUpdatedAt(new Date());
+        request.setUpdatedBy("admin");
+        request.setStatus("0");
+        request.setLeaveDuration();
+        this.indexService.saveLeaveRequest(request);
+        mav.setViewName("leaveRequest");
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         mav.addObject("today", sdf.format(new Date()));    
         return mav;
