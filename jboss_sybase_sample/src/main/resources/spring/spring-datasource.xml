@@ -14,7 +14,7 @@
           p:driverClass="com.mysql.cj.jdbc.Driver"
           p:jdbcUrl="jdbc:mysql://localhost:3306/txeis?useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=GMT&amp;useSSL=false"
           p:user="root"
-          p:password="root"
+          p:password="zero1010"
           p:maxPoolSize="40"
           p:minPoolSize="2"
           p:initialPoolSize="2"

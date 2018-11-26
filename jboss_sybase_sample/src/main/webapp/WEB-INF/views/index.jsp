@@ -56,7 +56,7 @@
     </head>
     <body class="text-center">
         <div id="form" class="form-signin">
-            <img style="width:100%;" class="mb-4" src="./images/logo-large.jpg" alt="">
+            <img style="width:100%;" class="mb-4" src="./images/logo-login.png" alt="">
             <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
             <label for="inputEmail" class="sr-only">User Name</label>
             <input type="text" id="inputEmail" class="form-control" placeholder="User Name" required autofocus>
