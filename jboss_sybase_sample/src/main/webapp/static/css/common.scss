@@ -1,4 +1,3 @@
-
 *,
 ::after,
 ::before {
@@ -12,8 +11,10 @@ html {
     -ms-overflow-style: scrollbar;
     -webkit-tap-highlight-color: transparent;
 }
-ul,li{
+ul,
+li {
     margin: 0;
+    padding: 0;
     list-style: none;
 }
 article,
@@ -42,11 +43,21 @@ body {
     background-color: #fff;
     padding-top: 72px;
 }
-a{
+a {
     color: #666;
-    text-decoration: none
+    text-decoration: none;
 }
-
+.pull-right {
+    float: right;
+}
+.pull-left {
+    float: left;
+}
+.clearfix:after {
+    display: block;
+    content: '';
+    clear: both;
+}
 .dropdown,
 .dropleft,
 .dropright,
@@ -92,28 +103,6 @@ a{
     right: 0;
     left: auto;
 }
-.dropup .dropdown-menu {
-    top: auto;
-    bottom: 100%;
-    margin-top: 0;
-    margin-bottom: 0.125rem;
-}
-.dropup .dropdown-toggle::after {
-    display: inline-block;
-    width: 0;
-    height: 0;
-    margin-left: 0.255em;
-    vertical-align: 0.255em;
-    content: '';
-    border-top: 0;
-    border-right: 0.3em solid transparent;
-    border-bottom: 0.3em solid;
-    border-left: 0.3em solid transparent;
-}
-.dropup .dropdown-toggle:empty::after {
-    margin-left: 0;
-}
-
 .dropdown-divider {
     height: 0;
     margin: 0.5rem 0;
@@ -170,63 +159,97 @@ a{
     padding-left: 0.5625rem;
 }
 .dropdown-toggle-split::after,
-.dropright .dropdown-toggle-split::after,
-.dropup .dropdown-toggle-split::after {
+.dropright .dropdown-toggle-split::after {
     margin-left: 0;
 }
 .dropleft .dropdown-toggle-split::before {
     margin-right: 0;
 }
-.dropdown-footer, .dropdown-header {
+.dropdown-footer,
+.dropdown-header {
     text-align: center;
     display: block;
     padding: 0.5rem 1rem;
     font-size: 0.875rem;
 }
-.note-dropdown{
+.note-dropdown {
     min-width: 280px;
 }
-.text-minor{
+.text-minor {
     font-size: 12px;
     color: #555;
 }
-.main-footer {
-    padding: 15px;
-    color: #555;
-    border-top: 1px solid #dee2e6;
-    background: #fff;
+.form-group {
+    margin-bottom: 10px;
 }
-.content-header {
-    padding: 15px 0.5rem;
+.form-title {
+    font-size: 14px;
+    color: #000;
 }
-.content-header h1 {
-    font-size: 1.8rem;
-    margin: 0;
-}
-.content-header .breadcrumb {
-    margin-bottom: 0;
-    padding: 0;
-    background: 0 0;
-    line-height: 1.8rem;
-}
-.main-header {
-    z-index: 1000;
-}
-.main-header .navbar-nav .nav-item {
-    margin: 0;
-}
-.main-header .nav-link {
-    position: relative;
-    height: 2.5rem;
-}
-.pull-right{
-    float: right;
-}
-.pull-left{
-    float: left;
-}
-.clearfix:after{
+.form-control {
     display: block;
-    content: "";
-    clear: both;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    box-shadow: inset 0 0 0 transparent;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    &:focus {
+        color: #495057;
+        background-color: #fff;
+        border-color: #80bdff;
+        outline: 0;
+        box-shadow: inset 0 0 0 transparent,
+            0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+}
+.valid-wrap {
+    position: relative;
+}
+.has-error .help-block,
+.has-error .control-label,
+.has-error .radio,
+.has-error .checkbox,
+.has-error .radio-inline,
+.has-error .checkbox-inline {
+    color: #ea2623;
+}
+.has-error .form-control {
+    border-color: #ea2623;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+.has-success .form-control {
+    border-color: #3ab34a;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+.form-horizontal .has-feedback .form-control-feedback {
+    top: 0;
+    right: 15px;
+}
+.has-feedback .form-control {
+    padding-right: 42.5px;
+}
+.has-success .form-control-feedback {
+    color: #3ab34a;
+}
+.has-error .form-control-feedback {
+    color: #ea2623;
+}
+.has-feedback .form-control-feedback {
+    position: absolute;
+    top: 50%;
+    margin-top: -17px;
+    right: 0;
+    display: block;
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
 }

@@ -548,8 +548,9 @@ var Treeview = function ($) {
       }
 
       treeviewMenu.slideDown(this._config.animationSpeed, function () {
-        parentLi.addClass(ClassName.OPEN);
-        $(_this._element).trigger(expandedEvent);
+        parentLi.addClass(ClassName.OPEN).siblings(".has-treeview").removeClass(ClassName.OPEN);
+        parentLi.siblings(".has-treeview").find(Selector.TREEVIEW_MENU).slideUp()
+        parentLi.find(Selector.TREEVIEW_MENU).slideDown();
       });
     };
 

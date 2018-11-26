@@ -14,7 +14,7 @@
     <main  class="content-wrapper">
     	<section class="content">
     		<div class="container-fluid">
-        		Welcome 123 ${user} 
+        		Welcome  ${user} 
         	</div>
         </section>
     </main>

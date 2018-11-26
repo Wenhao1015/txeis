@@ -9,7 +9,7 @@
     </ul>
 
     <a class="nav-logo" href="/">
-  		<img src="./images/logo-login.png">
+  		<img src="./images/logo.png">
     </a>
     
     <!-- Right navbar links -->
@@ -144,7 +144,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/JBoss_Sybase_Sample/eventCalendar" class="nav-link">
+            <a href="/eventCalendar" class="nav-link">
               <i class="nav-icon fa  fa-pencil-square-o text-info"></i>
               <p>Leave Requests</p>
             </a>
@@ -190,4 +190,10 @@
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
+    <ul class="sidebar-btm">
+        <li><a href="" title="My Account"><i class="fa fa-user"></i></a></li>
+        <li><a href="" title="Full Screen"><i class="fa fa-arrows-alt"></i></a></li>
+        <li><a href="" title="Help"><i class="fa fa-question-circle"></i></a></li>
+        <li><a href="" title="Layout"><i class="fa fa-sign-out "></i></a></li>
+    </ul>
   </aside>
