@@ -126,7 +126,7 @@
 
 .requestForm {
   max-width: 500px;
-  margin: 50px;
+  margin: 20px;
 }
 
 .requestForm .btm-button {
@@ -189,10 +189,4 @@
   #SearchForm .form-group {
     padding: 0;
   }
-}
-
-#requestWrap {
-  width: 500px;
-  display: none;
-  background-color: #ffffff;
 }

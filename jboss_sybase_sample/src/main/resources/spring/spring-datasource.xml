@@ -14,7 +14,7 @@
           p:driverClass="com.mysql.cj.jdbc.Driver"
           p:jdbcUrl="jdbc:mysql://localhost:3306/txeis?useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=GMT&amp;useSSL=false"
           p:user="root"
-          p:password="zero1010"
+          p:password="root"
           p:maxPoolSize="40"
           p:minPoolSize="2"
           p:initialPoolSize="2"
@@ -30,14 +30,13 @@
         </property>
         <property name="hibernateProperties">
             <value>
-                hibernate.dialect = org.hibernate.dialect.MySQLDialect
-                hibernate.jdbc.batch_size = 50
-                hibernate.connection.autocommit = true
-                hibernate.hbm2ddl.auto = update
-                hibernate.show_sql = true
-                hibernate.connection.useUnicode = true
-                hibernate.connection.characterEncoding = UTF-8
-                hibernate.cache.use_query_cache = false
+				hibernate.jdbc.batch_size = 50
+				hibernate.connection.autocommit = true
+				hibernate.hbm2ddl.auto = update
+				hibernate.show_sql = true
+				hibernate.connection.useUnicode = true
+				hibernate.connection.characterEncoding = UTF-8
+				hibernate.cache.use_query_cache = false
             </value>
         </property>
     </bean>

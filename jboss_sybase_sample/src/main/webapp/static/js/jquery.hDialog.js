@@ -1,10 +1,10 @@
 /**
 +-------------------------------------------------------------------
-* jQuery hDialog - 多功能弹出层插件
+* jQuery hDialog 
 +-------------------------------------------------------------------
 * @version 2.0.1
 * @update 2015.07.30
-* @author haibao <hhb219@163.com> <http://www.hehaibao.com/>
+* 
 +-------------------------------------------------------------------
 */
 ;(function($, window, document, undefined) {
@@ -23,13 +23,11 @@
                         boxBg: '#ffffff', //弹框默认背景颜色
                         modalBg: 'rgba(0,0,0,0.5)', //遮罩默认背景颜色
                         closeBg: '#cccccc', //弹框关闭按钮默认背景颜色
-                        // width: 300, //弹框默认宽度
-                        // height: 270, //弹框默认高度
                         positions: 'center', //弹框位置(默认center：居中，top：顶部居中，left：顶部居左，bottom：底部居右)
-                        effect: 'zoomOut', //弹框关闭效果(结合animate.css里的动画，默认：zoomOut)
+                        // effect: 'fadeOut', //弹框关闭效果(结合animate.css里的动画，默认：zoomOut)
                         hideTime: 0, //弹框定时关闭(默认0:不自动关闭，以毫秒为单位)
                         resetForm: true, //是否清空表单(默认true：清空，false：不清空)
-                        modalHide: true, //是否点击遮罩背景关闭弹框(默认true：关闭，false：不可关闭)
+                        modalHide: false, //是否点击遮罩背景关闭弹框(默认true：关闭，false：不可关闭)
                         isOverlay: true, //是否显示遮罩背景(默认true：显示，false：不显示)
                         closeHide: true, //是否隐藏关闭按钮(默认true：不隐藏，false：隐藏)
                         escHide: true, //是否支持ESC关闭弹框(默认true：关闭，false：不可关闭)
@@ -100,8 +98,8 @@
                 case 'left':
                     t = l = m = 0
                 case 'bottom':
-                    t = parseInt($W.height() - h) + 'px'
-                    l = parseInt($W.width() - w) + 'px'
+                    t = parseInt($(window).height() - h) + 'px'
+                    l = parseInt($(window).width() - w) + 'px'
                     m = 0
                     break
                 default:
@@ -111,27 +109,19 @@
             //关闭按钮
             if (o.closeHide != false)
                 closeBtnTpl =
-                    '<a id="HCloseBtn" title="关闭" style="width:24px;height:24px;line-height:24px;display:inline-block;cursor:pointer;background-color:' +
-                    closeBg +
-                    ';color:#fff;font-size:1.4em;text-align:center;position:absolute;top:8px;right:8px;"><span style="width:24px;height:24px;display:inline-block;">×</span></a>'
+                    '<a id="HCloseBtn" data-title="close" class="dialog-close closeDialog" title="close"><span class="close-icon">×</span></a>'
 
             //弹框标题
             if (o.title != '')
                 headTpl =
-                    '<div id="HTitle" style="padding:10px 45px 10px 12px;border-bottom:1px solid #ddd;background-color:#f2f2f2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' +
+                    '<div id="HTitle" class="dialog-header">' +
                     o.title +
                     '</div>'
 
             //遮罩背景层
             if (o.isOverlay != false)
                 overlayTpl =
-                    "<div id='HOverlay' style='width:" +
-                    $D.width() +
-                    'px;height:' +
-                    $D.height() +
-                    'px;background-color:' +
-                    modalBg +
-                    ";position:fixed;top:0;left:0;z-index:9999;'></div>"
+                    "<div id='HOverlay' class='overlay'></div>"
 
             //显示弹框
             if (o.types == 2) {
@@ -143,31 +133,33 @@
                     '" frameborder="0" scrolling="auto" src="' +
                     o.iframeSrc +
                     '"></iframe>'
-                $B.append('<div id="' + o.iframeId + '"></div>')
+                $('body').append('<div id="' + o.iframeId + '"></div>')
                 $obj = $('#' + o.iframeId)
             }
             if (o.autoShow != false) $obj = T
-            $B.stop()
+            $('body').stop()
                 .append(overlayTpl)
                 .find($obj)
                 .css({
-                    'background-color': 'rgba(255,255,255,1)',
                     position: 'fixed',
-                    top: t,
-                    left: l,
-                    'z-index': 999999,
-                    margin: m,
-                    width: o.width,
-                    height: o.height
+                    top: 0,
+                    left: 0,
+                    'z-index': 999999
                 })
                 .removeAttr('class')
-                .addClass('animated ' + c)
-                .prepend(headTpl + closeBtnTpl + iframeTpl)
+                .addClass('animated dialog')
                 .show()
-
+                .find(".dialog-content")
+                .prepend(closeBtnTpl + iframeTpl)
+            $("body").addClass("hidden")
             //默认关闭
+            $("[data-click='close']").on('click', function() {
+                methods.close(o, T)
+            })
             $close = $('#HCloseBtn')
-            if (o.modalHide) $close = $('#HOverlay,#HCloseBtn')
+            if (o.modalHide){
+                $close = $('#HOverlay,#HCloseBtn')
+            }
             $close.on('click', function() {
                 methods.close(o, T)
             })
@@ -178,22 +170,21 @@
                     methods.close(o, T)
                 }, parseInt(o.hideTime))
 
-            //支持ESC关闭
+            //ESC-close
             if (o.escHide)
-                $D.keyup(function() {
+            $(document).keyup(function() {
                     if (event.keyCode === 27) methods.close(o, T)
                 })
         },
         close: function(o, T) {
             var $obj = o.autoShow != false ? T : $(o.box)
-            methods.remove('#HOverlay,#HCloseBtn,#HTitle,#' + o.iframeId)
-            $obj.removeAttr('class').addClass('animated ' + o.effect)
+            $obj.removeAttr('class').addClass('animated dialog ' + o.effect)
             if ($obj.hasClass(o.effect)) {
-                setTimeout(function() {
-                    $obj.removeAttr('style').hide()
-                }, 300)
+                $obj.removeAttr('style').hide();
+                methods.remove('#HOverlay,#HCloseBtn,#HTitle,#' + o.iframeId)
             }
-            this.fire.call(this, o.afterHide) //隐藏后的回调
+            $("body").removeClass("hidden")
+            this.fire.call(this, o.afterHide)
         },
         remove: function(a) {
             $(a).remove()
@@ -229,7 +220,7 @@
 
     /**
 	+----------------------------------------------------------
-	* 内置扩展
+	* Built-in extension
 	+----------------------------------------------------------
 	*/
     $.extend({
@@ -241,7 +232,7 @@
          */
         showLoading: function(t, w, h) {
             //显示加载
-            t = t != undefined ? t : '正在加载...'
+            t = t != undefined ? t : 'loading...'
             w = w != undefined ? parseInt(w) : 140
             h = h != undefined ? parseInt(h) : 48
             var closeBtn =
@@ -253,7 +244,7 @@
                     parseInt(-(w / 2)) +
                     'px'
             methods.remove('#HLoading')
-            $B.stop().append(
+            $('body').stop().append(
                 '<div id="HLoading" style="width:' +
                     w +
                     'px;height:' +
@@ -269,10 +260,9 @@
             )
             $('#closeBtn').on('click', function() {
                 $.hideLoading()
-            }) //关闭按钮点击事件
+            }) //close button
         },
         hideLoading: function() {
-            //移除加载
             methods.remove('#HLoading')
         },
         /**
@@ -296,7 +286,7 @@
                     '</div>'
             }
             methods.remove('.HTooltip')
-            $B.stop().append(tip)
+            $('body').stop().append(tip)
             clearTimeout(t)
             var t = setTimeout(function() {
                 methods.remove('.HTooltip')
@@ -314,7 +304,7 @@
             b = b != undefined ? b : '30px'
             r = r != undefined ? r : '20px'
             methods.remove('#HGoTop')
-            $B.stop()
+            $('body').stop()
                 .append(
                     '<a id="HGoTop" href="javascript:;" style="width:40px;height:40px;line-height:40px;border-radius:50%;display:inline-block;text-align:center;background:#333;color:#fff;position:fixed;bottom:' +
                         b +
@@ -325,8 +315,8 @@
                 .find('#HGoTop')
                 .hide()
             $T = $('#HGoTop')
-            $W.on('scroll', function() {
-                if ($W.scrollTop() > 150) {
+            $(window).on('scroll', function() {
+                if ($(window).scrollTop() > 150) {
                     $T.removeAttr('class')
                         .addClass('animated rollIn')
                         .show()
@@ -352,8 +342,8 @@
                 tpl = '',
                 footerTpl = '',
                 isLock = false,
-                okText = '确定',
-                cancelText = '取消',
+                okText = 'OK',
+                cancelText = 'Cancel',
                 width = 260,
                 margin = '0 0 0 ' + parseInt(-(width / 2)) + 'px',
                 type = type != undefined ? type : 'alert',
@@ -378,7 +368,7 @@
                     '<div id="hDialog-mask" style="width:100%;height:100%;background-color:rgba(0,0,0,0.6);position:fixed;top:0;left:0;z-index:99999;"></div>'
             if (type === 'confirm') {
                 footerTpl =
-                    '<div id="hDialog-footer" style="padding:10px;border-top:1px solid #ddd;text-align:right;">' +
+                    '<div id="hDialog-footer" class="dialog-footer">' +
                     okTpl +
                     cancelTpl +
                     '</div>'
@@ -395,7 +385,7 @@
                 footerTpl +
                 '</div>'
             methods.remove('#hDialog-wrap,#hDialog-mask')
-            $B.stop().append(tpl)
+            $('body').stop().append(tpl)
             if (time !== 0) {
                 clearTimeout(t)
                 t = setTimeout(function() {

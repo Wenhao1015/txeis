@@ -6,10 +6,6 @@
 html {
     font-family: sans-serif;
     line-height: 1.15;
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-    -ms-overflow-style: scrollbar;
-    -webkit-tap-highlight-color: transparent;
 }
 ul,
 li {
@@ -42,13 +38,17 @@ body {
     text-align: left;
     background-color: #fff;
     padding-top: 72px;
+    &.hidden {
+        overflow: hidden;
+    }
 }
 a {
     color: #666;
     text-decoration: none;
 }
-button,input{
-    outline: none!important;
+button,
+input {
+    outline: none !important;
 }
 .pull-right {
     float: right;
@@ -260,8 +260,8 @@ button,input{
     line-height: 34px;
     text-align: center;
 }
-.text-center{
-    text-align: center
+.text-center {
+    text-align: center;
 }
 
 .table {
@@ -270,28 +270,85 @@ button,input{
     margin-bottom: 1rem;
     background-color: transparent;
     border-collapse: collapse;
-    .btn{
+    .btn {
         min-width: 55px;
     }
-  }
-  
-  .table th,
-  .table td {
+}
+
+.table th,
+.table td {
     padding: 0.75rem;
     vertical-align: top;
     border-top: 1px solid #dee2e6;
-  }
-  
-  .table thead th {
-    border-top:0;
+}
+
+.table thead th {
+    border-top: 0;
     vertical-align: bottom;
     border-bottom: 2px solid #dee2e6;
-  }
-  
-  .table tbody + tbody {
+}
+
+.table tbody + tbody {
     border-top: 2px solid #dee2e6;
-  }
-  
-  .table .table {
+}
+
+.table .table {
     background-color: #ffffff;
-  }
+}
+.dialog {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: auto;
+    display: none;
+    padding: 100px 10px;
+    .dialog-content {
+        position: relative;
+        width: 100%;
+        margin: 0 auto;
+        max-width: 550px;
+        background: #fff;
+        padding-bottom: 20px;
+    }
+    .dialog-close {
+        width: 24px;
+        height: 24px;
+        line-height: 20px;
+        display: inline-block;
+        cursor: pointer;
+        color: #000;
+        font-size: 1.4em;
+        text-align: center;
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        .close-icon {
+            width: 24px;
+            height: 24px;
+            display: inline-block;
+        }
+    }
+    .dialog-header {
+        padding: 10px 45px 10px 12px;
+        border-bottom: 1px solid #ddd;
+        background-color: #f2f2f2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-weight: bold;
+    }
+    .dialog-footer {
+        padding: 10px;
+        border-top: 1px solid #ddd;
+        text-align: right;
+    }
+}
+.overlay {
+    background-color:rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 9999;
+}
