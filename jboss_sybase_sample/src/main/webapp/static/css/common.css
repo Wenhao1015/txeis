@@ -7,10 +7,6 @@
 html {
   font-family: sans-serif;
   line-height: 1.15;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  -ms-overflow-style: scrollbar;
-  -webkit-tap-highlight-color: transparent;
 }
 
 ul,
@@ -46,12 +42,17 @@ body {
   padding-top: 72px;
 }
 
+body.hidden {
+  overflow: hidden;
+}
+
 a {
   color: #666;
   text-decoration: none;
 }
 
-button, input {
+button,
+input {
   outline: none !important;
 }
 
@@ -334,4 +335,68 @@ button, input {
 
 .table .table {
   background-color: #ffffff;
+}
+
+.dialog {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+  display: none;
+  padding: 100px 10px;
+}
+
+.dialog .dialog-content {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 550px;
+  background: #fff;
+  padding-bottom: 20px;
+}
+
+.dialog .dialog-close {
+  width: 24px;
+  height: 24px;
+  line-height: 20px;
+  display: inline-block;
+  cursor: pointer;
+  color: #000;
+  font-size: 1.4em;
+  text-align: center;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.dialog .dialog-close .close-icon {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+}
+
+.dialog .dialog-header {
+  padding: 10px 45px 10px 12px;
+  border-bottom: 1px solid #ddd;
+  background-color: #f2f2f2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: bold;
+}
+
+.dialog .dialog-footer {
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  text-align: right;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 9999;
 }
