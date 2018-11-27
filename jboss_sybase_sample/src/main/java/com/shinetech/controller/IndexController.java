@@ -107,7 +107,7 @@ public class IndexController {
     }
     
     @RequestMapping("submitLeaveRequest")
-    public ModelAndView submitLeaveRequest(HttpServletRequest req, String id, String leaveType, Date LeaveStartDate, String LeaveStartDateType, Date LeaveEndDate,
+    public ModelAndView submitLeaveRequest(HttpServletRequest req, String leaveId, String leaveType, Date LeaveStartDate, String LeaveStartDateType, Date LeaveEndDate,
     		String LeaveEndDateType, String Remarks){
         HttpSession session = req.getSession();
         String user = (String)session.getAttribute("user");
@@ -116,10 +116,10 @@ public class IndexController {
         	return this.getIndexPage(mav);
         }
         LeaveRequests request;
-        if(id!=null)
+        if(leaveId==null||("").equals(leaveId))
         	request = new LeaveRequests();
         else
-        	request = this.indexService.getleaveRequestById(Integer.parseInt(id));
+        	request = this.indexService.getleaveRequestById(Integer.parseInt(leaveId+""));
         request.setLeaveType(leaveType);
         request.setLeaveStartDate(LeaveStartDate);
         request.setLeaveStartDateType(Integer.parseInt(LeaveStartDateType));
@@ -132,12 +132,12 @@ public class IndexController {
         request.setUpdatedBy("admin");
         request.setStatus("0");
         request.setLeaveDuration();
-        this.indexService.saveLeaveRequest(request);   
+        this.indexService.saveLeaveRequest(request, (leaveId!=null&&!("").equals(leaveId)));   
         return this.leaveRequest(req,null,null,null);
     }
 
     @RequestMapping("deleteLeaveRequest")
-    public ModelAndView deleteLeaveRequest(HttpServletRequest req, int id){
+    public ModelAndView deleteLeaveRequest(HttpServletRequest req, String id){
         HttpSession session = req.getSession();
         String user = (String)session.getAttribute("user");
         ModelAndView mav = new ModelAndView();
@@ -145,7 +145,7 @@ public class IndexController {
         	return this.getIndexPage(mav);
         }
         LeaveRequests request = new LeaveRequests();
-        request.setId(id);
+        request.setId(Integer.parseInt(id));
         this.indexService.DeleteLeaveRequest(request);   
         return this.leaveRequest(req,null,null,null);
     }

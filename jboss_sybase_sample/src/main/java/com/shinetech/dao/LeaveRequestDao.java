@@ -21,7 +21,7 @@ public class LeaveRequestDao {
 
     public LeaveRequests getleaveRequestById(int id){
         Session session = this.getSession();
-        String hql = "from AppUserEntity where id = ? " ;
+        String hql = "from LeaveRequests where id = ? " ;
         Query q = session.createQuery(hql);
         q.setParameter(0, id);
         List<LeaveRequests> res = q.list();
@@ -47,10 +47,13 @@ public class LeaveRequestDao {
         return q.list();
     }
     
-    public boolean saveLeaveRequest(LeaveRequests request){
+    public boolean saveLeaveRequest(LeaveRequests request,boolean isUpdate){
         Session session = this.getSession();
         try{
-        	session.save(request);
+        	if(isUpdate)
+        		session.update(request);
+        	else
+        		session.save(request);
         	session.flush();
         }catch(Exception e) {
         	e.printStackTrace();

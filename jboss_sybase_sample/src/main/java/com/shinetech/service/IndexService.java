@@ -39,8 +39,8 @@ public class IndexService {
     public LeaveRequests getleaveRequestById(int id) {
     	return leaveRequestDao.getleaveRequestById(id);
     }
-    public boolean saveLeaveRequest(LeaveRequests request) {
-    	return leaveRequestDao.saveLeaveRequest(request);
+    public boolean saveLeaveRequest(LeaveRequests request, boolean isUpdate) {
+    	return leaveRequestDao.saveLeaveRequest(request,isUpdate);
     }
     public boolean DeleteLeaveRequest(LeaveRequests request) {
     	return leaveRequestDao.DeleteLeaveRequest(request);
