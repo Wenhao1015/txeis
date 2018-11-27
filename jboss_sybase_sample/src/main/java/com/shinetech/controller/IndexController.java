@@ -131,6 +131,20 @@ public class IndexController {
         this.indexService.saveLeaveRequest(request);   
         return this.leaveRequest(req,null,null,null);
     }
+
+    @RequestMapping("submitLeaveRequest")
+    public ModelAndView submitLeaveRequest(HttpServletRequest req, int id){
+        HttpSession session = req.getSession();
+        String user = (String)session.getAttribute("user");
+        ModelAndView mav = new ModelAndView();
+        if(null == user){
+        	return this.getIndexPage(mav);
+        }
+        LeaveRequests request = new LeaveRequests();
+        request.setId(id);
+        this.indexService.DeleteLeaveRequest(request);   
+        return this.leaveRequest(req,null,null,null);
+    }
     
     @RequestMapping("logout")
     public ModelAndView logout(HttpServletRequest req, String Id){
