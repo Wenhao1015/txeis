@@ -63,6 +63,7 @@ public class LeaveRequestDao {
     	Session session = this.getSession();
         try {
         	session.delete(request);
+        	session.flush();
         }catch(Exception e) {
         	e.printStackTrace();
         	return false;

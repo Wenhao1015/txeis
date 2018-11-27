@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <html>
 <head>
@@ -20,6 +21,7 @@
 						
 						<form id="SearchForm" action="leaveRequest" method="post">
 								<div class="form-group type-group">
+										
 										<label class="form-title">Type:</label>
 										<select id="SearchType" class="form-control" name="SearchType" value="${SearchType}">
 											<option value="" >All</option>
@@ -56,7 +58,7 @@
 																</div>
 								</form>
 						
-							<c:if test="${leaves!=null}">
+							<c:if test="${fn:length(leaves) > 0}">
 							<table  class="table request-list">
 								<thead>
 										<tr>
@@ -64,8 +66,9 @@
 												<th>Leave Type</th>
 												<th>Leave Start Date</th>
 												<th>Leave End Date</th>
+												<th>Duration</th>
 												<th>Remarks</th>
-												<th></th>
+												<th>Actions</th>
 										</tr>
 								</thead>
 								<tbody>
@@ -75,10 +78,11 @@
 													<td>${leave.leaveType==1?"Annal Leave":"Sick Leave"}</td>
 													<td>${leave.leaveStartDate}</td>
 													<td>${leave.leaveEndDate}</td>
+													<td>${leave.leaveDuration} Days</td>
 												 <td>${leave.remarks}</td>
 												 <td style="width:150px;">
-														 <button class="btn btn-primary sm">Edit</button>
-														 <button class="btn btn-secondary sm">Delete</button>
+														 <button class="btn btn-primary sm" id="editLeave">Edit</button>
+														 <button class="btn btn-secondary sm" id="deleteLeave" onClick="deleteLeave(${leave.id})">Delete</button>
 												 </td>
 											</tr>
 										 </c:forEach>
@@ -86,7 +90,7 @@
 							    
 							</table>
 							</c:if>
-							<c:if test="${leaves==null}">
+							<c:if test="${fn:length(leaves) == 0}">
 								<div>No Result Found<div>
 							</c:if>
 						</div>
@@ -96,6 +100,7 @@
 									class="requestForm"
 									method="post"
 							>
+								<input type="text" hidden="true" name="id" id="id" value="${id}">
 									<div class="form-group">
 											<label class="form-title"> Leave Type: </label>
 											<div class="valid-wrap">
@@ -189,6 +194,9 @@
 									</div>
 							</form>
 
+							<form hidden="true" id="deleteForm" action="deleteLeaveRequest" method="post">
+								<input type="text" id="deleteId" name="id"/>
+							</form>
 							</div>
 				</section>
 		</main>
@@ -248,6 +256,11 @@
               },
 
           });
-		})
+		});
+
+		function deleteLeave(id){
+			$("#deleteId").val(id);
+			$("#deleteForm").submit();
+		}
 </script>
 </html>

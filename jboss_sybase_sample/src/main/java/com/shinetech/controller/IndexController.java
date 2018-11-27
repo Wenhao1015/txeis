@@ -107,7 +107,7 @@ public class IndexController {
     }
     
     @RequestMapping("submitLeaveRequest")
-    public ModelAndView submitLeaveRequest(HttpServletRequest req, String leaveType, Date LeaveStartDate, String LeaveStartDateType, Date LeaveEndDate,
+    public ModelAndView submitLeaveRequest(HttpServletRequest req, String id, String leaveType, Date LeaveStartDate, String LeaveStartDateType, Date LeaveEndDate,
     		String LeaveEndDateType, String Remarks){
         HttpSession session = req.getSession();
         String user = (String)session.getAttribute("user");
@@ -115,7 +115,11 @@ public class IndexController {
         if(null == user){
         	return this.getIndexPage(mav);
         }
-        LeaveRequests request = new LeaveRequests();
+        LeaveRequests request;
+        if(id!=null)
+        	request = new LeaveRequests();
+        else
+        	request = this.indexService.getleaveRequestById(Integer.parseInt(id));
         request.setLeaveType(leaveType);
         request.setLeaveStartDate(LeaveStartDate);
         request.setLeaveStartDateType(Integer.parseInt(LeaveStartDateType));
@@ -132,8 +136,8 @@ public class IndexController {
         return this.leaveRequest(req,null,null,null);
     }
 
-    @RequestMapping("submitLeaveRequest")
-    public ModelAndView submitLeaveRequest(HttpServletRequest req, int id){
+    @RequestMapping("deleteLeaveRequest")
+    public ModelAndView deleteLeaveRequest(HttpServletRequest req, int id){
         HttpSession session = req.getSession();
         String user = (String)session.getAttribute("user");
         ModelAndView mav = new ModelAndView();
