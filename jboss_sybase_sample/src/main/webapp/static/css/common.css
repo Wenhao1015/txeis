@@ -51,6 +51,10 @@ a {
   text-decoration: none;
 }
 
+button, input {
+  outline: none !important;
+}
+
 .pull-right {
   float: right;
 }
@@ -213,6 +217,7 @@ a {
   font-size: 14px;
   color: #000;
   padding-right: 10px;
+  min-height: 19px;
 }
 
 .form-control {
@@ -296,4 +301,37 @@ a {
 
 .text-center {
   text-align: center;
+}
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+  border-collapse: collapse;
+}
+
+.table .btn {
+  min-width: 55px;
+}
+
+.table th,
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+  border-top: 0;
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table tbody + tbody {
+  border-top: 2px solid #dee2e6;
+}
+
+.table .table {
+  background-color: #ffffff;
 }

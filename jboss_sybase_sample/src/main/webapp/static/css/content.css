@@ -110,7 +110,14 @@
 }
 
 .content-wrapper > .content {
-  padding: 0 0.5rem;
+  margin: 0 0.5rem;
+}
+
+.content-wrapper > .content .content-white {
+  background: #fff;
+  padding: 15px;
+  min-height: calc(100vh - 230px);
+  margin-bottom: 50px;
 }
 
 #calendar {
@@ -153,4 +160,39 @@
   .date-group .time-right {
     flex: 0 0 80px;
   }
+}
+
+#SearchForm {
+  display: flex;
+}
+
+#SearchForm .form-group {
+  flex: 1;
+  padding: 10px;
+}
+
+#SearchForm .form-group.btn-group {
+  flex: 0 0 100px;
+}
+
+#SearchForm .form-group.btn-group .btn {
+  width: 100%;
+  height: 33px;
+  padding: 0;
+  line-height: 33px;
+}
+
+@media (max-width: 600px) {
+  #SearchForm {
+    display: block;
+  }
+  #SearchForm .form-group {
+    padding: 0;
+  }
+}
+
+#requestWrap {
+  width: 500px;
+  display: none;
+  background-color: #ffffff;
 }
