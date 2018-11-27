@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -84,7 +85,7 @@ public class IndexController {
     }
     
     @RequestMapping("leaveRequest")
-    public ModelAndView applyLeaveRequest(HttpServletRequest req, String Id){
+    public ModelAndView leaveRequest(HttpServletRequest req, String SearchType, Date SearchStart, Date SearchEnd){
         HttpSession session = req.getSession();
         String user = (String)session.getAttribute("user");
         ModelAndView mav = new ModelAndView();
@@ -93,8 +94,15 @@ public class IndexController {
         }
         
         mav.setViewName("leaveRequest");
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        mav.addObject("today", sdf.format(new Date()));    
+        LeaveRequests request = new LeaveRequests();
+        request.setLeaveType(SearchType);
+        request.setLeaveStartDate(SearchStart);
+        request.setLeaveEndDate(SearchEnd);
+        List<LeaveRequests> requests = this.indexService.getLeaveRequests(request);
+        mav.addObject("leaves", requests);   
+        mav.addObject("SearchType", SearchType);  
+        mav.addObject("SearchStart", SearchStart);  
+        mav.addObject("SearchEnd", SearchEnd);  
         return mav;
     }
     
@@ -120,11 +128,8 @@ public class IndexController {
         request.setUpdatedBy("admin");
         request.setStatus("0");
         request.setLeaveDuration();
-        this.indexService.saveLeaveRequest(request);
-        mav.setViewName("leaveRequest");
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        mav.addObject("today", sdf.format(new Date()));    
-        return mav;
+        this.indexService.saveLeaveRequest(request);   
+        return this.leaveRequest(req,null,null,null);
     }
     
     @RequestMapping("logout")

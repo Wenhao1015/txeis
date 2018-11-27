@@ -27,6 +27,25 @@ public class LeaveRequestDao {
         List<LeaveRequests> res = q.list();
         return res.get(0);
     }
+
+	public List<LeaveRequests> getLeaveRequests(LeaveRequests request){
+        Session session = this.getSession();
+        String hql = "from LeaveRequests where 1=1";
+        if(request.getLeaveType()!=null && !request.getLeaveType().equals("")) 
+        	hql+= " and LeaveType = :type";
+        if(request.getLeaveStartDate()!=null)
+        	hql+=" and LeaveStartDate >= :startDate";
+        if(request.getLeaveEndDate()!=null)
+        	hql+=" and LeaveEndDate <= :endDate";
+        Query q = session.createQuery(hql);
+        if(request.getLeaveType()!=null && !request.getLeaveType().equals("")) 
+        	q.setParameter("type", request.getLeaveType());
+        if(request.getLeaveStartDate()!=null)
+        	q.setParameter("startDate", request.getLeaveStartDate());
+        if(request.getLeaveEndDate()!=null)
+        	q.setParameter("endDate", request.getLeaveEndDate());
+        return q.list();
+    }
     
     public boolean saveLeaveRequest(LeaveRequests request){
         Session session = this.getSession();

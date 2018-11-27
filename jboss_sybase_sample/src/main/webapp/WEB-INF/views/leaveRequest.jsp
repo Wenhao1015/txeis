@@ -19,6 +19,7 @@
 										class="requestForm"
 										method="post"
 								>
+								<h2 id="leaveHeader">Apply Leave</h2>
 										<div class="form-group">
 												<label class="form-title"> Leave Type: </label>
 												<div class="valid-wrap">
@@ -98,7 +99,7 @@
                                         style="height:auto;"
                                         class="form-control"
                                         type="text"
-                                        name="remarks"
+                                        name="Remarks"
                                         rows="4"
                                     ></textarea>
 												</div>
@@ -112,6 +113,79 @@
 										</div>
 								</form>
 						</div>
+						
+						<div>
+							<h2>Search Leave</h2>
+							<form id="SearchForm"
+										action="leaveRequest"
+										method="post"
+								>
+													<select
+																id="SearchType"
+																class="form-control"
+																name="SearchType"
+																value="${SearchType}"
+														>
+																<option value="" ></option>
+																<option value="1" >Annual Leave</option>
+																<option value="2" >Sick Leave</option>
+														</select>
+															<label class="form-title"> From: </label>
+																	<input
+																			class="form-control"
+																			type="text"
+																			name="SearchStart"
+																			id="SearchStartDate"
+																			readonly
+																			value="${SearchStart}"
+																			onClick="GetDate(this);"
+																	/>
+															<label class="form-title">
+																	To:
+															</label>
+																	<input
+																			class="form-control"
+																			type="text"
+																			name="SearchEnd"
+																			id="SearchEndDate"
+																			value="${SearchEnd}"
+																			readonly
+																			onClick="GetDate(this);"
+																	/>
+								<input
+														type="submit"
+														class="btn btn-primary"
+														value="Search"
+												/>
+								</form>
+						</div>
+						
+						<div>
+							<h2>Search Result</h2>
+							<c:if test="${leaves!=null}">
+							<table>
+							     <tr>
+								     <th>Sno.</th>
+								     <th>Leave Type</th>
+								     <th>Leave Start Date</th>
+								     <th>Leave End Date</th>
+								     <th>Remarks</th>
+							     </tr>
+							    	<c:forEach var="leave" items="${leaves}" varStatus="leaves">
+								     <tr>
+								     	<td>${leaves.index + 1}</td>
+								     	<td>${leave.leaveType==1?"Annal Leave":"Sick Leave"}</td>
+								     	<td>${leave.leaveStartDate}</td>
+								     	<td>${leave.leaveEndDate}</td>
+								    	<td>${leave.remarks}</td>
+							     </tr>
+							    </c:forEach>
+							</table>
+							</c:if>
+							<c:if test="${leaves==null}">
+								<div>No Result Found<div>
+							</c:if>
+						</div>
 				</section>
 		</main>
   </div>  
@@ -120,6 +194,7 @@
 </body>
 <script>
 		$(document).ready(function() {
+			$("#SearchType").find("option:contains('${SearchType}')").attr("selected",true);
 			$('#requestForm').bootstrapValidator({
 					live: 'enable',
 					message: 'This value is not valid',

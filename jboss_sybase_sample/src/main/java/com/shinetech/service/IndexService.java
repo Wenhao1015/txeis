@@ -45,4 +45,8 @@ public class IndexService {
     public boolean DeleteLeaveRequest(LeaveRequests request) {
     	return leaveRequestDao.DeleteLeaveRequest(request);
     }
+    
+    public List<LeaveRequests> getLeaveRequests(LeaveRequests request) {
+    	return leaveRequestDao.getLeaveRequests(request);
+    }
 }
