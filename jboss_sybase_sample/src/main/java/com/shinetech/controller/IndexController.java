@@ -126,4 +126,12 @@ public class IndexController {
         mav.addObject("today", sdf.format(new Date()));    
         return mav;
     }
+    
+    @RequestMapping("logout")
+    public ModelAndView logout(HttpServletRequest req, String Id){
+        HttpSession session = req.getSession();
+        session.invalidate();
+        ModelAndView mav = new ModelAndView();
+        return this.getIndexPage(mav);
+    }
 }
