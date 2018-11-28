@@ -5,6 +5,10 @@ import com.shinetech.model.AppUserEntity;
 import com.shinetech.model.Events;
 import com.shinetech.model.LeaveRequests;
 import com.shinetech.service.IndexService;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
 import org.apache.shiro.session.Session;
 import org.apache.shiro.web.session.HttpServletSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,12 +88,14 @@ public class IndexController {
         LeaveRequests request = new LeaveRequests();
         List<LeaveRequests> requests = this.indexService.getLeaveRequests(request);
         List<Events> events = new ArrayList<Events>();
+        JSONArray json = new JSONArray();
+        
         for(int i=0;i<requests.size();i++) {
-        	events.add(new Events(requests.get(i)));
+        	json.add((new Events(requests.get(i))).toJson());
         }
         mav.setViewName("fullCalendar");
         mav.addObject("leaves", requests); 
-        mav.addObject("events", events); 
+        mav.addObject("events", json); 
         return mav;
     }
     
