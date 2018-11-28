@@ -98,7 +98,7 @@ public class IndexController {
         JSONArray json = new JSONArray();
         
         for(int i=0;i<requests.size();i++) {
-        	json.add(request.toJSON());
+        	json.add(requests.get(i).toJSON());
         }
         mav.setViewName("fullCalendar");
         mav.addObject("leaves", json); 
