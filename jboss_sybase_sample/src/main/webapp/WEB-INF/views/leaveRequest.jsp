@@ -237,7 +237,7 @@
 			});
 	
 		function editLeave(id,leaveType,leaveStartDate,leaveStartDateType,leaveEndDate,leaveEndDateType,remarks){
-			$("[name='Remarks']").text(remarks);
+			  $("[name='Remarks']").text(remarks);
 				$("[name='leaveId']").attr("value", id+"");
 				$("[name='leaveType']").val(leaveType);
 				$("#startDate").val(leaveStartDate);

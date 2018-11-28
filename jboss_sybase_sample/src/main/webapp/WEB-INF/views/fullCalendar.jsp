@@ -46,11 +46,11 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
                     </div>
                     <form
                         id="requestForm"
-                        action="submitLeaveRequest"
+                        action="submitLeaveRequestFromCalendar"
                         method="post"
                     >
                         <div class="modal-body requestForm">
-                            <input type="hidden" name="leaveId" />
+                            <input type="hidden" id="leaveId" />
                             <div class="form-group">
                                 <label class="form-title"> Leave Type: </label>
                                 <div class="valid-wrap">
@@ -138,18 +138,31 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary">
                                 Save
+							</button>
+							<button
+                                class="btn btn-secondary"
+                                data-dismiss="modal"
+								aria-hidden="true"
+								id="deleteLeave" 
+								onclick="deleteRequest()"
+                            >
+                                Delete
                             </button>
                             <button
                                 class="btn btn-secondary"
                                 data-dismiss="modal"
 								aria-hidden="true"
+								id="cancelAdd"
 								onclick="closeRequestForm()"
                             >
                                 Cancel
                             </button>
                         </div>
                     </form>
-                </div>
+				</div>
+				<form hidden="true" id="deleteForm" action="deleteLeaveRequestFromCalendar" method="post">
+						<input type="text" id="deleteId" name="id"/>
+				</form>
                 <!-- /.modal-content -->
             </div>
             <!-- /.modal -->
@@ -158,8 +171,6 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <script>
         $(document).ready(function() {
 			var leaveList = eval(${leaves});
-			leaveList = JSON.stringify(leaveList).replace(/startDate/g, "start").replace(/endDate/g, "end");
-			leaveList = JSON.parse(leaveList);
 			console.log(leaveList)
             formValidator()
             var nowTemp = new Date()
@@ -191,25 +202,33 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
                             right: 'month,agendaWeek,agendaDay,listMonth'
                         },
                         defaultDate: new Date(),
-                        weekNumbers: true,
+                        weekNumbers: false,
                         navLinks: true, // can click day/week names to navigate views
                         editable: true,
                         eventLimit: true, // allow "more" link when too many events
                         events: leaveList,
                         eventClick: function(calEvent, jsEvent, view) {
-                            alert('Event: ' + calEvent.title)
-                            alert(
-                                'Coordinates: ' +
-                                    jsEvent.pageX +
-                                    ',' +
-                                    jsEvent.pageY
-                            )
-                            alert('View: ' + view.name)
-
-                            // change the border color just for fun
-                            $(this).css('border-color', 'red')
+							console.log(calEvent)
+							$("#cancelAdd").hide();
+							$("#deleteLeave").show();
+							$('#requestModal').modal('show')
+							$("[name='Remarks']").text(calEvent.Remarks);
+							$("#leaveId").attr("value", calEvent.id+"");
+							$("[name='leaveType']").val(calEvent.LeaveType);
+							$("#startDate").val(calEvent.LeaveStartDate);
+							$("[name='LeaveStartDateType']").val(calEvent.LeaveStartDateType);
+							$("#endDate").val(calEvent.LeaveEndDate);
+							$("[name='LeaveEndDateType']").val(calEvent.LeaveEndDateType)
+							$("[name='Remarks']").val(calEvent.Remarks);
                         },
                         dayClick: function(date, allDay, jsEvent, view) {
+							$("[name='Remarks']").text("");
+							$('#requestForm')[0].reset();
+							$('#requestForm').data('bootstrapValidator').destroy()
+							$('#requestForm').data('bootstrapValidator', null)
+							formValidator()
+							$("#cancelAdd").show();
+							$("#deleteLeave").hide();
                             $('#requestModal').modal('show')
                         }
                     })
@@ -223,7 +242,13 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
                     )
                 }
             })
-        })
+		})
+
+		function deleteRequest() {
+			var id = $("#leaveId").val()
+			$("#deleteId").val(id);
+			$("#deleteForm").submit();
+        }
         function closeRequestForm() {
             $('#requestForm').data('bootstrapValidator').destroy()
             $('#requestForm').data('bootstrapValidator', null)
