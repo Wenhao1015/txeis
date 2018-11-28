@@ -178,10 +178,11 @@ public class LeaveRequests extends BaseEntity implements Serializable {
 		JSONObject jo = new JSONObject();
 		jo.put("id", this.getId());
 		jo.put("title", "Leave");
+		SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
 		jo.put("LeaveType", this.getLeaveType());
-		jo.put("LeaveStartDate", this.getLeaveStartDate());
+		jo.put("LeaveStartDate", sdf1.format(this.getLeaveStartDate()));
 		jo.put("LeaveStartDateType", this.getLeaveStartDateType());
-		jo.put("LeaveEndDate", this.getLeaveEndDate());
+		jo.put("LeaveEndDate", sdf1.format(this.getLeaveEndDate()));
 		jo.put("LeaveEndDateType", this.getLeaveEndDateType());		
 		jo.put("Remarks", this.getRemarks());
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
