@@ -14,6 +14,7 @@ import org.apache.shiro.web.session.HttpServletSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -75,7 +76,14 @@ public class IndexController {
         
         return mav;
     }
-    
+
+    @ResponseBody
+    @RequestMapping(value = "/getLeaveDetailById", method = RequestMethod.POST)
+    public String getLeaveDetailById( @PathVariable String Id) {
+    	LeaveRequests request = this.indexService.getleaveRequestById(Integer.parseInt(Id));
+        return request.toJSON().toString();
+    }
+
     @RequestMapping("eventCalendar")
     public ModelAndView getEventCalendar(HttpServletRequest req){
         HttpSession session = req.getSession();
@@ -87,15 +95,13 @@ public class IndexController {
         
         LeaveRequests request = new LeaveRequests();
         List<LeaveRequests> requests = this.indexService.getLeaveRequests(request);
-        List<Events> events = new ArrayList<Events>();
         JSONArray json = new JSONArray();
         
         for(int i=0;i<requests.size();i++) {
-        	json.add((new Events(requests.get(i))).toJson());
+        	json.add(request.toJSON());
         }
         mav.setViewName("fullCalendar");
-        mav.addObject("leaves", requests); 
-        mav.addObject("events", json); 
+        mav.addObject("leaves", json); 
         return mav;
     }
     
@@ -130,8 +136,30 @@ public class IndexController {
         if(null == user){
         	return this.getIndexPage(mav);
         }
-        LeaveRequests request;
-        if(leaveId==null||("").equals(leaveId))
+        this.saveLeaveRequest(leaveId, leaveType, LeaveStartDate, LeaveStartDateType, LeaveEndDate, LeaveEndDateType,
+				Remarks);   
+        return this.leaveRequest(req,null,null,null);
+    }
+
+    
+    @RequestMapping("submitLeaveRequestFromCalendar")
+    public ModelAndView submitLeaveRequestFromCalendar(HttpServletRequest req, String leaveId, String leaveType, String LeaveStartDate, String LeaveStartDateType, String LeaveEndDate,
+    		String LeaveEndDateType, String Remarks) throws ParseException{
+        HttpSession session = req.getSession();
+        String user = (String)session.getAttribute("user");
+        ModelAndView mav = new ModelAndView();
+        if(null == user){
+        	return this.getIndexPage(mav);
+        }
+        this.saveLeaveRequest(leaveId, leaveType, LeaveStartDate, LeaveStartDateType, LeaveEndDate, LeaveEndDateType,
+				Remarks);   
+        return this.getEventCalendar(req);
+    }
+    
+	private void saveLeaveRequest(String leaveId, String leaveType, String LeaveStartDate, String LeaveStartDateType,
+			String LeaveEndDate, String LeaveEndDateType, String Remarks) throws ParseException {
+		LeaveRequests request;
+		if(leaveId==null||("").equals(leaveId))
         	request = new LeaveRequests();
         else
         	request = this.indexService.getleaveRequestById(Integer.parseInt(leaveId+""));
@@ -148,9 +176,8 @@ public class IndexController {
         request.setUpdatedBy("admin");
         request.setStatus("0");
         request.setLeaveDuration();
-        this.indexService.saveLeaveRequest(request, (leaveId!=null&&!("").equals(leaveId)));   
-        return this.leaveRequest(req,null,null,null);
-    }
+        this.indexService.saveLeaveRequest(request, (leaveId!=null&&!("").equals(leaveId)));
+	}
 
     @RequestMapping("deleteLeaveRequest")
     public ModelAndView deleteLeaveRequest(HttpServletRequest req, String id){

@@ -8,6 +8,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import net.sf.json.JSONObject;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
@@ -170,5 +172,31 @@ public class LeaveRequests extends BaseEntity implements Serializable {
 		String result =  sdf.format(this.leaveEndDate);
 		this.leaveEndDateString = result;
 		return leaveEndDateString;
+	}
+
+	public JSONObject toJSON() {
+		JSONObject jo = new JSONObject();
+		jo.put("id", this.getId());
+		jo.put("Title", "Leave");
+		jo.put("LeaveType", this.getLeaveType());
+		jo.put("LeaveStartDate", this.getLeaveStartDate());
+		jo.put("LeaveStartDateType", this.getLeaveStartDateType());
+		jo.put("LeaveEndDate", this.getLeaveEndDate());
+		jo.put("LeaveEndDateType", this.getLeaveEndDateType());		
+		jo.put("Remarks", this.getRemarks());
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String startDate = sdf.format(this.getLeaveStartDate());
+		if(("0").equals(this.getLeaveStartDateString()))
+			startDate +="T00:00:00";
+		else
+			startDate += "T12:00:00";
+		String endDate = sdf.format(this.getLeaveEndDate());
+		if(("0").equals(this.getLeaveStartDateString()))
+			endDate +="T11:59:59";
+		else
+			endDate += "T23:59:59";
+		jo.put("start", startDate);
+		jo.put("end", endDate);
+		return jo;
 	}
 }

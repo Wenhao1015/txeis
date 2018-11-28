@@ -157,7 +157,7 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     </body>
     <script>
         $(document).ready(function() {
-			var leaveList = eval(${events});
+			var leaveList = eval(${leaves});
 			leaveList = JSON.stringify(leaveList).replace(/startDate/g, "start").replace(/endDate/g, "end");
 			leaveList = JSON.parse(leaveList);
 			console.log(leaveList)
