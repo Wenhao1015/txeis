@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -107,8 +108,8 @@ public class IndexController {
     }
     
     @RequestMapping("submitLeaveRequest")
-    public ModelAndView submitLeaveRequest(HttpServletRequest req, String leaveId, String leaveType, Date LeaveStartDate, String LeaveStartDateType, Date LeaveEndDate,
-    		String LeaveEndDateType, String Remarks){
+    public ModelAndView submitLeaveRequest(HttpServletRequest req, String leaveId, String leaveType, String LeaveStartDate, String LeaveStartDateType, String LeaveEndDate,
+    		String LeaveEndDateType, String Remarks) throws ParseException{
         HttpSession session = req.getSession();
         String user = (String)session.getAttribute("user");
         ModelAndView mav = new ModelAndView();
@@ -120,10 +121,11 @@ public class IndexController {
         	request = new LeaveRequests();
         else
         	request = this.indexService.getleaveRequestById(Integer.parseInt(leaveId+""));
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         request.setLeaveType(leaveType);
-        request.setLeaveStartDate(LeaveStartDate);
+        request.setLeaveStartDate(formatter.parse(LeaveStartDate));
         request.setLeaveStartDateType(Integer.parseInt(LeaveStartDateType));
-        request.setLeaveEndDate(LeaveEndDate);
+        request.setLeaveEndDate(formatter.parse(LeaveEndDate));
         request.setLeaveEndDateType(Integer.parseInt(LeaveEndDateType));
         request.setRemarks(Remarks);
         request.setCreatedAt(new Date());

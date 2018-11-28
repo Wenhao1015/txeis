@@ -64,14 +64,14 @@
 								<tr>
 									<td>${leaves.index + 1}</td>
 									<td>${leave.leaveType==1?"Annal Leave":"Sick Leave"}</td>
-									<td>${leave.leaveStartDate}</td>
-									<td>${leave.leaveEndDate}</td>
+									<td>${leave.leaveStartDateString} ${leave.leaveStartDateType==0?'AM':'PM'}</td>
+									<td>${leave.leaveEndDateString} ${leave.leaveEndDateType==0?'AM':'PM'}</td>
 									<td>${leave.leaveDuration} Days</td>
 									<td>${leave.remarks}</td>
 									<td style="width:150px;">
 										<button class="btn btn-primary sm edit-btn" id="editLeave" data-toggle="modal" data-target="#requestModal" 
-										onClick="editLeave('${leave.id}','${leave.leaveType}','${leave.leaveStartDate}','${leave.leaveStartDateType}',
-										'${leave.leaveEndDate}','${leave.leaveEndDateType}','${leave.remarks}')">Edit</button>
+										onClick="editLeave('${leave.id}','${leave.leaveType}','${leave.leaveStartDateString}','${leave.leaveStartDateType}',
+										'${leave.leaveEndDateString}','${leave.leaveEndDateType}','${leave.remarks}')">Edit</button>
 										<button class="btn btn-secondary sm" id="deleteLeave" onClick="deleteLeave(${leave.id})">Delete</button>
 									</td>
 								</tr>
@@ -183,17 +183,17 @@
 						"selected", true);
 				$('#startDate').fdatepicker({
 					startDate : now,
-					format:'mm/dd/yyyy'
+					format:'dd/mm/yyyy'
 				});
 				$('#endDate').fdatepicker({
 					startDate : now,
-					format:'mm/dd/yyyy'
+					format:'dd/mm/yyyy'
 				});
 				$('#SearchStartDate').fdatepicker({
-					format:'mm/dd/yyyy'
+					format:'dd/mm/yyyy'
 				});
 				$('#SearchEndDate').fdatepicker({
-					format:'mm/dd/yyyy'
+					format:'dd/mm/yyyy'
 				});
 				$('#requestForm').bootstrapValidator({
 					live : 'enable',
