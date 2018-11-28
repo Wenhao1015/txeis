@@ -2,6 +2,7 @@ package com.shinetech.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shinetech.model.AppUserEntity;
+import com.shinetech.model.Events;
 import com.shinetech.model.LeaveRequests;
 import com.shinetech.service.IndexService;
 import org.apache.shiro.session.Session;
@@ -20,6 +21,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -79,9 +81,15 @@ public class IndexController {
         	return this.getIndexPage(mav);
         }
         
+        LeaveRequests request = new LeaveRequests();
+        List<LeaveRequests> requests = this.indexService.getLeaveRequests(request);
+        List<Events> events = new ArrayList<Events>();
+        for(int i=0;i<requests.size();i++) {
+        	events.add(new Events(requests.get(i)));
+        }
         mav.setViewName("fullCalendar");
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        mav.addObject("today", sdf.format(new Date()));    
+        mav.addObject("leaves", requests); 
+        mav.addObject("events", events); 
         return mav;
     }
     
