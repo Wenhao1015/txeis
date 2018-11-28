@@ -177,7 +177,7 @@ public class LeaveRequests extends BaseEntity implements Serializable {
 	public JSONObject toJSON() {
 		JSONObject jo = new JSONObject();
 		jo.put("id", this.getId());
-		jo.put("Title", "Leave");
+		jo.put("title", "Leave");
 		jo.put("LeaveType", this.getLeaveType());
 		jo.put("LeaveStartDate", this.getLeaveStartDate());
 		jo.put("LeaveStartDateType", this.getLeaveStartDateType());
