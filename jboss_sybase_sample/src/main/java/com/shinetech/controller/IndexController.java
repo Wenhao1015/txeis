@@ -187,11 +187,27 @@ public class IndexController {
         if(null == user){
         	return this.getIndexPage(mav);
         }
-        LeaveRequests request = new LeaveRequests();
-        request.setId(Integer.parseInt(id));
-        this.indexService.DeleteLeaveRequest(request);   
+        deleteLeaveRequest(id);   
         return this.leaveRequest(req,null,null,null);
     }
+
+    @RequestMapping("deleteLeaveRequestFromCalendar")
+    public ModelAndView deleteLeaveRequestFromCalendar(HttpServletRequest req, String id){
+        HttpSession session = req.getSession();
+        String user = (String)session.getAttribute("user");
+        ModelAndView mav = new ModelAndView();
+        if(null == user){
+        	return this.getIndexPage(mav);
+        }
+        deleteLeaveRequest(id);   
+        return this.getEventCalendar(req);
+    }
+
+	private void deleteLeaveRequest(String id) {
+		LeaveRequests request = new LeaveRequests();
+        request.setId(Integer.parseInt(id));
+        this.indexService.DeleteLeaveRequest(request);
+	}
     
     @RequestMapping("logout")
     public ModelAndView logout(HttpServletRequest req, String Id){
