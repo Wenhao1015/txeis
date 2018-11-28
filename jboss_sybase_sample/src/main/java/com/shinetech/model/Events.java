@@ -2,6 +2,8 @@ package com.shinetech.model;
 
 import java.text.SimpleDateFormat;
 
+import net.sf.json.JSONObject;
+
 public class Events {
 
 	private String title;
@@ -48,6 +50,16 @@ public class Events {
 	}
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public JSONObject toJson() {
+		// TODO Auto-generated method stub
+		JSONObject jo = new JSONObject();
+		jo.put("id", this.getId());
+		jo.put("startDate", this.getStartDate());
+		jo.put("endDate", this.getEndDate());
+		jo.put("title", this.getTitle());
+		return jo;
 	}
 
 }
