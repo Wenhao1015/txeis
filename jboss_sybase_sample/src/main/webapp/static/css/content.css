@@ -124,9 +124,8 @@
   margin: 25px 0;
 }
 
-.requestForm {
-  max-width: 500px;
-  margin: 20px;
+#requestForm {
+  margin: 0;
 }
 
 .requestForm .btm-button {

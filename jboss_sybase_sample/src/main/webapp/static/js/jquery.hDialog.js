@@ -53,6 +53,7 @@
             })
         },
         open: function(o, T) {
+            console.log
             var w,
                 h,
                 t,

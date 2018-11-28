@@ -15,7 +15,7 @@
 		<section class="content">
 			<h2 class="clearfix">
 				Leave Requests List
-				<button class="btn btn-primary pull-right" id="new-btn">New
+				<button class="btn btn-primary pull-right" id="new-btn" data-toggle="modal" data-target="#requestModal">New
 					Apply</button>
 			</h2>
 			<div class="content-white">
@@ -69,7 +69,7 @@
 									<td>${leave.leaveDuration} Days</td>
 									<td>${leave.remarks}</td>
 									<td style="width:150px;">
-										<button class="btn btn-primary sm" id="editLeave" 
+										<button class="btn btn-primary sm edit-btn" id="editLeave" data-toggle="modal" data-target="#requestModal" 
 										onClick="editLeave('${leave.id}','${leave.leaveType}','${leave.leaveStartDate}','${leave.leaveStartDateType}',
 										'${leave.leaveEndDate}','${leave.leaveEndDateType}','${leave.remarks}')">Edit</button>
 										<button class="btn btn-secondary sm" id="deleteLeave" onClick="deleteLeave(${leave.id})">Delete</button>
@@ -93,95 +93,108 @@
 		</main>
 	</div>
 	<%@ include file="commons/footer.jsp"%>
-	<div id="requestWrap" class="dialog">
-		<div class="dialog-content">
-			<div class="dialog-header">New Apply</div>
-			<div class="dialog-body">
-				<form id="requestForm" class="requestForm" action="submitLeaveRequest" method="post">
-					<input type="hidden" name="leaveId"/>
-					<div class="form-group">
-						<label class="form-title"> Leave Type: </label>
-						<div class="valid-wrap">
-							<select class="form-control" name="leaveType">
-								<option value="1">Annual Leave</option>
-								<option value="2">Sick Leave</option>
-							</select>
-						</div>
-					</div>
-					<div class="date-group">
-						<div class="form-group calendar-left">
-							<label class="form-title"> Start Date: </label>
-							<div class="valid-wrap">
-								<input class="form-control" type="text" name="LeaveStartDate"
-									id="startDate" readonly />
+	<div class="modal fade" id="requestModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+					<div class="modal-content">
+							<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+											&times;
+									</button>
+									<h4 class="modal-title">
+											New Apply
+									</h4>
 							</div>
-						</div>
-
-						<div class="form-group time-right">
-							<label class="form-title"> AM/PM: </label>
-							<div class="valid-wrap">
-								<select class="form-control" name="LeaveStartDateType">
-									<option value="0">AM</option>
-									<option value="1">PM</option>
-								</select>
-							</div>
-						</div>
-					</div>
-					<div class="date-group">
-						<div class="form-group calendar-left">
-							<label class="form-title"> End Date: </label>
-							<div class="valid-wrap">
-								<input class="form-control" type="text" name="LeaveEndDate"
-									id="endDate" readonly />
-							</div>
-						</div>
-
-						<div class="form-group time-right">
-							<label class="form-title"> AM/PM: </label>
-							<div class="valid-wrap">
-								<select class="form-control" name="LeaveEndDateType">
-									<option value="0">AM</option>
-									<option value="1">PM</option>
-								</select>
-							</div>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="form-title"> Remarks : </label>
-						<div class="valid-wrap">
-							<textarea style="height: auto;" class="form-control" type="text"
-								name="Remarks" rows="4"></textarea>
-						</div>
-					</div>
-					<div class="form-group text-center btm-button">
-						<button type="submit" class="btn btn-primary">Save</button>
-						<button class="btn btn-secondary" data-click="close">Cancel</button>
-					</div>
-				</form>
-			</div>
-		</div>
+									<form id="requestForm" action="submitLeaveRequest" method="post">
+											<div class="modal-body requestForm">
+											<input type="hidden" name="leaveId"/>
+											<div class="form-group">
+												<label class="form-title"> Leave Type: </label>
+												<div class="valid-wrap">
+													<select class="form-control" name="leaveType">
+														<option value="1">Annual Leave</option>
+														<option value="2">Sick Leave</option>
+													</select>
+												</div>
+											</div>
+											<div class="date-group">
+												<div class="form-group calendar-left">
+													<label class="form-title"> Start Date: </label>
+													<div class="valid-wrap">
+														<input class="form-control" type="text" name="LeaveStartDate"
+															id="startDate" readonly  value="" />
+													</div>
+												</div>
+						
+												<div class="form-group time-right">
+													<label class="form-title"> AM/PM: </label>
+													<div class="valid-wrap">
+														<select class="form-control" name="LeaveStartDateType">
+															<option value="0">AM</option>
+															<option value="1">PM</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="date-group">
+												<div class="form-group calendar-left">
+													<label class="form-title"> End Date: </label>
+													<div class="valid-wrap">
+														<input class="form-control" type="text" name="LeaveEndDate" value=""
+															id="endDate" readonly />
+													</div>
+												</div>
+						
+												<div class="form-group time-right">
+													<label class="form-title"> AM/PM: </label>
+													<div class="valid-wrap">
+														<select class="form-control" name="LeaveEndDateType">
+															<option value="0">AM</option>
+															<option value="1">PM</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="form-title"> Remarks : </label>
+												<div class="valid-wrap">
+													<textarea style="height: auto;" class="form-control" name="Remarks" rows="4"></textarea>
+												</div>
+											</div>
+										</div>
+											<div class="modal-footer">
+												<button type="submit" class="btn btn-primary">Save</button>
+												<button class="btn btn-secondary"  data-dismiss="modal" aria-hidden="true">Cancel</button>
+											</div>
+										
+									</form>
+						
+					</div><!-- /.modal-content -->
+			</div><!-- /.modal -->
 	</div>
 </body>
 
 <script>
+	var nowTemp = new Date();
+	var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(),
+						nowTemp.getDate(), 0, 0, 0, 0);
 	$(document).ready(
 			function() {
 				$("#SearchType").find("option:contains('${SearchType}')").attr(
 						"selected", true);
-				$("#new-btn").hDialog({
-					'box' : '#requestWrap'
-				});
-				var nowTemp = new Date();
-				var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(),
-						nowTemp.getDate(), 0, 0, 0, 0);
 				$('#startDate').fdatepicker({
-					startDate : now
+					startDate : now,
+					format:'mm/dd/yyyy'
 				});
 				$('#endDate').fdatepicker({
-					startDate : now
+					startDate : now,
+					format:'mm/dd/yyyy'
 				});
-				$('#SearchStartDate').fdatepicker();
-				$('#SearchEndDate').fdatepicker();
+				$('#SearchStartDate').fdatepicker({
+					format:'mm/dd/yyyy'
+				});
+				$('#SearchEndDate').fdatepicker({
+					format:'mm/dd/yyyy'
+				});
 				$('#requestForm').bootstrapValidator({
 					live : 'enable',
 					message : 'This value is not valid',
@@ -221,20 +234,17 @@
           //       alert("submit");
           //   }
 				});
-				
-
-
 			});
 	
 		function editLeave(id,leaveType,leaveStartDate,leaveStartDateType,leaveEndDate,leaveEndDateType,remarks){
+			$("[name='Remarks']").text(remarks);
 				$("[name='leaveId']").attr("value", id+"");
 				$("[name='leaveType']").val(leaveType);
-				$("[name='LeaveStartDate']").val(leaveStartDate);
+				$("#startDate").val(leaveStartDate);
 				$("[name='LeaveStartDateType']").val(leaveStartDateType);
-				$("[name='LeaveEndDate']").val(leaveEndDate);
+				$("#endDate").val(leaveEndDate);
 				$("[name='LeaveEndDateType']").val(leaveEndDateType)
-				$("[name='Remarks']").attr("value", remarks);
-				$("#new-btn").click();
+				$("[name='Remarks']").val(remarks);
 			}
 		
 		function deleteLeave(id){
