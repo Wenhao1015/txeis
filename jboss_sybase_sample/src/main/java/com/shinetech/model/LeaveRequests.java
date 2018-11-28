@@ -10,6 +10,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Calendar;
 
@@ -41,6 +42,8 @@ public class LeaveRequests extends BaseEntity implements Serializable {
     @Column(name = "Remarks")
     private String remarks;
 
+    private String leaveStartDateString;
+    private String leaveEndDateString;
     
     public int getId() {
         return id;
@@ -155,4 +158,17 @@ public class LeaveRequests extends BaseEntity implements Serializable {
 		this.remarks = remarks;
 	}
 
+	public String getLeaveStartDateString() {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		String result =  sdf.format(this.leaveStartDate);
+		this.leaveStartDateString = result;
+		return leaveStartDateString;
+	}
+
+	public String getLeaveEndDateString() {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		String result =  sdf.format(this.leaveStartDate);
+		this.leaveEndDateString = result;
+		return leaveEndDateString;
+	}
 }
