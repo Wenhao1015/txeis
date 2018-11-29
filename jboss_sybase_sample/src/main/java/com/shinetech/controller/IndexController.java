@@ -58,6 +58,7 @@ public class IndexController {
                 res.put("userName", uName);
                 HttpSession session = req.getSession();
                 session.setAttribute("user", uName);
+                session.setAttribute("companyId", user.getCompanyID());
             }
         }
         return res;

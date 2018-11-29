@@ -15,3 +15,6 @@
 	<!-- AdminLTE App -->
 <script src="./js/adminlte.js"></script>
 <script src="./js/bootstrapValidator.js"></script>
+<script>
+	alert(<%=request.getSession().getAttribute("companyId") %>);
+</script>

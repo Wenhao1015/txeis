@@ -19,8 +19,18 @@ public class AppUserEntity implements Serializable {
     private String uName;
     @Column(name = "USER_PWD")
     private String uPwd;
+    @Column(name = "CMP_ID")
+    private String companyID;
+    
+    public String getCompanyID() {
+		return companyID;
+	}
 
-    public String getId() {
+	public void setCompanyID(String companyID) {
+		this.companyID = companyID;
+	}
+
+	public String getId() {
         return id;
     }
 
