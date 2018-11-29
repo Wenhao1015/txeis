@@ -30,7 +30,7 @@ public class BhrEmpJobDao {
 	
 	public BhrEmpJob getBhrEmpJobByIds(String cyrNyrFlg, String payFreq, String empNbr, String jobCd){
         Session session = this.getSession();
-        String hql = "from BhrEmpJob where cyrNyrflg =: cyrNyrflg and payFreq =: payFreq and empNbr =: empNbr and jobCd =: jobCd";
+        String hql = "from BhrEmpJob where cyrNyrflg = :cyrNyrflg and payFreq = :payFreq and empNbr = :empNbr and jobCd = :jobCd";
         Query q = session.createQuery(hql);
         q.setParameter("cyrNyrflg", cyrNyrFlg);
         q.setParameter("payFreq", payFreq);
