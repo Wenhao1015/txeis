@@ -50,7 +50,7 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
                         method="post"
                     >
                         <div class="modal-body requestForm">
-                            <input type="hidden" id="leaveId" />
+                            <input type="hidden" name="leaveId" id="leaveId" />
                             <div class="form-group">
                                 <label class="form-title"> Leave Type: </label>
                                 <div class="valid-wrap">
