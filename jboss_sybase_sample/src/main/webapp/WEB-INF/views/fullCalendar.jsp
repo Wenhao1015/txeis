@@ -50,7 +50,7 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
                         method="post"
                     >
                         <div class="modal-body requestForm">
-                            <input type="hidden" id="leaveId" />
+                            <input type="hidden" id="leaveId" name="leaveId" />
                             <div class="form-group">
                                 <label class="form-title"> Leave Type: </label>
                                 <div class="valid-wrap">
@@ -204,7 +204,7 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
                         defaultDate: new Date(),
                         weekNumbers: false,
                         navLinks: true, // can click day/week names to navigate views
-                        editable: true,
+                        editable: false,
                         eventLimit: true, // allow "more" link when too many events
                         events: leaveList,
                         eventClick: function(calEvent, jsEvent, view) {
@@ -222,6 +222,7 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 							$("[name='Remarks']").val(calEvent.Remarks);
                         },
                         dayClick: function(date, allDay, jsEvent, view) {
+                            $("#leaveId").attr("value","");
 							$("[name='Remarks']").text("");
 							$('#requestForm')[0].reset();
 							$('#requestForm').data('bootstrapValidator').destroy()
