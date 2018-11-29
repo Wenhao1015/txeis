@@ -65,7 +65,7 @@
 }
 
 .content-wrapper {
-  min-height: calc(100vh - 153px) !important;
+  min-height: calc(100vh - 159px) !important;
 }
 
 .main-footer {
@@ -137,14 +137,14 @@
 }
 
 .content-wrapper > .content {
-  margin: 0 0.5rem;
+  margin: 0 1rem;
 }
 
 .content-wrapper > .content .content-white {
   background: #fff;
   padding: 15px;
-  min-height: calc(100vh - 230px);
-  margin-bottom: 50px;
+  min-height: calc(100vh - 280px);
+  margin-bottom: 40px;
 }
 
 #calendar {
