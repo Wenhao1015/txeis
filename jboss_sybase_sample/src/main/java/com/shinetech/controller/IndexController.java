@@ -2,6 +2,7 @@ package com.shinetech.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shinetech.model.AppUserEntity;
+import com.shinetech.model.BhrEmpJob;
 import com.shinetech.model.Events;
 import com.shinetech.model.LeaveRequests;
 import com.shinetech.service.IndexService;
@@ -78,6 +79,34 @@ public class IndexController {
         return mav;
     }
 
+    @RequestMapping("employeePayments")
+    public ModelAndView getEmployeePayments(HttpServletRequest req){
+        HttpSession session = req.getSession();
+        String user = (String)session.getAttribute("user");
+        ModelAndView mav = new ModelAndView();
+        if(null == user){
+        	return this.getIndexPage(mav);
+        }
+        List<BhrEmpJob> employeePayments = this.indexService.getBhrEmpJobList();
+        mav.setViewName("employeePayments");
+        mav.addObject("employeePayments", employeePayments);
+        return mav;
+    }
+    
+    @RequestMapping("employeePaymentDetail")
+    public ModelAndView getEmployeePaymentDetail(HttpServletRequest req,String cyrNyrFlg, String payFreq, String empNbr, String jobCd){
+        HttpSession session = req.getSession();
+        String user = (String)session.getAttribute("user");
+        ModelAndView mav = new ModelAndView();
+        if(null == user){
+        	return this.getIndexPage(mav);
+        }
+        BhrEmpJob employeePaymentDetail = this.indexService.getBhrEmpJobByIds(cyrNyrFlg, payFreq, empNbr, jobCd);
+        mav.setViewName("employeePaymentDetail");
+        mav.addObject("employeePaymentDetail", employeePaymentDetail);
+        return mav;
+    }
+    
     @ResponseBody
     @RequestMapping(value = "/getLeaveDetailById", method = RequestMethod.POST)
     public String getLeaveDetailById( @PathVariable String Id) {
