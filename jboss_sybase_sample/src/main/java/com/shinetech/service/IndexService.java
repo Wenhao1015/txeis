@@ -2,9 +2,11 @@ package com.shinetech.service;
 
 import com.shinetech.dao.AppUserDao;
 import com.shinetech.dao.BaseDao;
+import com.shinetech.dao.BhrEmpJobDao;
 import com.shinetech.dao.LeaveRequestDao;
 import com.shinetech.dao.StudentDao;
 import com.shinetech.model.AppUserEntity;
+import com.shinetech.model.BhrEmpJob;
 import com.shinetech.model.LeaveRequests;
 import com.shinetech.model.StudentInfoBean;
 import org.slf4j.Logger;
@@ -24,6 +26,9 @@ public class IndexService {
 
     @Autowired
     private LeaveRequestDao leaveRequestDao;
+
+    @Autowired
+    private BhrEmpJobDao bhrEmpJobDao;
     
     public String getMessage(){
         String message = "Hello, JBoss has started!";
@@ -48,5 +53,13 @@ public class IndexService {
     
     public List<LeaveRequests> getLeaveRequests(LeaveRequests request) {
     	return leaveRequestDao.getLeaveRequests(request);
+    }
+    
+    public BhrEmpJob getBhrEmpJobByIds(String cyrNyrFlg, String payFreq, String empNbr, String jobCd) {
+    	return bhrEmpJobDao.getBhrEmpJobByIds(cyrNyrFlg, payFreq, empNbr, jobCd);
+    }
+    
+    public List<BhrEmpJob> getBhrEmpJobList() {
+    	return bhrEmpJobDao.getBhrEmpJobList();
     }
 }
