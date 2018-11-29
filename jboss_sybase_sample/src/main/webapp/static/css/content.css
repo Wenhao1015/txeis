@@ -216,3 +216,146 @@
     padding: 0;
   }
 }
+
+.print-table {
+  width: 100%;
+}
+
+.print-table td, .print-table th {
+  padding: 5px;
+}
+
+.print-block {
+  display: none;
+}
+
+.em-detail {
+  font-size: 12px;
+}
+
+.em-detail .left-label {
+  font-weight: bold;
+}
+
+.em-detail .sub-title {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.em-detail .info-block {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.em-detail .info-block.lg-title .info-flex-item .info-title {
+  width: 290px;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.em-detail .info-block.lg-title .info-flex-item.left-info .info-title {
+  width: 240px;
+}
+
+.em-detail .info-block.positions .info-flex-item {
+  justify-content: space-between;
+}
+
+.em-detail .info-block.positions .info-flex-item .info-content {
+  text-align: right;
+}
+
+.em-detail .info-block .info-item {
+  flex: 1;
+}
+
+.em-detail .print-table {
+  margin-top: 25px;
+}
+
+.print-title {
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.hr-black {
+  width: 100%;
+  border-bottom: 1px solid #000;
+  margin-top: 10px;
+}
+
+.info-flex-item {
+  display: flex;
+  flex: 1;
+}
+
+.info-flex-item:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.info-flex-item .info-title {
+  font-weight: bold;
+  padding-right: 10px;
+  white-space: normal;
+  word-break: break-word;
+  float: left;
+}
+
+.info-flex-item .info-content {
+  float: left;
+  padding-right: 10px;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.print-table .table {
+  font-size: 12px;
+}
+
+.print-table .table td {
+  border: 0;
+}
+
+.print-table .table td, .print-table .table th {
+  text-align: left;
+}
+
+@media print {
+  .em-detail .info-block .info-flex-item {
+    display: block;
+  }
+  .em-detail .info-block.lg-title .info-flex-item .info-title {
+    width: 230px;
+  }
+  .em-detail .info-block.lg-title .info-flex-item.left-info .info-title {
+    width: 180px;
+  }
+  .print-block {
+    display: block;
+  }
+  .no-print, .main-header, .main-sidebar, .main-footer {
+    display: none;
+  }
+  .content-wrapper > .content {
+    margin: 0;
+  }
+  .content-white {
+    font-size: 12px;
+  }
+  .hr-black {
+    display: none;
+  }
+  .em-detail .sub-title {
+    font-size: 15px;
+    margin-top: 25px;
+  }
+  .em-detail .info-block.positions .info-flex-item {
+    display: block;
+  }
+  .em-detail .info-block.positions .info-flex-item .info-content {
+    float: right;
+  }
+}

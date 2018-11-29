@@ -1,8 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%>
 <html>
 <head>
 		<title>Title</title>
@@ -67,7 +66,6 @@
 		</body>
 		<script>
 		function view(cyrNyrflg,payFreq,empNbr,jobCd){
-			alert(cyrNyrflg+","+payFreq+","+empNbr+","+jobCd)
 				$("#cyrNyrFlg").val(cyrNyrflg);
 				$("#payFreq").val(payFreq);
 				$("#empNbr").val(empNbr);
