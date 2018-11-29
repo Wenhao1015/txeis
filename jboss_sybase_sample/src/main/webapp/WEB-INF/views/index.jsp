@@ -3,7 +3,16 @@
 <html>
     <head>
         <title>JBoss_Application</title>
-        <%@ include file="commons/header.jsp"%>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./css/font-awesome.min.css">
+        <link rel="stylesheet" href="./css/animate.css" />
+        <link rel="stylesheet" href="./css/foundation-datepicker.css" />
+        <link rel="stylesheet" href="./css/icheck.css">
+        <link rel="stylesheet" href="./css/common.css">
+        <link rel="stylesheet" href="./css/gap.css">
+        <link rel="stylesheet" href="./css/button.css">
+        <link rel="stylesheet" href="./css/bar.css">
+        <link rel="stylesheet" href="./css/content.css">
     </head>
     <body class="account-wrap">
             <div class="account-top">
@@ -45,6 +54,13 @@
                 </div>
             </div>
     </body>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/icheck.min.js"></script>
+    <script src="./js/foundation-datepicker.js"></script>
+        <!-- AdminLTE App -->
+    <script src="./js/adminlte.js"></script>
+    <script src="./js/bootstrapValidator.js"></script>
     <script type="text/javascript">
         $(function(){
           $('.icheck').iCheck({

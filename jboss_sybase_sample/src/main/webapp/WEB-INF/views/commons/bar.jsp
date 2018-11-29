@@ -8,9 +8,22 @@
       </li>
     </ul>
 
-    <a class="nav-logo" href="/">
-  		<img src="./images/logo.png">
-    </a>
+    
+    <c:if test="${sessionScope.companyId == 0}">
+        <a class="nav-logo" href="/">
+          <img src="./images/logo.png">
+        </a>
+    </c:if>
+    <c:if test="${sessionScope.companyId == 1}">
+        <a class="nav-logo" href="/">
+          <img src="./images/logo-austin.png">
+        </a>
+    </c:if>
+    <c:if test="${sessionScope.companyId == 2}">
+        <a class="nav-logo" href="/">
+          <img src="./images/logo-saisd.png">
+        </a>
+    </c:if>
     
     <!-- Right navbar links -->
     <ul class="navbar-nav nav-right">

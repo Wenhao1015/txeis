@@ -15,6 +15,24 @@
 	<!-- AdminLTE App -->
 <script src="./js/adminlte.js"></script>
 <script src="./js/bootstrapValidator.js"></script>
-<script>
-	alert(<%=request.getSession().getAttribute("companyId") %>);
-</script>
+
+<c:if test="${sessionScope.companyId == 1}">
+<style>
+.main-sidebar{
+	background-color: #a93439;
+}
+.navbar-badge{
+	background-color: #a93439;
+}
+</style>
+</c:if>
+<c:if test="${sessionScope.companyId == 2}">
+<style>
+.main-sidebar{
+	background-color: #00529b;
+}
+.navbar-badge{
+	background-color: #00529b;
+}
+</style>
+</c:if>
