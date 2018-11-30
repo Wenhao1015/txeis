@@ -30,69 +30,72 @@ pageEncoding="UTF-8"%>
                     </div>
                 </div>
 
-                <div class="em-detail">
+                <div class="EMP-detail">
                     <p class="print-block sub-title">Employee Information</p>
                     <div class="clearfix ">
-                            <div class="info-block lg-title">
-                                    <div class="info-flex-item left-info">
-                                        <div class="info-title"><b>Name</b></div>
-                                        <div class="info-content">RAYMUNDO R RONQUILLO</div>
-                                    </div>
-                                    <div class="info-flex-item">
-                                            <div class="info-title"><b></b></div>
-                                            <div class="info-content"></div>
-                                    </div>
-                            </div>
-                            <div class="info-block lg-title">
-                                    <div class="info-flex-item left-info">
-                                        <div class="info-title"><b>Address</b></div>
-                                        <div class="info-content">73010 ROSEWOOD CRK</div>
-                                    </div>
-                                    <div class="info-flex-item">
-                                            <div class="info-title"><b>Employee ID</b></div>
-                                            <div class="info-content">${employeePaymentDetail.empNbr}</div>
+                        <div class="simple-info">
+                                <div class="info-block lg-title first-block">
+                                        <div class="info-flex-item left-info">
+                                            <div class="info-title"><b>Name</b></div>
+                                            <div class="info-content">RAYMUNDO R RONQUILLO</div>
                                         </div>
-                            </div>
-                            <div class="info-block lg-title">
-                                    <div class="info-flex-item left-info">
-                                        <div class="info-title"><b>Phone Number</b></div>
-                                        <div class="info-content">555-334-9774</div>
-                                    </div>
-                                    <div class="info-flex-item">
-                                            <div class="info-title"><b>Date of Birth</b></div>
-                                            <div class="info-content">11-12-1954</div>
+                                        <div class="info-flex-item right-first">
+                                                <div class="info-title"><b></b></div>
+                                                <div class="info-content"></div>
                                         </div>
-                            </div>
-                            <div class="info-block lg-title">
-                                    <div class="info-flex-item left-info">
-                                        <div class="info-title"><b>Degree</b></div>
-                                        <div class="info-content">Master's</div>
-                                    </div>
-                                    <div class="info-flex-item">
-                                            <div class="info-title"><b>Gender</b></div>
-                                            <div class="info-content">Female</div>
+                                </div>
+                                <div class="info-block lg-title">
+                                        <div class="info-flex-item left-info">
+                                            <div class="info-title"><b>Address</b></div>
+                                            <div class="info-content">73010 ROSEWOOD CRK</div>
                                         </div>
-                            </div>
-                            <div class="info-block lg-title">
-                                    <div class="info-flex-item  left-info">
-                                        <div class="info-title"><b>Professional Years Experience</b></div>
-                                        <div class="info-content">${employeePaymentDetail.yrsExpJob}</div>
-                                    </div>
-                                    <div class="info-flex-item">
-                                            <div class="info-title"><b>Professional District Experience</b></div>
-                                            <div class="info-content">02</div>
+                                        <div class="info-flex-item">
+                                                <div class="info-title"><b>Employee ID</b></div>
+                                                <div class="info-content">${employeePaymentDetail.empNbr}</div>
+                                            </div>
+                                </div>
+                                <div class="info-block lg-title">
+                                        <div class="info-flex-item left-info">
+                                            <div class="info-title"><b>Phone Number</b></div>
+                                            <div class="info-content">555-334-9774</div>
                                         </div>
-                            </div>
-                            <div class="info-block lg-title">
-                                    <div class="info-flex-item  left-info">
-                                        <div class="info-title"><b>Non Professional Experience</b></div>
-                                        <div class="info-content">00</div>
-                                    </div>
-                                    <div class="info-flex-item">
-                                            <div class="info-title"><b>Non Professional District Experience</b></div>
+                                        <div class="info-flex-item">
+                                                <div class="info-title"><b>Date of Birth</b></div>
+                                                <div class="info-content">11-12-1954</div>
+                                            </div>
+                                </div>
+                                <div class="info-block lg-title">
+                                        <div class="info-flex-item left-info">
+                                            <div class="info-title"><b>Degree</b></div>
+                                            <div class="info-content">Master's</div>
+                                        </div>
+                                        <div class="info-flex-item">
+                                                <div class="info-title"><b>Gender</b></div>
+                                                <div class="info-content">Female</div>
+                                            </div>
+                                </div>
+                                <div class="info-block lg-title">
+                                        <div class="info-flex-item  left-info">
+                                            <div class="info-title"><b>Professional Years Experience</b></div>
+                                            <div class="info-content">${employeePaymentDetail.yrsExpJob}</div>
+                                        </div>
+                                        <div class="info-flex-item">
+                                                <div class="info-title"><b>Professional District Experience</b></div>
+                                                <div class="info-content">02</div>
+                                            </div>
+                                </div>
+                                <div class="info-block lg-title">
+                                        <div class="info-flex-item  left-info">
+                                            <div class="info-title"><b>Non Professional Experience</b></div>
                                             <div class="info-content">00</div>
                                         </div>
-                            </div>
+                                        <div class="info-flex-item">
+                                                <div class="info-title"><b>Non Professional District Experience</b></div>
+                                                <div class="info-content">00</div>
+                                            </div>
+                                </div>
+                        </div>
+                            
                         <div class="hr-black"></div>
                         <p class="sub-title">Frequency: Semimonthly</p>
                         <div class="info-block">
@@ -149,7 +152,7 @@ pageEncoding="UTF-8"%>
                             </div>
                         <div class="hr-black"></div>
                         <div class="print-table">
-                            <table class="table">
+                            <table class="table responsive-table payRoll-table">
                                 <thead>
                                     <tr>
                                         <th>Bank Code</th>
@@ -161,18 +164,18 @@ pageEncoding="UTF-8"%>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>005</td>
-                                        <td>FIRSTTMAIK CREDIT UNION</td>
-                                        <td>2-Checking account</td>
-                                        <td>***********0735</td>
-                                        <td>50.00</td>
+                                        <td data-title="Bank Code">005</td>
+                                        <td data-title="Bank Name">FIRSTTMAIK CREDIT UNION</td>
+                                        <td data-title="Account Type">2-Checking account</td>
+                                        <td data-title="Acct Nbr">***********0735</td>
+                                        <td data-title="Dep Amt">50.00</td>
                                     </tr>
                                     <tr>
-                                            <td>031</td>
-                                            <td>JPMORGAN CHASE BANK.N.A</td>
-                                            <td>2-Checking account</td>
-                                            <td>***********0735</td>
-                                            <td>0.00</td>
+                                            <td data-title="Bank Code">031</td>
+                                            <td data-title="Bank Name">JPMORGAN CHASE BANK.N.A</td>
+                                            <td data-title="Account Type">2-Checking account</td>
+                                            <td data-title="Acct Nbr">***********0735</td>
+                                            <td data-title="Dep Amt">0.00</td>
                                         </tr>
                                 </tbody>
                             </table>

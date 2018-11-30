@@ -177,20 +177,8 @@
         }
     }
 }
-.print-table{
-    width: 100%;
-    td,th{
-        padding: 5px;
-    }
-}
-.print-block{
-    display: none;
-}
-.em-detail{
+.EMP-detail{
     font-size: 12px;
-    .left-label{
-        font-weight: bold;
-    }
     .sub-title{
         font-weight:bold;font-size: 20px;
     }
@@ -233,6 +221,26 @@
     .print-table{
         margin-top: 25px;
     }
+    @media (max-width:768px){
+        .info-block{
+            display: block;
+        }
+        .info-flex-item .info-title{
+            flex: 1;
+        }
+        .info-flex-item .info-content{
+            flex: 0 0 auto;
+        }
+        .simple-info{
+            .info-block{
+                display: block;
+            }
+            .info-block.lg-title .info-flex-item .info-title,
+            .info-block.lg-title .info-flex-item.left-info .info-title{
+                width: 220px;
+            }
+        }
+    }
 }
 .print-title{
     margin-bottom: 25px;
@@ -241,7 +249,7 @@
 .hr-black{
     width: 100%;
     border-bottom: 1px solid #000;
-    margin-top: 10px;
+    margin-top: 30px;
 }
 .info-flex-item{
     display: flex;
@@ -277,14 +285,64 @@
     }
 }
 @media print {
-    .em-detail .info-block .info-flex-item{
-        display: block;
-    }
-    .em-detail .info-block.lg-title .info-flex-item .info-title{
-        width: 230px;
-    }
-    .em-detail .info-block.lg-title .info-flex-item.left-info .info-title{
-        width: 180px;
+    .EMP-detail {
+        .sub-title{
+            font-size: 15px;
+            margin-top: 25px;
+        }
+        .info-block {
+            display: flex!important;
+           
+            .info-flex-item{
+                display: block;
+            }
+            
+            &.positions{
+                .info-flex-item{
+                    display: block;
+                    .info-content{
+                        float: right;
+                    }
+                }
+            }
+        }
+        .simple-info{
+            .info-block {
+                &.lg-title{
+                    .info-flex-item{
+                        .info-title{
+                            width: 230px;
+                        }
+                        &.left-info{
+                            .info-title{
+                                width: 180px!important;
+                            }
+                            .info-content{
+                                width: 150px;
+                            }
+                        }
+                        
+                    }
+                }
+                &.first-block{
+                    .info-flex-item{
+                        &.left-info{
+                            .info-title{
+                                width: 180px!important;
+                            }
+                            .info-content{
+                                width: initial;
+                            }
+                        }
+                        &.right-first{
+                            display: none;
+                        }
+                    }
+                    
+                }
+            }
+        }
+        
     }
     .print-block{
         display: block;
@@ -301,15 +359,36 @@
     .hr-black{
         display: none;
     }
-    .em-detail .sub-title{
-        font-size: 15px;
-        margin-top: 25px;
-    }
-    .em-detail .info-block.positions{
-        .info-flex-item{
-            display: block;
-            .info-content{
-                float: right;
+    .print-table .table.responsive-table {
+        border: 0;
+        thead {
+            display: table-header-group;
+        }
+        tr,
+        td {
+            display: table-cell;
+        }
+        tr {
+            margin: 0;
+            display: table-row;
+        }
+        th{
+            padding: 5px;
+        }
+        td {
+            width: initial!important;
+            height: auto;
+            border: 0;
+            padding: 5px;
+            position: static;
+            white-space: normal;
+            text-align: left;
+            min-height: initial;
+            &:first-child {
+                border: 0;
+            }
+            &:before {
+                display: none;
             }
         }
     }

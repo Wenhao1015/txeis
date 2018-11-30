@@ -299,7 +299,61 @@ input {
     background-color: #ffffff;
 }
 // ------------------modal
-
+@media (max-width:768px){
+    .table.responsive-table {
+		border: 0;
+		thead {
+			display: none;
+		}
+		tr,
+		td {
+			display: block;
+		}
+		tr {
+			margin-bottom: 25px;
+		}
+		td {
+			width: 100% !important;
+			max-width: initial;
+			height: auto;
+			border: none;
+			padding: 5px;
+			border-bottom: 1px solid #eee;
+			border-left: 1px solid #eee;
+			border-right: 1px solid #eee;
+			position: relative;
+			padding-left: 140px;
+			white-space: normal;
+			text-align: left;
+			min-height: 30px;
+			&:first-child {
+				border-top: 1px solid #eee;
+			}
+			&.selector {
+				padding-left: 6px;
+				.ivu-checkbox-wrapper {
+					margin: 0;
+				}
+				&:before {
+					display: none;
+				}
+			}
+			&:before {
+				/* Now like a table header */
+				position: absolute;
+				/* Top/left values mimic padding */
+				top: 6px;
+				left: 6px;
+				width: 130px;
+				padding-right: 10px;
+				white-space: nowrap;
+				text-align: left;
+				font-weight: bold;
+				content: attr(data-title);
+			}
+		}
+	}
+}
 
 .modal-open {
     overflow: hidden;
@@ -480,7 +534,9 @@ input {
     }
   }
   
-
+  .print-block{
+    display: none;
+}
 
 
 

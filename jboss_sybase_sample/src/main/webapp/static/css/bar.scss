@@ -16,7 +16,7 @@
   }
 .nav-link {
     display: block;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 5px;
     &:focus{
         text-decoration: none;
     }
@@ -49,6 +49,9 @@
         padding-right: 1rem;
         padding-left: 1rem;
         flex-direction: row;
+        @media (max-width:600px){
+            padding: 0;
+        }
         .dropdown-menu {
             position: absolute;
             float: none;
@@ -56,6 +59,10 @@
         .nav-link {
             padding-right: 1rem;
             padding-left: 1rem;
+            @media (max-width:600px){
+                padding-right: 15px;
+                padding-left: 10px;
+            }
         }
     }
 }
@@ -328,6 +335,9 @@
         text-align: center;
         img{
             max-height: 50px;
+            @media (max-width:425px){
+                max-width: 150px;
+            }
         }
     }
     .nav-right{

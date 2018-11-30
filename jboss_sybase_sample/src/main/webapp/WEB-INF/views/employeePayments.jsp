@@ -20,7 +20,7 @@ pageEncoding="UTF-8"%>
 										Current Pay Information
 								</h2>
 							<div class="content-white">
-									<table class="table request-list">
+									<table class="table request-list  responsive-table">
 											<thead>
 												<tr>
 													<th>Sno.</th>
@@ -36,12 +36,12 @@ pageEncoding="UTF-8"%>
 											<tbody>
 												<c:forEach var="employeePayment" items="${employeePayments}" varStatus="employeePayments">
 													<tr>
-														<td>${employeePayments.index + 1}</td>
-														<td>${employeePayment.cyrNyrflg}</td>
-														<td>${employeePayment.payFreq}</td>
-														<td>${employeePayment.empNbr}</td>
-														<td>${employeePayment.jobCd}</td>
-														<td>${employeePayment.primJob}</td>
+														<td data-title="Sno.">${employeePayments.index + 1}</td>
+														<td data-title="cyrNyrflg">${employeePayment.cyrNyrflg}</td>
+														<td data-title="payFreq">${employeePayment.payFreq}</td>
+														<td data-title="Employee ID">${employeePayment.empNbr}</td>
+														<td data-title="jobCd">${employeePayment.jobCd}</td>
+														<td data-title="primJob">${employeePayment.primJob}</td>
 														<td style="width:100px;">
 																<button class="btn btn-primary sm edit-btn" 
 																onClick="view('${employeePayment.cyrNyrflg}','${employeePayment.payFreq}','${employeePayment.empNbr}','${employeePayment.jobCd}')">View</button>
