@@ -203,6 +203,10 @@
   margin-bottom: 40px;
 }
 
+.fc-scroller {
+  height: initial !important;
+}
+
 #calendar {
   margin: 25px 0;
 }
