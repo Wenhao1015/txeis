@@ -47,7 +47,7 @@
 				</form>
 
 				<c:if test="${fn:length(leaves) > 0}">
-					<table class="table request-list">
+					<table class="table request-list responsive-table">
 						<thead>
 							<tr>
 								<th>Sno.</th>
@@ -62,12 +62,12 @@
 						<tbody>
 							<c:forEach var="leave" items="${leaves}" varStatus="leaves">
 								<tr>
-									<td>${leaves.index + 1}</td>
-									<td>${leave.leaveType==1?"Annal Leave":"Sick Leave"}</td>
-									<td>${leave.leaveStartDateString} ${leave.leaveStartDateType==0?'AM':'PM'}</td>
-									<td>${leave.leaveEndDateString} ${leave.leaveEndDateType==0?'AM':'PM'}</td>
-									<td>${leave.leaveDuration} Days</td>
-									<td>${leave.remarks}</td>
+									<td  data-title="Sno.">${leaves.index + 1}</td>
+									<td data-title="Leave Type">${leave.leaveType==1?"Annal Leave":"Sick Leave"}</td>
+									<td data-title="Leave Start Date">${leave.leaveStartDateString} ${leave.leaveStartDateType==0?'AM':'PM'}</td>
+									<td data-title="Leave End Date">${leave.leaveEndDateString} ${leave.leaveEndDateType==0?'AM':'PM'}</td>
+									<td data-title="Duration">${leave.leaveDuration} Days</td>
+									<td data-title="Remarks">${leave.remarks}</td>
 									<td style="width:150px;">
 										<button class="btn btn-primary sm edit-btn" id="editLeave" data-toggle="modal" data-target="#requestModal" 
 										onClick="editLeave('${leave.id}','${leave.leaveType}','${leave.leaveStartDateString}','${leave.leaveStartDateType}',

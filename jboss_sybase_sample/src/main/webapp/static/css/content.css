@@ -13,6 +13,63 @@
   align-items: center;
 }
 
+.account-wrap .account-top .account-inner {
+  background: #fff;
+  display: flex;
+  width: 1100px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.account-wrap .account-top .account-inner .account-left {
+  flex: 0 0 700px;
+  height: 400px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.account-wrap .account-top .account-inner .account-left img {
+  height: 100%;
+}
+
+.account-wrap .account-top .account-inner .account-box {
+  flex: 0 0 320px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.account-wrap .account-top .account-inner .account-box .card {
+  margin: 0 auto;
+}
+
+.account-wrap .account-top .account-inner .account-logo {
+  display: none;
+}
+
+@media (max-width: 1100px) {
+  .account-wrap .account-top .account-inner {
+    width: 100%;
+    flex-flow: column;
+    box-shadow: none;
+    background: none;
+    overflow: initial;
+    padding-bottom: 35px;
+  }
+  .account-wrap .account-top .account-inner .account-left {
+    display: none;
+  }
+  .account-wrap .account-top .account-inner .account-box {
+    display: block;
+  }
+  .account-wrap .account-top .account-inner .account-logo {
+    display: block;
+  }
+}
+
 .account-wrap .main-footer {
   flex: 0 0 auto;
   margin: 0;
@@ -42,11 +99,10 @@
 }
 
 .account-box .card {
-  background: #fff;
+  background: #fbfbfb;
   width: 100%;
   padding: 25px 10px;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.125), 0 1px 3px rgba(0, 0, 0, 0.2);
-  border-radius: 0.25rem;
 }
 
 .account-box .card .title {

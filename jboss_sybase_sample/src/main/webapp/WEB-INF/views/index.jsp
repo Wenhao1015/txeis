@@ -16,41 +16,46 @@
     </head>
     <body class="account-wrap">
             <div class="account-top">
-                <div class="account-box">
-                    <div class="account-logo">
-                      <img src="./images/logo-account.png" alt="">
+                <div class="account-inner">
+                    <div class="account-left">
+                        <img src="./images/ascender_pecan_logo.jpg" alt="">
                     </div>
-                    <form id="loginForm" class="card" method="get">
-                      <h1 class="title">Please sign in</h1>
-                      <div class="form-group">
-                            <label class="form-title">User Name</label>
-                            <div class="valid-wrap">
-                                <input type="text" id="inputEmail" class="form-control" placeholder="User Name" name="username" autofocus>
-                            </div>
-                            
+                    <div class="account-box">
+                        <div class="account-logo">
+                        <img src="./images/logo-account.png" alt="">
                         </div>
+                        <form id="loginForm" class="card" method="get">
+                        <h1 class="title">Please sign in</h1>
                         <div class="form-group">
-                            <label  class="form-title">Password</label>
-                            <div class="valid-wrap">
-                                <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password">
+                                <label class="form-title">User Name</label>
+                                <div class="valid-wrap">
+                                    <input type="text" id="inputEmail" class="form-control" placeholder="User Name" name="username" autofocus>
+                                </div>
+                                
                             </div>
-                            
+                            <div class="form-group">
+                                <label  class="form-title">Password</label>
+                                <div class="valid-wrap">
+                                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password">
+                                </div>
+                                
+                            </div>
+                        <div class="form-group clearfix">
+                            <!-- <div class="checkbox pull-left">
+                                <label>
+                                    <input class="icheck" type="checkbox"> Remember Me
+                                </label>
+                            </div> -->
+                            <div class="pull-right">
+                                <a href="">Forgot Password?</a>
+                            </div>
                         </div>
-                      <div class="form-group clearfix">
-                          <!-- <div class="checkbox pull-left">
-                              <label>
-                                <input class="icheck" type="checkbox"> Remember Me
-                              </label>
-                          </div> -->
-                          <div class="pull-right">
-                            <a href="">Forgot Password?</a>
-                          </div>
-                      </div>
-                      <div class="form-group account-btn">
-                          <button id="signin" type="submit" class="btn btn-primary" name="signin" >Sign In</button>
-                      </div>
-                    </form>
-                    
+                        <div class="form-group account-btn">
+                            <button id="signin" type="submit" class="btn btn-primary" name="signin" >Sign In</button>
+                        </div>
+                        </form>
+                        
+                    </div>
                 </div>
             </div>
     </body>
