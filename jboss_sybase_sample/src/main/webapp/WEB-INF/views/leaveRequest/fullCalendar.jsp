@@ -4,15 +4,15 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <head>
         <title>Title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="./css/fullcalendar.min.css" />
-        <%@ include file="commons/header.jsp"%>
-        <script src="./js/moment.min.js"></script>
-        <script src="./js/fullcalendar.min.js"></script>
-        <script src="./js/theme-chooser.js"></script>
+        <link rel="stylesheet" href="/<%=request.getContextPath().split("/")[1]%>/css/fullcalendar.min.css" />
+        <%@ include file="../commons/header.jsp"%>
+        <script src="/<%=request.getContextPath().split("/")[1]%>/js/moment.min.js"></script>
+        <script src="/<%=request.getContextPath().split("/")[1]%>/js/fullcalendar.min.js"></script>
+        <script src="/<%=request.getContextPath().split("/")[1]%>/js/theme-chooser.js"></script>
     </head>
     <body class="hold-transition sidebar-mini">
         <div class="wrapper">
-            <%@ include file="commons/bar.jsp"%>
+            <%@ include file="../commons/bar.jsp"%>
 
             <main class="content-wrapper">
                 <section class="content">
@@ -20,7 +20,7 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
                 </section>
             </main>
         </div>
-        <%@ include file="commons/footer.jsp"%>
+        <%@ include file="../commons/footer.jsp"%>
         <div
             class="modal fade"
             id="requestModal"

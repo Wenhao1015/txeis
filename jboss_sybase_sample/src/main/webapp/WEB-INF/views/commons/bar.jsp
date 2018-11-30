@@ -11,17 +11,17 @@
     
     <c:if test="${sessionScope.companyId == 0}">
         <a class="nav-logo" href="/">
-          <img src="./images/logo.png">
+          <img src="/<%=request.getContextPath().split("/")[1]%>/images/logo.png">
         </a>
     </c:if>
     <c:if test="${sessionScope.companyId == 1}">
         <a class="nav-logo" href="/">
-          <img src="./images/logo-austin.png">
+          <img src="/<%=request.getContextPath().split("/")[1]%>/images/logo-austin.png">
         </a>
     </c:if>
     <c:if test="${sessionScope.companyId == 2}">
         <a class="nav-logo" href="/">
-          <img src="./images/logo-saisd.png">
+          <img src="/<%=request.getContextPath().split("/")[1]%>/images/logo-saisd.png">
         </a>
     </c:if>
     
@@ -61,10 +61,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="./images/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="/<%=request.getContextPath().split("/")[1]%>/images/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">RAYMUNDO</a>
         </div>
       </div>
 
@@ -90,7 +90,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="employeePayments" class="nav-link">
+                <a href="/<%=request.getContextPath().split("/")[1]%>/employeePayment/employeePayments" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Current Pay Information</p>
                 </a>
@@ -157,13 +157,13 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="leaveRequest" class="nav-link">
+            <a href="/<%=request.getContextPath().split("/")[1]%>/leaveRequest/leaveRequest" class="nav-link">
               <i class="nav-icon fa  fa-pencil-square-o text-info"></i>
               <p>Leave Requests</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="eventCalendar" class="nav-link">
+            <a href="/<%=request.getContextPath().split("/")[1]%>/leaveRequest/eventCalendar" class="nav-link">
               <i class="nav-icon fa  fa-pencil-square-o text-info"></i>
               <p>Calendar</p>
             </a>
@@ -213,6 +213,6 @@
         <li><a href="" title="My Account"><i class="fa fa-user"></i></a></li>
         <li><a href="" title="Full Screen"><i class="fa fa-arrows-alt"></i></a></li>
         <li><a href="" title="Help"><i class="fa fa-question-circle"></i></a></li>
-        <li><a href="logout" title="Logout"><i class="fa fa-sign-out "></i></a></li>
+        <li><a href="/logout" title="Logout"><i class="fa fa-sign-out "></i></a></li>
     </ul>
   </aside>

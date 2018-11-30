@@ -6,11 +6,11 @@
 <head>
 <title>Leave Requests</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<%@ include file="commons/header.jsp"%>
+<%@ include file="../commons/header.jsp"%>
 </head>
 <body class="hold-transition sidebar-mini">
 	<div class="wrapper">
-		<%@ include file="commons/bar.jsp"%>
+		<%@ include file="../commons/bar.jsp"%>
 		<main class="content-wrapper">
 		<section class="content">
 			<h2 class="clearfix">
@@ -22,7 +22,7 @@
 				<form id="SearchForm" action="leaveRequest" method="post">
 					<div class="form-group type-group">
 						<label class="form-title">Type:</label> <select id="SearchType"
-							class="form-control" name="SearchType" value="${SearchType}">
+							class="form-control" name="SearchType">
 							<option value="">All</option>
 							<option value="1">Annual Leave</option>
 							<option value="2">Sick Leave</option>
@@ -92,7 +92,7 @@
 			</form>
 		</main>
 	</div>
-	<%@ include file="commons/footer.jsp"%>
+	<%@ include file="../commons/footer.jsp"%>
 	<div class="modal fade" id="requestModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 					<div class="modal-content">
@@ -179,8 +179,7 @@
 						nowTemp.getDate(), 0, 0, 0, 0);
 	$(document).ready(
 			function() {
-				$("#SearchType").find("option:contains('${SearchType}')").attr(
-						"selected", true);
+				$("#SearchType").val(${SearchType});
 				$('#startDate').fdatepicker({
 					startDate : now,
 					format:'dd/mm/yyyy'

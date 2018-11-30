@@ -34,8 +34,8 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/")
-public class IndexController {
+@RequestMapping("/employeePayment")
+public class EmployeePaymentController {
 
     @Autowired
     private IndexService indexService;
@@ -46,44 +46,30 @@ public class IndexController {
         return mav;
     }
 
-    @RequestMapping(value = "login", method = RequestMethod.POST)
-    @ResponseBody
-    public Map<String, String> login(@RequestBody Map<String, String> param, HttpServletRequest req){
-        Map<String, String> res = new HashMap<>();
-        res.put("isSuccess","false");
-        if(param != null){
-            String uName = param.get("userName");
-            AppUserEntity user = this.indexService.getUserPwd(uName);
-            if(user.getuPwd().equals(param.get("userPwd"))){
-                res.put("isSuccess","true");
-                res.put("userName", uName);
-                HttpSession session = req.getSession();
-                session.setAttribute("user", uName);
-                session.setAttribute("companyId", user.getCompanyID());
-            }
-        }
-        return res;
-    }
-    @RequestMapping("home")
-    public ModelAndView getHome(HttpServletRequest req){
+    @RequestMapping("employeePayments")
+    public ModelAndView getEmployeePayments(HttpServletRequest req){
         HttpSession session = req.getSession();
         String user = (String)session.getAttribute("user");
         ModelAndView mav = new ModelAndView();
         if(null == user){
         	return this.getIndexPage(mav);
         }
-        
-        mav.setViewName("home");
-        mav.addObject("user", user);
-        
-        return mav;
+        List<BhrEmpJob> employeePayments = this.indexService.getBhrEmpJobList();
+        BhrEmpJob payment = employeePayments.get(0);
+        return this.getEmployeePaymentDetail(req, payment.getCyrNyrflg(), payment.getPayFreq(), payment.getEmpNbr(), payment.getJobCd());
     }
     
-    @RequestMapping("logout")
-    public ModelAndView logout(HttpServletRequest req, String Id){
+    @RequestMapping("employeePaymentDetail")
+    public ModelAndView getEmployeePaymentDetail(HttpServletRequest req,String cyrNyrFlg, String payFreq, String empNbr, String jobCd){
         HttpSession session = req.getSession();
-        session.invalidate();
+        String user = (String)session.getAttribute("user");
         ModelAndView mav = new ModelAndView();
-        return this.getIndexPage(mav);
+        if(null == user){
+        	return this.getIndexPage(mav);
+        }
+        BhrEmpJob employeePaymentDetail = this.indexService.getBhrEmpJobByIds(cyrNyrFlg, payFreq, empNbr, jobCd);
+        mav.setViewName("/employeePayment/employeePaymentDetail");
+        mav.addObject("employeePaymentDetail", employeePaymentDetail);
+        return mav;
     }
 }

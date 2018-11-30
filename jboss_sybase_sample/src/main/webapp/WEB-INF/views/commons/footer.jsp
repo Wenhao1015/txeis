@@ -5,6 +5,6 @@
   </div>
     
     <div class="footer-logo">
-      <img src="./images/logo.png" alt="">
+      <img src="/<%=request.getContextPath().split("/")[1]%>/images/logo.png" alt="">
     </div>
   </footer>

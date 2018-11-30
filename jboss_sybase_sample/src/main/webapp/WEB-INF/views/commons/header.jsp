@@ -1,20 +1,20 @@
 
-<link rel="stylesheet" href="./css/font-awesome.min.css">
-<link rel="stylesheet" href="./css/animate.css" />
-<link rel="stylesheet" href="./css/foundation-datepicker.css" />
-<link rel="stylesheet" href="./css/icheck.css">
-<link rel="stylesheet" href="./css/common.css">
-<link rel="stylesheet" href="./css/gap.css">
-<link rel="stylesheet" href="./css/button.css">
-<link rel="stylesheet" href="./css/bar.css">
-<link rel="stylesheet" href="./css/content.css">
-<script src="./js/jquery.min.js"></script>
-<script src="./js/bootstrap.min.js"></script>
-<script src="./js/icheck.min.js"></script>
-<script src="./js/foundation-datepicker.js"></script>
+<link rel="stylesheet" href="/<%=request.getContextPath().split("/")[1]%>/css/font-awesome.min.css">
+<link rel="stylesheet" href="/<%=request.getContextPath().split("/")[1]%>/css/animate.css" />
+<link rel="stylesheet" href="/<%=request.getContextPath().split("/")[1]%>/css/foundation-datepicker.css" />
+<link rel="stylesheet" href="/<%=request.getContextPath().split("/")[1]%>/css/icheck.css">
+<link rel="stylesheet" href="/<%=request.getContextPath().split("/")[1]%>/css/common.css">
+<link rel="stylesheet" href="/<%=request.getContextPath().split("/")[1]%>/css/gap.css">
+<link rel="stylesheet" href="/<%=request.getContextPath().split("/")[1]%>/css/button.css">
+<link rel="stylesheet" href="/<%=request.getContextPath().split("/")[1]%>/css/bar.css">
+<link rel="stylesheet" href="/<%=request.getContextPath().split("/")[1]%>/css/content.css">
+<script src="/<%=request.getContextPath().split("/")[1]%>/js/jquery.min.js"></script>
+<script src="/<%=request.getContextPath().split("/")[1]%>/js/bootstrap.min.js"></script>
+<script src="/<%=request.getContextPath().split("/")[1]%>/js/icheck.min.js"></script>
+<script src="/<%=request.getContextPath().split("/")[1]%>/js/foundation-datepicker.js"></script>
 	<!-- AdminLTE App -->
-<script src="./js/adminlte.js"></script>
-<script src="./js/bootstrapValidator.js"></script>
+<script src="/<%=request.getContextPath().split("/")[1]%>/js/adminlte.js"></script>
+<script src="/<%=request.getContextPath().split("/")[1]%>/js/bootstrapValidator.js"></script>
 
 <c:if test="${sessionScope.companyId == 1}">
 <style>
