@@ -104,7 +104,7 @@
                     console.log("000")
                     $.ajax({
                         type:'POST',
-                        url:'/login',
+                        url:'<%=request.getContextPath()%>/login',
                         dataType:'JSON',
                         contentType:'application/json;charset=UTF-8',
                         data:JSON.stringify({
@@ -113,7 +113,7 @@
                         }),
                         success : function (res) {
                             if(res.isSuccess){
-                                document.location = '/home'
+                                document.location = '<%=request.getContextPath()%>/home'
                             }
                         }
                     });
