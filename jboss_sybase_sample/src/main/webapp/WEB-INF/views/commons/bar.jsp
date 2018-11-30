@@ -213,6 +213,6 @@
         <li><a href="" title="My Account"><i class="fa fa-user"></i></a></li>
         <li><a href="" title="Full Screen"><i class="fa fa-arrows-alt"></i></a></li>
         <li><a href="" title="Help"><i class="fa fa-question-circle"></i></a></li>
-        <li><a href="/logout" title="Logout"><i class="fa fa-sign-out "></i></a></li>
+        <li><a href="/<%=request.getContextPath().split("/")[1]%>/logout" title="Logout"><i class="fa fa-sign-out "></i></a></li>
     </ul>
   </aside>
