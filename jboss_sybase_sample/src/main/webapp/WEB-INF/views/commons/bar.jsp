@@ -164,12 +164,12 @@
               <p>Leave Requests</p>
             </a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="/<%=request.getContextPath().split("/")[1]%>/leaveRequest/eventCalendar" class="nav-link">
               <i class="nav-icon fa  fa-pencil-square-o text-info"></i>
               <p>Calendar</p>
             </a>
-          </li>
+          </li>  -->
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link"> <!--  active -->
               <i class="nav-icon fa fa-users"></i>

@@ -13,8 +13,9 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <body class="hold-transition sidebar-mini">
         <div class="wrapper">
             <%@ include file="../commons/bar.jsp"%>
-
+			
             <main class="content-wrapper">
+            	<a class="btn btn-primary pull-right" href="/<%=request.getContextPath().split("/")[1]%>/leaveRequest/leaveRequest">Switch To Table View</a>
                 <section class="content">
                     <div class="container-fluid"><div id="calendar"></div></div>
                 </section>

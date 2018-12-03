@@ -13,6 +13,7 @@
 		<%@ include file="../commons/bar.jsp"%>
 		<main class="content-wrapper">
 		<section class="content">
+			<a class="btn btn-primary pull-right" href="/<%=request.getContextPath().split("/")[1]%>/leaveRequest/eventCalendar">Switch To Calendar View</a>
 			<h2 class="clearfix">
 				Leave Requests List
 				<button class="btn btn-primary pull-right" id="new-btn" data-toggle="modal" data-target="#requestModal">New
