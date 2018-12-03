@@ -45,7 +45,7 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="/<%=request.getContextPath().split("/")[1]%>/profile">
           <i class="fa fa-user"></i>
         </a>
       </li>
@@ -61,10 +61,12 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="/<%=request.getContextPath().split("/")[1]%>/images/user2-160x160.jpg" class="img-circle" alt="User Image">
+       		<a href="/<%=request.getContextPath().split("/")[1]%>/profile" class="d-block">
+          		<img src="/<%=request.getContextPath().split("/")[1]%>/images/user2-160x160.jpg" class="img-circle" alt="User Image">
+        	</a>
         </div>
         <div class="info">
-          <a href="#" class="d-block">RAYMUNDO</a>
+          <a href="/<%=request.getContextPath().split("/")[1]%>/profile" class="d-block">RAYMUNDO</a>
         </div>
       </div>
 
@@ -210,7 +212,7 @@
     </div>
     <!-- /.sidebar -->
     <ul class="sidebar-btm">
-        <li><a href="" title="My Account"><i class="fa fa-user"></i></a></li>
+        <li><a href="/<%=request.getContextPath().split("/")[1]%>/profile" title="My Account"><i class="fa fa-user"></i></a></li>
         <li><a href="" title="Full Screen"><i class="fa fa-arrows-alt"></i></a></li>
         <li><a href="" title="Help"><i class="fa fa-question-circle"></i></a></li>
         <li><a href="/logout" title="Logout"><i class="fa fa-sign-out "></i></a></li>

@@ -78,6 +78,21 @@ public class IndexController {
         
         return mav;
     }
+ 
+    @RequestMapping("profile")
+    public ModelAndView getProfile(HttpServletRequest req){
+        HttpSession session = req.getSession();
+        String user = (String)session.getAttribute("user");
+        ModelAndView mav = new ModelAndView();
+        if(null == user){
+        	return this.getIndexPage(mav);
+        }
+        
+        mav.setViewName("profile");
+        mav.addObject("user", user);
+        
+        return mav;
+    }
     
     @RequestMapping("logout")
     public ModelAndView logout(HttpServletRequest req, String Id){
