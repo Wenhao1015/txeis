@@ -13,11 +13,12 @@
 		<%@ include file="../commons/bar.jsp"%>
 		<main class="content-wrapper">
 		<section class="content">
-			<a class="btn btn-primary pull-right" href="/<%=request.getContextPath().split("/")[1]%>/leaveRequest/eventCalendar">Switch To Calendar View</a>
-			<h2 class="clearfix">
+			<h2 class="clearfix main-title">
 				Leave Requests List
+				<a class="btn btn-primary pull-right" href="/<%=request.getContextPath().split("/")[1]%>/leaveRequest/eventCalendar">Switch To Calendar View</a>
 				<button class="btn btn-primary pull-right" id="new-btn" data-toggle="modal" data-target="#requestModal">New
 					Apply</button>
+				
 			</h2>
 			<div class="content-white">
 				<form id="SearchForm" action="leaveRequest" method="post">

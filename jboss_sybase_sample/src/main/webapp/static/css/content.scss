@@ -161,12 +161,21 @@
     overflow: hidden;
 }
 .content-wrapper > .content {
-    margin: 0 1rem;
+    .main-title{
+        .btn{
+            margin: 3px;
+        }
+    }
+    margin: 0 15px;
     .content-white{
         background: #fff;
         padding: 15px;
         min-height: calc(100vh - 280px);
         margin-bottom: 40px;
+        &.no-title{
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
     }
 
 }
@@ -236,6 +245,9 @@
     .sub-title{
         font-weight:bold;font-size: 20px;
     }
+    table{
+        font-size: 12px!important
+    }
     .info-block{
         display: flex;
         justify-content: space-between;
@@ -275,6 +287,38 @@
     .print-table{
         margin-top: 25px;
     }
+    .employee-info-table{
+        width: 100%;
+        max-width: 800px;
+    }
+    .earning-left-table{
+        width: 100%;
+    }
+    .total-tr{
+        background-color: #f5f5f5;
+    }
+    .earning-line{
+        display: none;
+        .star-line{
+            width: 100%;
+            overflow: hidden;
+        }
+        td{
+            border:0;
+            padding: 0;
+        }
+    }
+    .tips-table{
+        width: 50%;
+        padding-left: 30px;
+    }
+    .total-table{
+        width: 50%;
+        padding-right: 30px;
+    }
+    .deduction-table{
+        margin-top: 100px;
+    }
     @media (max-width:768px){
         .info-block{
             display: block;
@@ -295,10 +339,29 @@
             }
         }
     }
+    @media (max-width:830px){
+        .total-table{
+            width: 100%;
+            padding-right: 0;
+        }
+        .tips-table{
+            width: 100%;
+            padding-left: 0;
+        }
+        .deduction-table{
+            margin-top: 15px;
+        }
+    }
+    @media (max-width:425px){
+        .table th, .table td{
+            padding: 3px;
+        }
+    }
 }
 .print-title{
     margin-bottom: 25px;
     text-align: center;
+    color: #000;
 }
 .hr-black{
     width: 100%;
@@ -396,6 +459,72 @@
                 }
             }
         }
+        .earning-line{
+            display: table-row;
+            td{
+                border:0;
+                padding: 0;
+                width: 100%;
+                overflow: hidden;
+            }
+            &+tr{
+                td{
+                    border-top: 0;
+                }
+            }
+        }
+        &.earning-content{
+            .hr-black{
+                display: block;
+                margin-top: 10px;
+                &.print-none{
+                    display: none;
+                }
+            }
+            .print-title{
+                margin: 0;
+            }
+            .total-table{
+                width: 45%;
+            }
+            .tips-table{
+                width: 55%
+            }
+            .earning-left-table{
+                width: 100%;
+                overflow: hidden;
+            }
+            .total-table{
+                padding-right: 5px;
+            }
+            .tips-table{
+                padding-left: 5px;
+            }
+            .table{
+                td,th{
+                    padding: 2px 5px;
+                    b{
+                        font-weight: normal;
+                    }
+                }
+                .total-tr{
+                    td{
+                        b{
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+            .employee-info-table{
+                .info-flex-item .info-title{
+                    flex: 0 0 110px!important;
+                }
+                .info-content{
+                    float: none!important;
+                    text-align: left!important;
+                }
+            }
+        }
         
     }
     .print-block{
@@ -433,7 +562,7 @@
             width: initial!important;
             height: auto;
             border: 0;
-            padding: 5px;
+            padding: 5px!important;
             position: static;
             white-space: normal;
             text-align: left;
@@ -447,3 +576,94 @@
         }
     }
   }
+.profile{
+    .avatar{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        overflow: hidden;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: relative;
+        .avatar-file{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            z-index: 2;
+            background-color: rgba(0,0,0,.3);
+        }
+        .avatar-word{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 1;
+            width: 100%;
+            height: 35px;
+            line-height: 35px;
+            background-color: rgba(0,0,0,.3);
+            text-align: center;
+            color: #fff;
+            font-size: 14px;
+        }
+    }
+    .sub-title{
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
+    }
+    .profile-item{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        padding-bottom: 25px;
+        border-bottom: 1px solid #eee;
+        &:last-child{
+            border: 0;
+        }
+        .profile-title{
+            display: flex;
+            align-items: center;
+            flex: 0 0 200px;
+            padding-right: 10px;
+        }
+        .profile-desc{
+            flex: 1;
+            display: flex;
+            .profile-content{
+                flex: 1;
+            }
+            .profile-desc-item{
+                display: flex;
+                .desc-title{
+                    flex: 0 0 120px;
+                }
+                .desc-content{
+                    color: #000;
+                }
+            }
+        }
+        .profile-item-line{
+            display: flex;
+            .profile-desc{
+                color: #000;
+            }
+            .profile-left{
+                flex:1;
+            }
+        }
+        .profile-btn{
+            flex: 0 0 auto;
+            padding-left: 10px;
+            .btn{
+                padding: 2px 20px;
+            }
+        }
+        .profile-left{
+            flex: 1;
+        }
+    }
+}

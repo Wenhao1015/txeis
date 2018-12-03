@@ -193,7 +193,11 @@
 }
 
 .content-wrapper > .content {
-  margin: 0 1rem;
+  margin: 0 15px;
+}
+
+.content-wrapper > .content .main-title .btn {
+  margin: 3px;
 }
 
 .content-wrapper > .content .content-white {
@@ -201,6 +205,11 @@
   padding: 15px;
   min-height: calc(100vh - 280px);
   margin-bottom: 40px;
+}
+
+.content-wrapper > .content .content-white.no-title {
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .fc-scroller {
@@ -286,6 +295,10 @@
   font-size: 20px;
 }
 
+.EMP-detail table {
+  font-size: 12px !important;
+}
+
 .EMP-detail .info-block {
   display: flex;
   justify-content: space-between;
@@ -318,6 +331,47 @@
   margin-top: 25px;
 }
 
+.EMP-detail .employee-info-table {
+  width: 100%;
+  max-width: 800px;
+}
+
+.EMP-detail .earning-left-table {
+  width: 100%;
+}
+
+.EMP-detail .total-tr {
+  background-color: #f5f5f5;
+}
+
+.EMP-detail .earning-line {
+  display: none;
+}
+
+.EMP-detail .earning-line .star-line {
+  width: 100%;
+  overflow: hidden;
+}
+
+.EMP-detail .earning-line td {
+  border: 0;
+  padding: 0;
+}
+
+.EMP-detail .tips-table {
+  width: 50%;
+  padding-left: 30px;
+}
+
+.EMP-detail .total-table {
+  width: 50%;
+  padding-right: 30px;
+}
+
+.EMP-detail .deduction-table {
+  margin-top: 100px;
+}
+
 @media (max-width: 768px) {
   .EMP-detail .info-block {
     display: block;
@@ -337,9 +391,30 @@
   }
 }
 
+@media (max-width: 830px) {
+  .EMP-detail .total-table {
+    width: 100%;
+    padding-right: 0;
+  }
+  .EMP-detail .tips-table {
+    width: 100%;
+    padding-left: 0;
+  }
+  .EMP-detail .deduction-table {
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 425px) {
+  .EMP-detail .table th, .EMP-detail .table td {
+    padding: 3px;
+  }
+}
+
 .print-title {
   margin-bottom: 25px;
   text-align: center;
+  color: #000;
 }
 
 .hr-black {
@@ -421,6 +496,60 @@
   .EMP-detail .simple-info .info-block.first-block .info-flex-item.right-first {
     display: none;
   }
+  .EMP-detail .earning-line {
+    display: table-row;
+  }
+  .EMP-detail .earning-line td {
+    border: 0;
+    padding: 0;
+    width: 100%;
+    overflow: hidden;
+  }
+  .EMP-detail .earning-line + tr td {
+    border-top: 0;
+  }
+  .EMP-detail.earning-content .hr-black {
+    display: block;
+    margin-top: 10px;
+  }
+  .EMP-detail.earning-content .hr-black.print-none {
+    display: none;
+  }
+  .EMP-detail.earning-content .print-title {
+    margin: 0;
+  }
+  .EMP-detail.earning-content .total-table {
+    width: 45%;
+  }
+  .EMP-detail.earning-content .tips-table {
+    width: 55%;
+  }
+  .EMP-detail.earning-content .earning-left-table {
+    width: 100%;
+    overflow: hidden;
+  }
+  .EMP-detail.earning-content .total-table {
+    padding-right: 5px;
+  }
+  .EMP-detail.earning-content .tips-table {
+    padding-left: 5px;
+  }
+  .EMP-detail.earning-content .table td, .EMP-detail.earning-content .table th {
+    padding: 2px 5px;
+  }
+  .EMP-detail.earning-content .table td b, .EMP-detail.earning-content .table th b {
+    font-weight: normal;
+  }
+  .EMP-detail.earning-content .table .total-tr td b {
+    font-weight: bold;
+  }
+  .EMP-detail.earning-content .employee-info-table .info-flex-item .info-title {
+    flex: 0 0 110px !important;
+  }
+  .EMP-detail.earning-content .employee-info-table .info-content {
+    float: none !important;
+    text-align: left !important;
+  }
   .print-block {
     display: block;
   }
@@ -457,7 +586,7 @@
     width: initial !important;
     height: auto;
     border: 0;
-    padding: 5px;
+    padding: 5px !important;
     position: static;
     white-space: normal;
     text-align: left;
@@ -469,4 +598,111 @@
   .print-table .table.responsive-table td:before {
     display: none;
   }
+}
+
+.profile .avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.profile .avatar .avatar-file {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.profile .avatar .avatar-word {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 35px;
+  line-height: 35px;
+  background-color: rgba(0, 0, 0, 0.3);
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+}
+
+.profile .sub-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.profile .profile-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #eee;
+}
+
+.profile .profile-item:last-child {
+  border: 0;
+}
+
+.profile .profile-item .profile-title {
+  display: flex;
+  align-items: center;
+  flex: 0 0 200px;
+  padding-right: 10px;
+}
+
+.profile .profile-item .profile-desc {
+  flex: 1;
+  display: flex;
+}
+
+.profile .profile-item .profile-desc .profile-content {
+  flex: 1;
+}
+
+.profile .profile-item .profile-desc .profile-desc-item {
+  display: flex;
+}
+
+.profile .profile-item .profile-desc .profile-desc-item .desc-title {
+  flex: 0 0 120px;
+}
+
+.profile .profile-item .profile-desc .profile-desc-item .desc-content {
+  color: #000;
+}
+
+.profile .profile-item .profile-item-line {
+  display: flex;
+}
+
+.profile .profile-item .profile-item-line .profile-desc {
+  color: #000;
+}
+
+.profile .profile-item .profile-item-line .profile-left {
+  flex: 1;
+}
+
+.profile .profile-item .profile-btn {
+  flex: 0 0 auto;
+  padding-left: 10px;
+}
+
+.profile .profile-item .profile-btn .btn {
+  padding: 2px 20px;
+}
+
+.profile .profile-item .profile-left {
+  flex: 1;
 }
