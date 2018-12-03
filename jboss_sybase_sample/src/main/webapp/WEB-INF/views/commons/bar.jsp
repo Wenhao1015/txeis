@@ -104,7 +104,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link" id="earnings">
+                <a href="/<%=request.getContextPath().split("/")[1]%>/employeePayment/earnings" class="nav-link" id="earnings">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Earnings</p>
                 </a>

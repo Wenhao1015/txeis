@@ -72,4 +72,16 @@ public class EmployeePaymentController {
         mav.addObject("employeePaymentDetail", employeePaymentDetail);
         return mav;
     }
+    
+    @RequestMapping("earnings")
+    public ModelAndView getEarnings(HttpServletRequest req){
+        HttpSession session = req.getSession();
+        String user = (String)session.getAttribute("user");
+        ModelAndView mav = new ModelAndView();
+        if(null == user){
+        	return this.getIndexPage(mav);
+        }
+        mav.setViewName("/employeePayment/earnings");
+        return mav;
+    }
 }
