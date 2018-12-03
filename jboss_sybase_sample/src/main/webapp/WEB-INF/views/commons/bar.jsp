@@ -76,7 +76,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <!-- menu-open -->
-          <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview" id="employeePayment">
             <a href="#" class="nav-link"><!--  active -->
               <i class="nav-icon fa fa-list"></i>
               <p>
@@ -86,13 +86,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="" class="nav-link" id="CalendarYearToDate">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Calendar Year to Date</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="/<%=request.getContextPath().split("/")[1]%>/employeePayment/employeePayments" class="nav-link">
+              <li class="nav-item" >
+                <a id="employeePayments" href="/<%=request.getContextPath().split("/")[1]%>/employeePayment/employeePayments" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Current Pay Information</p>
                 </a>
@@ -104,7 +104,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="" class="nav-link" id="earnings">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Earnings</p>
                 </a>
@@ -123,7 +123,7 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview" id="selfService">
             <a href="#" class="nav-link">
               <i class="nav-icon fa fa-address-book-o"></i>
               <p>
@@ -159,7 +159,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/<%=request.getContextPath().split("/")[1]%>/leaveRequest/leaveRequest" class="nav-link">
+            <a id="leaveRequest" href="/<%=request.getContextPath().split("/")[1]%>/leaveRequest/leaveRequest" class="nav-link">
               <i class="nav-icon fa  fa-pencil-square-o text-info"></i>
               <p>Leave Requests</p>
             </a>
@@ -217,4 +217,19 @@
         <li><a href="" title="Help"><i class="fa fa-question-circle"></i></a></li>
         <li><a href="/<%=request.getContextPath().split("/")[1]%>/logout" title="Logout"><i class="fa fa-sign-out "></i></a></li>
     </ul>
+    <script>
+    $(document).ready(function() {
+        var path = (window.location+"").split("/");
+        var menuItem = path[path.length-2];
+        var item = path[path.length -1];
+        var menuElement = $("#"+menuItem);
+        var itemElement = $("#"+item);
+        if(menuElement){
+            menuElement.addClass("menu-open");
+            menuElement.children("ul").attr("style","display: block;");
+        }
+        if(itemElement)
+        	itemElement.addClass("active");
+    });
+    </script>
   </aside>
