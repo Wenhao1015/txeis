@@ -290,6 +290,11 @@
     .employee-info-table{
         width: 100%;
         max-width: 800px;
+        @media (max-width:768px){
+            td,th{
+                display: block;
+            }
+        }
     }
     .earning-left-table{
         width: 100%;
@@ -525,7 +530,11 @@
                 }
             }
         }
-        
+    }
+    table{
+        td,th{
+            display: table-cell!important;
+        }
     }
     .print-block{
         display: block;

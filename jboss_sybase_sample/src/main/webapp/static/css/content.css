@@ -336,6 +336,12 @@
   max-width: 800px;
 }
 
+@media (max-width: 768px) {
+  .EMP-detail .employee-info-table td, .EMP-detail .employee-info-table th {
+    display: block;
+  }
+}
+
 .EMP-detail .earning-left-table {
   width: 100%;
 }
@@ -549,6 +555,9 @@
   .EMP-detail.earning-content .employee-info-table .info-content {
     float: none !important;
     text-align: left !important;
+  }
+  table td, table th {
+    display: table-cell !important;
   }
   .print-block {
     display: block;
