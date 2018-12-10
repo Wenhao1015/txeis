@@ -4,6 +4,27 @@
     padding-top: 0;
     flex-direction: column;
     background: #f4f6f9;
+    .account-header{
+        display: flex;
+        align-items: center;
+        flex: 0 0 60px;
+        background: #fff;
+        width: 100%;
+        padding: 0 20px;
+        .logo-sm{
+            display: none;
+        }
+        .logo{
+            max-height: 40px;
+        }
+        img{
+            max-height: 100%;
+        }
+        .header-btn{
+            flex: 1;
+            text-align: right;
+        }
+    }
     .account-top{
         flex: 1;
         display: flex;
@@ -16,6 +37,38 @@
             border-radius: 5px;
             box-shadow: 0 0 5px rgba(0,0,0,.2);
             overflow: hidden;
+            &.sm{
+                max-width: 380px;
+                padding: 20px;
+                background-color: #fff;
+                margin: 20px 10px;
+                display: block;
+                @media (max-width:375px){
+                    padding: 20px 10px;
+                }
+                .tab-head{
+                    display: flex;
+                    margin-bottom: 15px;
+                    .tab-item{
+                        margin: 5px;
+                        @media (max-width:375px){
+                            margin: 5px 0;
+                            &:first-child{
+                                margin-right: 10px;
+                            }
+                        }
+                    }
+                }
+                #resetPassword{
+                    display: none;
+                }
+                .account-btn{
+                    margin-top: 20px;
+                    .btn{
+                        width: 100%;
+                    }
+                }
+            }
             .account-left{
                 flex: 0 0 700px;
                 height: 400px;
