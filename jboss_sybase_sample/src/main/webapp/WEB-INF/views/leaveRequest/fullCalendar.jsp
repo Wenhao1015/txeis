@@ -31,6 +31,7 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     </body>
     <script>
         $(document).ready(function() {
+            $("#requestForm").attr("action", "submitLeaveRequestFromCalendar");
 			var leaveList = eval(${leaves});
 			console.log(leaveList)
             initThemeChooser({
