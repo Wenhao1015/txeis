@@ -16,7 +16,7 @@
 			<h2 class="clearfix main-title">
 				Leave Requests List
 				<a class="btn btn-primary pull-right" href="/<%=request.getContextPath().split("/")[1]%>/leaveRequest/eventCalendar">Switch To Calendar View</a>
-				<button class="btn btn-primary pull-right" id="new-btn" data-toggle="modal" data-target="#requestModal">New
+				<button class="btn btn-primary pull-right" id="new-btn" data-toggle="modal" data-target="#requestModal" onclick="showRequestForm()">New
 					Apply</button>
 				
 			</h2>
@@ -74,7 +74,7 @@
 										<button class="btn btn-primary sm edit-btn" id="editLeave" data-toggle="modal" data-target="#requestModal" 
 										onClick="editLeave('${leave.id}','${leave.leaveType}','${leave.leaveStartDateString}','${leave.leaveStartDateType}',
 										'${leave.leaveEndDateString}','${leave.leaveEndDateType}','${leave.remarks}')">Edit</button>
-										<button class="btn btn-secondary sm" id="deleteLeave" onClick="deleteLeave(${leave.id})">Delete</button>
+										<button class="btn btn-secondary sm" onClick="deleteLeave(${leave.id})">Delete</button>
 									</td>
 								</tr>
 							</c:forEach>
@@ -99,69 +99,21 @@
 </body>
 
 <script>
-	var nowTemp = new Date();
-	var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(),
-						nowTemp.getDate(), 0, 0, 0, 0);
 	$(document).ready(
 			function() {
 				$("#SearchType").val(${SearchType});
-				$('#startDate').fdatepicker({
-					startDate : now,
-					format:'dd/mm/yyyy'
-				});
-				$('#endDate').fdatepicker({
-					startDate : now,
-					format:'dd/mm/yyyy'
-				});
 				$('#SearchStartDate').fdatepicker({
 					format:'dd/mm/yyyy'
 				});
 				$('#SearchEndDate').fdatepicker({
 					format:'dd/mm/yyyy'
 				});
-				$('#requestForm').bootstrapValidator({
-					live : 'enable',
-					message : 'This value is not valid',
-					feedbackIcons : {
-						valid : 'fa fa-check ',
-						// invalid: 'fa fa-times',
-						validating : 'fa fa-refresh'
-					},
-					fields : {
-						LeaveStartDate : {
-							trigger : 'change',
-							message : 'This value is not valid',
-							validators : {
-								notEmpty : {
-									message : 'The start date cannot be empty'
-								}
-							}
-						},
-						LeaveEndDate : {
-							trigger : 'change',
-							message : 'This value is not valid',
-							validators : {
-								notEmpty : {
-									message : 'The end date cannot be empty'
-								}
-							}
-						},
-						Remarks : {
-							validators : {
-								notEmpty : {
-									message : 'The remarks cannot be empty'
-								}
-							}
-						}
-					},
-					// submitHandler: function (validator, form, submitButton) {
-          //       alert("submit");
-          //   }
-				});
 			});
 	
 		function editLeave(id,leaveType,leaveStartDate,leaveStartDateType,leaveEndDate,leaveEndDateType,remarks){
-			  $("[name='Remarks']").text(remarks);
+				$("#cancelAdd").hide();
+				$("#deleteLeave").show();	
+				$("[name='Remarks']").text(remarks);
 				$("[name='leaveId']").attr("value", id+"");
 				$("[name='leaveType']").val(leaveType);
 				$("#startDate").val(leaveStartDate);

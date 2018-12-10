@@ -30,26 +30,6 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
         $(document).ready(function() {
 			var leaveList = eval(${leaves});
 			console.log(leaveList)
-            formValidator()
-            var nowTemp = new Date()
-            var now = new Date(
-                nowTemp.getFullYear(),
-                nowTemp.getMonth(),
-                nowTemp.getDate(),
-                0,
-                0,
-                0,
-                0
-            )
-            $('#startDate').fdatepicker({
-                startDate: now,
-                format: 'dd/mm/yyyy'
-            })
-            $('#endDate').fdatepicker({
-                startDate: now,
-                format: 'dd/mm/yyyy'
-            })
-
             initThemeChooser({
                 init: function(themeSystem) {
                     $('#calendar').fullCalendar({
@@ -102,54 +82,6 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
                 }
             })
 		})
-
-		function deleteRequest() {
-			var id = $("#leaveId").val()
-			$("#deleteId").val(id);
-			$("#deleteForm").submit();
-        }
-        function closeRequestForm() {
-            $('#requestForm').data('bootstrapValidator').destroy()
-            $('#requestForm').data('bootstrapValidator', null)
-            formValidator()
-        }
-        function formValidator() {
-            $('#requestForm').bootstrapValidator({
-                live: 'enable',
-                message: 'This value is not valid',
-                feedbackIcons: {
-                    valid: 'fa fa-check ',
-                    // invalid: 'fa fa-times',
-                    validating: 'fa fa-refresh'
-                },
-                fields: {
-                    LeaveStartDate: {
-                        trigger: 'change',
-                        message: 'This value is not valid',
-                        validators: {
-                            notEmpty: {
-                                message: 'The start date cannot be empty'
-                            }
-                        }
-                    },
-                    LeaveEndDate: {
-                        trigger: 'change',
-                        message: 'This value is not valid',
-                        validators: {
-                            notEmpty: {
-                                message: 'The end date cannot be empty'
-                            }
-                        }
-                    },
-                    Remarks: {
-                        validators: {
-                            notEmpty: {
-                                message: 'The remarks cannot be empty'
-                            }
-                        }
-                    }
-                }
-            })
-        }
+       
     </script>
 </html>

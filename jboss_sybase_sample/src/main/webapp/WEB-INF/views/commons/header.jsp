@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="/<%=request.getContextPath().split("/")[1]%>/css/font-awesome.min.css">
 <link rel="stylesheet" href="/<%=request.getContextPath().split("/")[1]%>/css/animate.css" />
 <link rel="stylesheet" href="/<%=request.getContextPath().split("/")[1]%>/css/foundation-datepicker.css" />
+<link rel="stylesheet" href="/<%=request.getContextPath().split("/")[1]%>/css/mobiscroll.css" />
 <link rel="stylesheet" href="/<%=request.getContextPath().split("/")[1]%>/css/icheck.css">
 <link rel="stylesheet" href="/<%=request.getContextPath().split("/")[1]%>/css/common.css">
 <link rel="stylesheet" href="/<%=request.getContextPath().split("/")[1]%>/css/gap.css">
@@ -12,7 +13,7 @@
 <script src="/<%=request.getContextPath().split("/")[1]%>/js/bootstrap.min.js"></script>
 <script src="/<%=request.getContextPath().split("/")[1]%>/js/icheck.min.js"></script>
 <script src="/<%=request.getContextPath().split("/")[1]%>/js/foundation-datepicker.js"></script>
-	<!-- AdminLTE App -->
+<script src="/<%=request.getContextPath().split("/")[1]%>/js/mobiscroll.js"></script>
 <script src="/<%=request.getContextPath().split("/")[1]%>/js/adminlte.js"></script>
 <script src="/<%=request.getContextPath().split("/")[1]%>/js/bootstrapValidator.js"></script>
 
