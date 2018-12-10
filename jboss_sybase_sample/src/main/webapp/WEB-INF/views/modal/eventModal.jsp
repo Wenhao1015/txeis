@@ -21,7 +21,7 @@
             </div>
             <form id="requestForm" action="submitLeaveRequest" method="post">
                 <div class="modal-body requestForm">
-                    <input type="hidden" name="leaveId" />
+                    <input type="hidden" name="leaveId" id="leaveId" />
                     <div class="form-group">
                         <label class="form-title"> Leave Type: </label>
                         <div class="valid-wrap">
@@ -126,9 +126,6 @@
         </div>
         <!-- /.modal-content -->
     </div>
-    <form hidden="true" id="deleteForm" action="deleteLeaveRequest" method="post">
-      <input type="text" id="deleteId" name="id"/>
-    </form>
     <!-- /.modal -->
 </div>
 <script>

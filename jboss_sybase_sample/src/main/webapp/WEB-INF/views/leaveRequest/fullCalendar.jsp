@@ -22,6 +22,9 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
                     <div class="container-fluid"><div id="calendar"></div></div>
                 </section>
             </main>
+            <form hidden="true" id="deleteForm" action="deleteLeaveRequestFromCalendar" method="post">
+                    <input type="text" id="deleteId" name="id"/>
+            </form>
         </div>
         <%@ include file="../commons/footer.jsp"%>
         <%@ include file="../modal/eventModal.jsp"%>
