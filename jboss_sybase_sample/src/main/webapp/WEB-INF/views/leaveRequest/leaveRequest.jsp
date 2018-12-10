@@ -89,9 +89,6 @@
 				</c:if>
 			</div>
 		</section>
-			<form hidden="true" id="deleteForm" action="deleteLeaveRequest" method="post">
-				<input type="text" id="deleteId" name="id"/>
-			</form>
 		</main>
 	</div>
 	<%@ include file="../commons/footer.jsp"%>

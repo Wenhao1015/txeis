@@ -126,6 +126,9 @@
         </div>
         <!-- /.modal-content -->
     </div>
+    <form hidden="true" id="deleteForm" action="deleteLeaveRequest" method="post">
+      <input type="text" id="deleteId" name="id"/>
+    </form>
     <!-- /.modal -->
 </div>
 <script>
