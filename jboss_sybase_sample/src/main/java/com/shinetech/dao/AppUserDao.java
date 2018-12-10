@@ -25,4 +25,28 @@ public class AppUserDao {
         List<AppUserEntity> res = q.list();
         return res.get(0);
     }
+
+	public AppUserEntity getUserByEmail(String email) {
+        Session session = this.getSession();
+        String hql = "from AppUserEntity where userEmail = ? " ;
+        Query q = session.createQuery(hql);
+        q.setParameter(0, email);
+        List<AppUserEntity> res = q.list();
+        return res.get(0);
+	}
+
+	public AppUserEntity getUserById(String id) {
+        Session session = this.getSession();
+        String hql = "from AppUserEntity where id = ? " ;
+        Query q = session.createQuery(hql);
+        q.setParameter(0, id);
+        List<AppUserEntity> res = q.list();
+        return res.get(0);
+	}
+
+	public void updateUser(AppUserEntity user) {
+		Session session = this.getSession();
+        session.update(user);
+        session.flush();
+	}
 }

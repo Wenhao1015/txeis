@@ -62,4 +62,14 @@ public class IndexService {
     public List<BhrEmpJob> getBhrEmpJobList() {
     	return bhrEmpJobDao.getBhrEmpJobList();
     }
+	public AppUserEntity getUserByEmail(String email) {
+		return userDao.getUserByEmail(email);
+	}
+	public AppUserEntity getUserById(String id) {
+		
+		return userDao.getUserById(id);
+	}
+	public void updateUser(AppUserEntity user) {
+		userDao.updateUser(user);
+	}
 }

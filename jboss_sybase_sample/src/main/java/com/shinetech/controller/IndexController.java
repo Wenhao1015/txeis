@@ -64,6 +64,46 @@ public class IndexController {
         }
         return res;
     }
+    
+    @RequestMapping("retrieveUserName")
+    public ModelAndView retrieveUserName(HttpServletRequest req, String email){
+    	ModelAndView mav = new ModelAndView();
+    	AppUserEntity user = this.indexService.getUserByEmail(email);
+        mav.setViewName("forgetPassword");
+        mav.addObject("user", user);
+        mav.addObject("email", email);
+        return mav;
+    }    
+    @RequestMapping("forgetPassword")
+    public ModelAndView retrieveUserName(HttpServletRequest req){
+    	ModelAndView mav = new ModelAndView();
+        mav.setViewName("forgetPassword");
+        return mav;
+    }
+
+    @RequestMapping("updatePassword")
+    public ModelAndView updatePassword(HttpServletRequest req,String password, String id){
+    	ModelAndView mav = new ModelAndView();
+    	AppUserEntity user = this.indexService.getUserById(id);
+    	user.setuPwd(password);
+    	this.indexService.updateUser(user);
+        return this.getIndexPage(mav);
+    }
+    
+    @RequestMapping("resetPassword")
+    public ModelAndView resetPassword(HttpServletRequest req, String userName, String email){
+    	ModelAndView mav = new ModelAndView();
+    	AppUserEntity user = this.indexService.getUserPwd(userName);
+    	if(user.getUserEmail().equals(email)) {
+    		mav.setViewName("resetPassword");
+    		mav.addObject("id", user.getId());
+    		return mav;
+    	}
+        mav.setViewName("forgetPassword");
+        mav.addObject("errorMessage", "User Does not exist");
+        return mav;
+    }
+    
     @RequestMapping("home")
     public ModelAndView getHome(HttpServletRequest req){
         HttpSession session = req.getSession();
@@ -78,7 +118,7 @@ public class IndexController {
         
         return mav;
     }
- 
+    
     @RequestMapping("profile")
     public ModelAndView getProfile(HttpServletRequest req){
         HttpSession session = req.getSession();
