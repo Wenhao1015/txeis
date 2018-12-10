@@ -47,7 +47,7 @@
                                 </label>
                             </div> -->
                             <div class="pull-right">
-                                <a href="">Forgot Password?</a>
+                                <a href="forgetPassword">Forgot Password?</a>
                             </div>
                         </div>
                         <div class="form-group account-btn">
