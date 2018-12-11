@@ -136,8 +136,8 @@ public class LeaveRequestController {
         	request = this.indexService.getleaveRequestById(Integer.parseInt(leaveId+""));
         SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy hh:mm a",Locale.ENGLISH);
         request.setLeaveType(leaveType);
-        request.setLeaveStartDate((Date)formatter.parse(LeaveStartDate + " "+ startTimeValue));
-        request.setLeaveEndDate((Date)formatter.parse(LeaveEndDate + " " + endTimeValue));
+        request.setLeaveStartDate(formatter.parse(LeaveStartDate + " "+ startTimeValue));
+        request.setLeaveEndDate(formatter.parse(LeaveEndDate + " " + endTimeValue));
         request.setRemarks(Remarks);
         request.setCreatedAt(new Date());
         request.setCreatedBy("admin");
