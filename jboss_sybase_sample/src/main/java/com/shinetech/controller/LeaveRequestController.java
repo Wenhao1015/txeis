@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 @Controller
@@ -133,10 +134,10 @@ public class LeaveRequestController {
         	request = new LeaveRequests();
         else
         	request = this.indexService.getleaveRequestById(Integer.parseInt(leaveId+""));
-        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy hh:mm a",Locale.ENGLISH);
         request.setLeaveType(leaveType);
-        request.setLeaveStartDate(formatter.parse(LeaveStartDate + " "+ startTimeValue));
-        request.setLeaveEndDate(formatter.parse(LeaveEndDate + " " + endTimeValue));
+        request.setLeaveStartDate((Date)formatter.parse(LeaveStartDate + " "+ startTimeValue));
+        request.setLeaveEndDate((Date)formatter.parse(LeaveEndDate + " " + endTimeValue));
         request.setRemarks(Remarks);
         request.setCreatedAt(new Date());
         request.setCreatedBy("admin");
