@@ -150,7 +150,7 @@ public class LeaveRequests extends BaseEntity implements Serializable {
 		jo.put("LeaveEndDate", sdf1.format(this.getLeaveEndDate()));
 		jo.put("LeaveEndDateType", this.getLeaveEndDateType());		
 		jo.put("Remarks", this.getRemarks());
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		String startDate = sdf.format(this.getLeaveStartDate());
 		String endDate = sdf.format(this.getLeaveEndDate());
 		jo.put("start", startDate);
