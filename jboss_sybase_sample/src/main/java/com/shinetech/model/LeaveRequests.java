@@ -100,47 +100,12 @@ public class LeaveRequests extends BaseEntity implements Serializable {
 	}
 
 	public void setLeaveDuration() {
-		 	Calendar cal1 = Calendar.getInstance();
-	        cal1.setTime(this.leaveStartDate);
-	        Calendar cal2 = Calendar.getInstance();
-	        cal2.setTime(this.leaveEndDate);
-	        int start= cal1.get(Calendar.DAY_OF_YEAR);
-	        int end = cal2.get(Calendar.DAY_OF_YEAR);
-	        int year1 = cal1.get(Calendar.YEAR);
-	        int year2 = cal2.get(Calendar.YEAR);
-	        int timeDistance = 0 ;
-	        if(year1 != year2)
-	        {  
-	            for(int i = year1 ; i < year2 ; i ++)
-	            {
-	                if(i%4==0 && i%100!=0 || i%400==0)  
-	                {
-	                    timeDistance += 366;
-	                }
-	                else
-	                {
-	                    timeDistance += 365;
-	                }
-	            }
-	            
-	        }
-	        end += timeDistance;
-	        double difference = 0.0;
-	        if(start == end) { //same day
-	        	if(this.leaveStartDateType==0&&this.leaveEndDateType==0)//AM Leave
-	        		difference = 0.5;
-	        	else if(this.leaveStartDateType==1&&this.leaveEndDateType==1)//PM Leave
-	        		difference = 0.5;
-	        	else if(this.leaveStartDateType==0&&this.leaveEndDateType==1) //full day
-	        		difference = 1.0;
-	        }else {
-	        	difference = end-start+1;
-	        	if(this.leaveEndDateType==0)// till end date AM
-	        		difference -= 0.5;
-	        	else if(this.leaveStartDateType==1)//from start date PM
-	        		difference -= 0.5;
-	        }
-	        
+	        long nd = 1000 * 24 * 60 * 60;
+	        long nh = 1000 * 60 * 60;
+	        long diff = this.leaveEndDate.getTime() - this.leaveStartDate.getTime();
+	        long day = diff / nd;
+	        long hour = diff % nd / nh;
+	        double difference = day + (hour/8.0);
 	        this.leaveDuration = BigDecimal.valueOf(difference) ;
 	}
 

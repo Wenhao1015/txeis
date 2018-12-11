@@ -57,6 +57,7 @@
                                
 
                                 <input class="form-control" id="startTime" />
+                                <input type="hidden" id="startTimeValue" name="startTimeValue"/>
                             </div>
                         </div>
                     </div>
@@ -86,6 +87,7 @@
                                 -->
 
                                 <input class="form-control" id="endTime" />
+                                <input type="hidden" id="endTimeValue" name="endTimeValue"/>
                             </div>
                         </div>
                     </div>
@@ -161,9 +163,10 @@
                 timeFormat: 'hh:ii A',
                 steps: {
                     hour: 1,
-                    minute: 60
+                    minute: 30
                 },
                 onSet: function(event, inst) {
+                	$("#startTimeValue").val(event.valueText);
                     console.log(event)
                     console.log(inst)
                 }
@@ -180,9 +183,10 @@
                 timeFormat: 'hh:ii A',
                 steps: {
                     hour: 1,
-                    minute: 60
+                    minute: 30
                 },
                 onSet: function(event, inst) {
+                	$("#endTimeValue").val(event.valueText);
                     console.log(event)
                     console.log(inst)
                 }

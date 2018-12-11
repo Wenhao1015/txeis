@@ -100,47 +100,43 @@ public class LeaveRequestController {
     }
     
     @RequestMapping("submitLeaveRequest")
-    public ModelAndView submitLeaveRequest(HttpServletRequest req, String leaveId, String leaveType, String LeaveStartDate, String LeaveStartDateType, String LeaveEndDate,
-    		String LeaveEndDateType, String Remarks) throws ParseException{
+    public ModelAndView submitLeaveRequest(HttpServletRequest req, String leaveId, String leaveType, String LeaveStartDate, String startTimeValue,
+			String LeaveEndDate, String endTimeValue, String Remarks) throws ParseException{
         HttpSession session = req.getSession();
         String user = (String)session.getAttribute("user");
         ModelAndView mav = new ModelAndView();
         if(null == user){
         	return this.getIndexPage(mav);
         }
-        this.saveLeaveRequest(leaveId, leaveType, LeaveStartDate, LeaveStartDateType, LeaveEndDate, LeaveEndDateType,
-				Remarks);   
+        this.saveLeaveRequest(leaveId, leaveType, LeaveStartDate, startTimeValue, LeaveEndDate, endTimeValue, Remarks);   
         return this.leaveRequest(req,null,null,null);
     }
 
     
     @RequestMapping("submitLeaveRequestFromCalendar")
-    public ModelAndView submitLeaveRequestFromCalendar(HttpServletRequest req, String leaveId, String leaveType, String LeaveStartDate, String LeaveStartDateType, String LeaveEndDate,
-    		String LeaveEndDateType, String Remarks) throws ParseException{
+    public ModelAndView submitLeaveRequestFromCalendar(HttpServletRequest req, String leaveId, String leaveType, String LeaveStartDate, String startTimeValue,
+			String LeaveEndDate, String endTimeValue, String Remarks) throws ParseException{
         HttpSession session = req.getSession();
         String user = (String)session.getAttribute("user");
         ModelAndView mav = new ModelAndView();
         if(null == user){
         	return this.getIndexPage(mav);
         }
-        this.saveLeaveRequest(leaveId, leaveType, LeaveStartDate, LeaveStartDateType, LeaveEndDate, LeaveEndDateType,
-				Remarks);   
+        this.saveLeaveRequest(leaveId, leaveType, LeaveStartDate, startTimeValue, LeaveEndDate, endTimeValue, Remarks);   
         return this.getEventCalendar(req);
     }
     
-	private void saveLeaveRequest(String leaveId, String leaveType, String LeaveStartDate, String LeaveStartDateType,
-			String LeaveEndDate, String LeaveEndDateType, String Remarks) throws ParseException {
+	private void saveLeaveRequest(String leaveId, String leaveType, String LeaveStartDate, String startTimeValue,
+			String LeaveEndDate, String endTimeValue, String Remarks) throws ParseException {
 		LeaveRequests request;
 		if(leaveId==null||("").equals(leaveId))
         	request = new LeaveRequests();
         else
         	request = this.indexService.getleaveRequestById(Integer.parseInt(leaveId+""));
-        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
         request.setLeaveType(leaveType);
-        request.setLeaveStartDate(formatter.parse(LeaveStartDate));
-        request.setLeaveStartDateType(Integer.parseInt(LeaveStartDateType));
-        request.setLeaveEndDate(formatter.parse(LeaveEndDate));
-        request.setLeaveEndDateType(Integer.parseInt(LeaveEndDateType));
+        request.setLeaveStartDate(formatter.parse(LeaveStartDate + " "+ startTimeValue));
+        request.setLeaveEndDate(formatter.parse(LeaveEndDate + " " + endTimeValue));
         request.setRemarks(Remarks);
         request.setCreatedAt(new Date());
         request.setCreatedBy("admin");
