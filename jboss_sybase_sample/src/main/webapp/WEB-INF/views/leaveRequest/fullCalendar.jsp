@@ -50,17 +50,26 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
                         eventLimit: true, // allow "more" link when too many events
                         events: leaveList,
                         eventClick: function(calEvent, jsEvent, view) {
-							console.log(calEvent)
+                            console.log(calEvent)
+                            let leaveStartDate = calEvent.start._i
+                            let leaveEndDate = calEvent.end._i
+
+                            let start_arry = leaveStartDate.split(" ")
+				            let end_arry = leaveEndDate.split(" ")
+
+                            let start = changeFormatTimeAm(start_arry[1])
+                            let end = changeFormatTimeAm(end_arry[1])
+
 							$("#cancelAdd").hide();
 							$("#deleteLeave").show();
 							$('#requestModal').modal('show')
 							$("[name='Remarks']").text(calEvent.Remarks);
 							$("#leaveId").attr("value", calEvent.id+"");
 							$("[name='leaveType']").val(calEvent.LeaveType);
-							$("#startDate").val(calEvent.LeaveStartDate);
-							$("[name='LeaveStartDateType']").val(calEvent.LeaveStartDateType);
+                            $("#startDate").val(calEvent.LeaveStartDate);
+							$("#startTime").val(start);
 							$("#endDate").val(calEvent.LeaveEndDate);
-							$("[name='LeaveEndDateType']").val(calEvent.LeaveEndDateType)
+							$("#endTime").val(end)
 							$("[name='Remarks']").val(calEvent.Remarks);
                         },
                         dayClick: function(date, allDay, jsEvent, view) {
@@ -76,7 +85,6 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
                         }
                     })
                 },
-
                 change: function(themeSystem) {
                     $('#calendar').fullCalendar(
                         'option',
@@ -86,6 +94,30 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
                 }
             })
 		})
-       
+        function changeFormatTimeAm(value){
+				console.log(value)
+				let array = value.split(/[,: ]/);
+				let hour,minute,time
+				hour = parseInt(array[0])
+				minute = parseInt(array[1])
+				if(minute>=0 && minute <30){
+					minute = "00"
+				}else{
+					minute = "30"
+				}
+				if(hour>12){
+					hour = (hour-12) < 10 ? "0" + (hour-12) : hour-12;
+					time = hour+ ":" +minute+" PM"
+				}else{
+					if(hour==12){
+						time = hour+ ":" +minute+" PM"
+					}else{
+						hour = hour < 10 ? "0" + hour : hour;
+						time = hour+ ":" +minute+" AM"
+					}
+
+				}
+				return time
+		}
     </script>
 </html>

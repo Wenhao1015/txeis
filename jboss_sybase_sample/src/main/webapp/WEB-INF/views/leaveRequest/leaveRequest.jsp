@@ -111,21 +111,50 @@
 			});
 	
 		function editLeave(id,leaveType,leaveStartDate,leaveStartDateType,leaveEndDate,leaveEndDateType,remarks){
+				let start_arry = leaveStartDate.split(" ")
+				let end_arry = leaveEndDate.split(" ")
+				let start = changeFormatTimeAm(start_arry[1])
+				let end = changeFormatTimeAm(end_arry[1])
 				$("#cancelAdd").hide();
 				$("#deleteLeave").show();	
 				$("[name='Remarks']").text(remarks);
 				$("[name='leaveId']").attr("value", id+"");
 				$("[name='leaveType']").val(leaveType);
 				$("#startDate").val(leaveStartDate);
-				$("[name='LeaveStartDateType']").val(leaveStartDateType);
+				$("#startTime").val(start);
 				$("#endDate").val(leaveEndDate);
-				$("[name='LeaveEndDateType']").val(leaveEndDateType)
+				$("#endTime").val(end)
 				$("[name='Remarks']").val(remarks);
 			}
 		
 		function deleteLeave(id){
 			$("#deleteId").val(id);
 			$("#deleteForm").submit();
+		}
+		function changeFormatTimeAm(value){
+				console.log(value)
+				let array = value.split(/[,: ]/);
+				let hour,minute,time
+				hour = parseInt(array[0])
+				minute = parseInt(array[1])
+				if(minute>=0 && minute <30){
+					minute = "00"
+				}else{
+					minute = "30"
+				}
+				if(hour>12){
+					hour = (hour-12) < 10 ? "0" + (hour-12) : hour-12;
+					time = hour+ ":" +minute+" PM"
+				}else{
+					if(hour==12){
+						time = hour+ ":" +minute+" PM"
+					}else{
+						hour = hour < 10 ? "0" + hour : hour;
+						time = hour+ ":" +minute+" AM"
+					}
+
+				}
+				return time
 		}
 </script>
 </html>
