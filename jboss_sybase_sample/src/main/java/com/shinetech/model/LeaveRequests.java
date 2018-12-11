@@ -161,14 +161,14 @@ public class LeaveRequests extends BaseEntity implements Serializable {
 	}
 
 	public String getLeaveStartDateString() {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 		String result =  sdf.format(this.leaveStartDate);
 		this.leaveStartDateString = result;
 		return leaveStartDateString;
 	}
 
 	public String getLeaveEndDateString() {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 		String result =  sdf.format(this.leaveEndDate);
 		this.leaveEndDateString = result;
 		return leaveEndDateString;
@@ -178,7 +178,7 @@ public class LeaveRequests extends BaseEntity implements Serializable {
 		JSONObject jo = new JSONObject();
 		jo.put("id", this.getId());
 		jo.put("title", "Leave");
-		SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat sdf1 = new SimpleDateFormat("MM/dd/yyyy");
 		jo.put("LeaveType", this.getLeaveType());
 		jo.put("LeaveStartDate", sdf1.format(this.getLeaveStartDate()));
 		jo.put("LeaveStartDateType", this.getLeaveStartDateType());
