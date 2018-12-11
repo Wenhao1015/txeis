@@ -49,14 +49,7 @@
                         <div class="form-group time-right">
                             <label class="form-title"> Time: </label>
                             <div class="valid-wrap">
-                                
-                                    <!-- <select class="form-control" name="LeaveStartDateType">
-                                      <option value="0">AM</option>
-                                      <option value="1">PM</option>
-                                    </select> -->
-                               
-
-                                <input class="form-control" id="startTime" />
+                                <input class="form-control" id="startTime" name="startTime" />
                                 <input type="hidden" id="startTimeValue" name="startTimeValue"/>
                             </div>
                         </div>
@@ -79,14 +72,7 @@
                         <div class="form-group time-right">
                             <label class="form-title"> Time: </label>
                             <div class="valid-wrap">
-                                
-                                    <!-- <select class="form-control" name="LeaveEndDateType">
-                                      <option value="0">AM</option>
-                                      <option value="1">PM</option>
-                                    </select>
-                                -->
-
-                                <input class="form-control" id="endTime" />
+                                <input class="form-control" id="endTime" name="endTime" />
                                 <input type="hidden" id="endTimeValue" name="endTimeValue"/>
                             </div>
                         </div>
@@ -151,6 +137,8 @@
             startDate: now,
             format: 'mm/dd/yyyy'
         })
+    })
+    function setStartTime(){
         $('#startTime')
             .mobiscroll()
             .time({
@@ -171,6 +159,8 @@
                     console.log(inst)
                 }
             })
+    }
+    function setEndTime(){
         $('#endTime')
             .mobiscroll()
             .time({
@@ -191,19 +181,8 @@
                     console.log(inst)
                 }
             })
-    })
-    function showRequestForm() {
-        $('#leaveId').attr('value', '')
-        $("[name='Remarks']").text('')
-        $('#requestForm')[0].reset()
-        $('#requestForm')
-            .data('bootstrapValidator')
-            .destroy()
-        $('#requestForm').data('bootstrapValidator', null)
-        formValidator()
-        $('#cancelAdd').show()
-        $('#deleteLeave').hide()
     }
+    
     function deleteRequest() {
         var id = $('#leaveId').val()
         $('#deleteId').val(id)
@@ -241,6 +220,24 @@
                     validators: {
                         notEmpty: {
                             message: 'The end date cannot be empty'
+                        }
+                    }
+                },
+                startTime: {
+                    trigger: 'change',
+                    message: 'This value is not valid',
+                    validators: {
+                        notEmpty: {
+                            message: 'The start time cannot be empty'
+                        }
+                    }
+                },
+                endTime: {
+                    trigger: 'change',
+                    message: 'This value is not valid',
+                    validators: {
+                        notEmpty: {
+                            message: 'The end time cannot be empty'
                         }
                     }
                 },

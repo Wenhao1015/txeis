@@ -72,8 +72,8 @@
 									<td data-title="Remarks">${leave.remarks}</td>
 									<td style="width:150px;">
 										<button class="btn btn-primary sm edit-btn" id="editLeave" data-toggle="modal" data-target="#requestModal" 
-										onClick="editLeave('${leave.id}','${leave.leaveType}','${leave.start}','${leave.leaveStartDateType}',
-										'${leave.end}','${leave.leaveEndDateType}','${leave.remarks}')">Edit</button>
+										onClick="editLeave('${leave.id}','${leave.leaveType}','${leave.start}',
+										'${leave.end}','${leave.remarks}')">Edit</button>
 										<button class="btn btn-secondary sm" onClick="deleteLeave(${leave.id})">Delete</button>
 									</td>
 								</tr>
@@ -110,7 +110,12 @@
 				});
 			});
 	
-		function editLeave(id,leaveType,leaveStartDate,leaveStartDateType,leaveEndDate,leaveEndDateType,remarks){
+		function editLeave(id,leaveType,leaveStartDate,leaveEndDate,remarks){
+				$('#requestForm')
+            .data('bootstrapValidator')
+            .destroy()
+        $('#requestForm').data('bootstrapValidator', null)
+        formValidator()
 				let start_arry = leaveStartDate.split(" ")
 				let end_arry = leaveEndDate.split(" ")
 				let start = changeFormatTimeAm(start_arry[1])
@@ -120,19 +125,38 @@
 				$("[name='Remarks']").text(remarks);
 				$("[name='leaveId']").attr("value", id+"");
 				$("[name='leaveType']").val(leaveType);
-				$("#startDate").val(leaveStartDate);
+				$("#startDate").val(start_arry[0]);
 				$("#startTime").val(start);
-				$("#endDate").val(leaveEndDate);
+				$("#startTimeValue").val(start);
+				$("#endDate").val(end_arry[0]);
 				$("#endTime").val(end)
+				$("#endTimeValue").val(end);
 				$("[name='Remarks']").val(remarks);
+				//Initializes the time control when edit event modal show
+				setStartTime()
+				setEndTime()
 			}
 		
 		function deleteLeave(id){
 			$("#deleteId").val(id);
 			$("#deleteForm").submit();
 		}
+		function showRequestForm() {
+        $('#leaveId').attr('value', '')
+        $("[name='Remarks']").text('')
+        $('#requestForm')[0].reset()
+        $('#requestForm')
+            .data('bootstrapValidator')
+            .destroy()
+        $('#requestForm').data('bootstrapValidator', null)
+        formValidator()
+        $('#cancelAdd').show()
+        $('#deleteLeave').hide()
+        //Initializes the time control when edit event modal show
+				setStartTime()
+				setEndTime()
+    }
 		function changeFormatTimeAm(value){
-				console.log(value)
 				let array = value.split(/[,: ]/);
 				let hour,minute,time
 				hour = parseInt(array[0])

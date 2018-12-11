@@ -50,7 +50,11 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
                         eventLimit: true, // allow "more" link when too many events
                         events: leaveList,
                         eventClick: function(calEvent, jsEvent, view) {
-                            console.log(calEvent)
+                            $('#requestForm')
+                                .data('bootstrapValidator')
+                                .destroy()
+                            $('#requestForm').data('bootstrapValidator', null)
+                            formValidator()
                             let leaveStartDate = calEvent.start._i
                             let leaveEndDate = calEvent.end._i
 
@@ -65,12 +69,16 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 							$('#requestModal').modal('show')
 							$("[name='Remarks']").text(calEvent.Remarks);
 							$("#leaveId").attr("value", calEvent.id+"");
-							$("[name='leaveType']").val(calEvent.LeaveType);
                             $("#startDate").val(calEvent.LeaveStartDate);
-							$("#startTime").val(start);
+                            $("#startTime").val(start);
+                            $("#startTimeValue").val(start);
 							$("#endDate").val(calEvent.LeaveEndDate);
-							$("#endTime").val(end)
-							$("[name='Remarks']").val(calEvent.Remarks);
+                            $("#endTime").val(end)
+                            $("#endTimeValue").val(end);
+                            $("[name='Remarks']").val(calEvent.Remarks);
+                            //Initializes the time control when edit event modal show
+                            setStartTime()
+				            setEndTime()
                         },
                         dayClick: function(date, allDay, jsEvent, view) {
                             $("#leaveId").attr("value","");
@@ -82,6 +90,9 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 							$("#cancelAdd").show();
 							$("#deleteLeave").hide();
                             $('#requestModal').modal('show')
+                            //Initializes the time control when new event modal show
+                            setStartTime()
+				            setEndTime()
                         }
                     })
                 },
@@ -95,7 +106,6 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
             })
 		})
         function changeFormatTimeAm(value){
-				console.log(value)
 				let array = value.split(/[,: ]/);
 				let hour,minute,time
 				hour = parseInt(array[0])
