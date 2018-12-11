@@ -28,14 +28,16 @@
                         <h1 class="title">Please sign in</h1>
                         <div class="form-group">
                                 <label class="form-title">User Name</label>
-                                <div class="valid-wrap">
+                                <div class="valid-wrap icon-group">
+                                    <i class="fa fa-user left-icon"></i>
                                     <input type="text" id="inputEmail" class="form-control" placeholder="User Name" name="username" autofocus>
                                 </div>
                                 
                             </div>
                             <div class="form-group">
                                 <label  class="form-title">Password</label>
-                                <div class="valid-wrap">
+                                <div class="valid-wrap icon-group">
+                                    <i class="fa fa-lock left-icon"></i>
                                     <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password">
                                 </div>
                                 

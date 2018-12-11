@@ -70,6 +70,26 @@ input {
   clear: both;
 }
 
+.icon-group {
+  position: relative;
+}
+
+.icon-group .left-icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.icon-group .form-control {
+  padding-left: 30px;
+}
+
 .dropdown,
 .dropleft,
 .dropright,
