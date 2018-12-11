@@ -103,10 +103,10 @@
 			function() {
 				$("#SearchType").val(${SearchType});
 				$('#SearchStartDate').fdatepicker({
-					format:'dd/mm/yyyy'
+					format:'mm/dd/yyyy'
 				});
 				$('#SearchEndDate').fdatepicker({
-					format:'dd/mm/yyyy'
+					format:'mm/dd/yyyy'
 				});
 			});
 	

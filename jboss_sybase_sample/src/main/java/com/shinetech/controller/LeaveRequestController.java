@@ -82,7 +82,7 @@ public class LeaveRequestController {
         if(null == user){
         	return this.getIndexPage(mav);
         }
-        SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat sdf1 = new SimpleDateFormat("MM/dd/yyyy");
         mav.setViewName("/leaveRequest/leaveRequest");
         LeaveRequests request = new LeaveRequests();
         request.setLeaveType(SearchType);
@@ -135,7 +135,7 @@ public class LeaveRequestController {
         	request = new LeaveRequests();
         else
         	request = this.indexService.getleaveRequestById(Integer.parseInt(leaveId+""));
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
         request.setLeaveType(leaveType);
         request.setLeaveStartDate(formatter.parse(LeaveStartDate));
         request.setLeaveStartDateType(Integer.parseInt(LeaveStartDateType));

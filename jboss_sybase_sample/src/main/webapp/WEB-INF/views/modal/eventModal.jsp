@@ -143,11 +143,11 @@
         )
         $('#startDate').fdatepicker({
             startDate: now,
-            format: 'dd/mm/yyyy'
+            format: 'mm/dd/yyyy'
         })
         $('#endDate').fdatepicker({
             startDate: now,
-            format: 'dd/mm/yyyy'
+            format: 'mm/dd/yyyy'
         })
         $('#startTime')
             .mobiscroll()
