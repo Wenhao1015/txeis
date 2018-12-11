@@ -50,13 +50,13 @@
                             <label class="form-title"> Time: </label>
                             <div class="valid-wrap">
                                 
-                                    <select class="form-control" name="LeaveStartDateType">
+                                    <!-- <select class="form-control" name="LeaveStartDateType">
                                       <option value="0">AM</option>
                                       <option value="1">PM</option>
-                                    </select>
+                                    </select> -->
                                
 
-                                <!-- <input class="form-control" id="startTime" /> -->
+                                <input class="form-control" id="startTime" />
                             </div>
                         </div>
                     </div>
@@ -79,13 +79,13 @@
                             <label class="form-title"> Time: </label>
                             <div class="valid-wrap">
                                 
-                                    <select class="form-control" name="LeaveEndDateType">
+                                    <!-- <select class="form-control" name="LeaveEndDateType">
                                       <option value="0">AM</option>
                                       <option value="1">PM</option>
                                     </select>
-                               
+                                -->
 
-                                <!-- <input class="form-control" id="endTime" /> -->
+                                <input class="form-control" id="endTime" />
                             </div>
                         </div>
                     </div>
