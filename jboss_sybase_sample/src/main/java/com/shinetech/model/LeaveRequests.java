@@ -44,8 +44,8 @@ public class LeaveRequests extends BaseEntity implements Serializable {
     @Column(name = "Remarks")
     private String remarks;
 
-    private String leaveStartDateString;
-    private String leaveEndDateString;
+    private String start;
+    private String end;
     
     public int getId() {
         return id;
@@ -124,19 +124,19 @@ public class LeaveRequests extends BaseEntity implements Serializable {
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
 	}
-
-	public String getLeaveStartDateString() {
-		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+	
+	public String getStart() {
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm");
 		String result =  sdf.format(this.leaveStartDate);
-		this.leaveStartDateString = result;
-		return leaveStartDateString;
+		this.start = result;
+		return start;
 	}
 
-	public String getLeaveEndDateString() {
-		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+	public String getEnd() {
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm");
 		String result =  sdf.format(this.leaveEndDate);
-		this.leaveEndDateString = result;
-		return leaveEndDateString;
+		this.end = result;
+		return end;
 	}
 
 	public JSONObject toJSON() {
@@ -157,4 +157,5 @@ public class LeaveRequests extends BaseEntity implements Serializable {
 		jo.put("end", endDate);
 		return jo;
 	}
+
 }

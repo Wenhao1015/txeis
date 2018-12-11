@@ -66,14 +66,14 @@
 								<tr>
 									<td  data-title="Sno.">${leaves.index + 1}</td>
 									<td data-title="Leave Type">${leave.leaveType==1?"Annal Leave":"Sick Leave"}</td>
-									<td data-title="Leave Start Date">${leave.leaveStartDateString} ${leave.leaveStartDateType==0?'AM':'PM'}</td>
-									<td data-title="Leave End Date">${leave.leaveEndDateString} ${leave.leaveEndDateType==0?'AM':'PM'}</td>
+									<td data-title="Leave Start Date">${leave.start}</td>
+									<td data-title="Leave End Date">${leave.end}</td>
 									<td data-title="Duration">${leave.leaveDuration} Days</td>
 									<td data-title="Remarks">${leave.remarks}</td>
 									<td style="width:150px;">
 										<button class="btn btn-primary sm edit-btn" id="editLeave" data-toggle="modal" data-target="#requestModal" 
-										onClick="editLeave('${leave.id}','${leave.leaveType}','${leave.leaveStartDateString}','${leave.leaveStartDateType}',
-										'${leave.leaveEndDateString}','${leave.leaveEndDateType}','${leave.remarks}')">Edit</button>
+										onClick="editLeave('${leave.id}','${leave.leaveType}','${leave.start}','${leave.leaveStartDateType}',
+										'${leave.end}','${leave.leaveEndDateType}','${leave.remarks}')">Edit</button>
 										<button class="btn btn-secondary sm" onClick="deleteLeave(${leave.id})">Delete</button>
 									</td>
 								</tr>
