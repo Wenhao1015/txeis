@@ -118,8 +118,8 @@
         formValidator()
 				let start_arry = leaveStartDate.split(" ")
 				let end_arry = leaveEndDate.split(" ")
-				let start = changeFormatTimeAm(start_arry[1])
-				let end = changeFormatTimeAm(end_arry[1])
+				let start = start_arry[1] + " " + start_arry[2]
+				let end = end_arry[1] + " " + end_arry[2]
 				$("#cancelAdd").hide();
 				$("#deleteLeave").show();	
 				$("[name='Remarks']").text(remarks);
