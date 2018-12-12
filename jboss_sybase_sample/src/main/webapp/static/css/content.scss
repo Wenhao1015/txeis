@@ -242,6 +242,9 @@
     margin: 0;
 }
 .requestForm{
+    .dateValidator{
+        display: none;
+    }
     .btm-button{
         margin-top: 30px;
         .btn{
@@ -260,7 +263,7 @@
         padding-right: 10px;
     }
     .time-right{
-        flex: 0 0 150px;
+        flex: 0 0 180px;
     }
     @media (max-width:425px){
         .time-right{

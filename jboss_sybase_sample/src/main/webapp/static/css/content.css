@@ -294,6 +294,10 @@
   margin: 0;
 }
 
+.requestForm .dateValidator {
+  display: none;
+}
+
 .requestForm .btm-button {
   margin-top: 30px;
 }
@@ -318,7 +322,7 @@
 }
 
 .date-group .time-right {
-  flex: 0 0 150px;
+  flex: 0 0 180px;
 }
 
 @media (max-width: 425px) {

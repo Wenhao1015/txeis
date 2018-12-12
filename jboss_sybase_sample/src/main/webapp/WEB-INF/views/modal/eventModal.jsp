@@ -19,7 +19,7 @@
                 </button>
                 <h4 class="modal-title">New Apply</h4>
             </div>
-            <form id="requestForm" action="submitLeaveRequest" method="post">
+            <form id="requestForm"action="submitLeaveRequest" method="post">
                 <div class="modal-body requestForm">
                     <input type="hidden" name="leaveId" id="leaveId" />
                     <div class="form-group">
@@ -77,6 +77,9 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-group has-error dateValidator">
+                        <small class="help-block">The start time can not be greater than the end time!</small>
+                    </div>
                     <div class="form-group">
                         <label class="form-title"> Remarks : </label>
                         <div class="valid-wrap">
@@ -90,7 +93,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="submit" class="btn btn-primary" id="save" name="save">Save</button>
                     <button
                         class="btn btn-secondary"
                         data-dismiss="modal"
@@ -119,26 +122,41 @@
 <script>
     $(function() {
         formValidator()
-        var nowTemp = new Date()
-        var now = new Date(
-            nowTemp.getFullYear(),
-            nowTemp.getMonth(),
-            nowTemp.getDate(),
-            0,
-            0,
-            0,
-            0
-        )
-        $('#startDate').fdatepicker({
-            startDate: now,
-            format: 'mm/dd/yyyy'
-        })
-        $('#endDate').fdatepicker({
-            startDate: now,
-            format: 'mm/dd/yyyy'
-        })
+        setStartTime();
+        setEndTime();
+        let nowTemp = new Date();
+        let now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+        let haveEndDate = false;
+        var checkin = $('#startDate').fdatepicker({
+            startDate:now,
+            format: 'mm/dd/yyyy',
+            onRender: function (date) {
+                // if(checkout&&haveEndDate){
+                //     return date.valueOf() > checkout.date.valueOf() ? 'disabled' : '';
+                // }
+            }
+        }).on('changeDate', function (ev) {
+            let endDate = $("#endDate").val()
+            if (ev.date && ((ev.date.valueOf() >= checkout.date.valueOf()) || !endDate)) {
+                let newDate = new Date(ev.date)
+                newDate.setDate(newDate.getDate());
+                checkout.update(newDate);
+            }
+        }).data('datepicker');
+        var checkout =  $('#endDate').fdatepicker({
+            startDate:now,
+            format: 'mm/dd/yyyy',
+            onRender: function (date) {
+                return date.valueOf() < checkin.date.valueOf() ? 'disabled' : '';
+            }
+        }).on('changeDate', function (ev) {
+
+        }).data('datepicker');
+
     })
-    function setStartTime(){
+    
+    function setStartTime(time){
+        let maxTime = time?time:new Date(2000,0,1,23,59);
         $('#startTime')
             .mobiscroll()
             .time({
@@ -153,14 +171,35 @@
                     hour: 1,
                     minute: 30
                 },
+                max:maxTime,
                 onSet: function(event, inst) {
-                	$("#startTimeValue").val(event.valueText);
-                    console.log(event)
-                    console.log(inst)
+                    $("#startTimeValue").val(event.valueText);
+                    let startDate = $("#startDate").val()
+                    let endDate = $("#endDate").val()
+                    if((new Date(startDate)).valueOf()==(new Date(endDate)).valueOf()){
+                        let startTime = changeFormatTime(event.valueText)
+                        let startArray = startTime.split(":")
+                        let date = new Date (2000,0,1,startArray[0],startArray[1]);
+                        date.setMinutes(date.getMinutes()+30);
+                        setEndTime(date)
+                    }
+                    
                 }
             })
     }
-    function setEndTime(){
+    function setEndTime(time){
+        let minTime = time?time:new Date(2000,0,1,00,00);
+        let startDate = $("#startDate").val()
+        let endDate = $("#endDate").val()
+        if(startDate&&startDate){
+            if((new Date(startDate)).valueOf()==(new Date(endDate)).valueOf()){
+                let startTime = changeFormatTime($('#startTime').val())
+                let startArray = startTime.split(":")
+                let date = new Date (2000,0,1,startArray[0],startArray[1]);
+                date.setMinutes(date.getMinutes()+30);
+                minTime = date
+            }
+        }
         $('#endTime')
             .mobiscroll()
             .time({
@@ -175,14 +214,27 @@
                     hour: 1,
                     minute: 30
                 },
+                min:minTime,
                 onSet: function(event, inst) {
-                	$("#endTimeValue").val(event.valueText);
-                    console.log(event)
-                    console.log(inst)
+                    $("#endTimeValue").val(event.valueText);
                 }
             })
     }
-    
+    function changeFormatTime(value){
+        let array = value.split(/[,: ]/);
+        if(array[2]=='PM'){
+            let h
+            if(array[0] == 12){
+                h = array[0]
+            }else{
+                h = parseInt(array[0]) + 12
+            }
+            return  h + ":" + array[1]
+        }else{
+            return array[0] + ":" + array[1]
+        }
+    }
+
     function deleteRequest() {
         var id = $('#leaveId').val()
         $('#deleteId').val(id)
@@ -198,6 +250,7 @@
     function formValidator() {
         $('#requestForm').bootstrapValidator({
             live: 'enable',
+            submitButtons: '#save',
             message: 'This value is not valid',
             feedbackIcons: {
                 valid: 'fa fa-check ',
@@ -250,5 +303,54 @@
                 }
             }
         })
+    }
+
+    $("#save").on("click", function(){
+        var bootstrapValidator = $("#requestForm").data('bootstrapValidator');
+        bootstrapValidator.validate();
+        if(bootstrapValidator.isValid()){
+            console.log("success")
+            let startDate = $("#startDate").val()
+            let endDate = $("#endDate").val()
+            let startTime = changeFormatTime($('#startTime').val())
+            let endTime = changeFormatTime($('#endTime').val())
+            let start = new Date(startDate+' '+startTime)
+            let end = new Date(endDate+' '+endTime)
+            console.log(start)
+            console.log(end)
+            if (start.valueOf() >= end.valueOf()) {
+                $(".dateValidator").show()
+                return false;
+            }else{
+                $(".dateValidator").hide()
+                $("#requestForm")[0].submit();
+            }
+            
+        }
+        else return;
+
+    });
+    function submitRequest(){
+        var bootstrapValidator = $("#requestForm").data('bootstrapValidator');
+        bootstrapValidator.validate();
+        if(bootstrapValidator.isValid()){
+            console.log("success")
+            let startDate = $("#startDate").val()
+            let endDate = $("#endDate").val()
+            let startTime = changeFormatTime($('#startTime').val())
+            let endTime = changeFormatTime($('#endTime').val())
+            let start = new Date(startDate+' '+startTime)
+            let end = new Date(endDate+' '+endTime)
+            console.log(start)
+            console.log(end)
+            if (start.valueOf() >= end.valueOf()) {
+                $(".dateValidator").show()
+                return false;
+            }else{
+                return true
+            }
+            
+        }
+        else return false;
     }
 </script>
