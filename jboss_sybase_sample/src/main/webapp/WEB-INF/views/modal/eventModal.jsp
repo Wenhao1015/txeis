@@ -141,6 +141,7 @@
                 let newDate = new Date(ev.date)
                 newDate.setDate(newDate.getDate());
                 checkout.update(newDate);
+                $("#endDate").change();
             }
         }).data('datepicker');
         var checkout =  $('#endDate').fdatepicker({
