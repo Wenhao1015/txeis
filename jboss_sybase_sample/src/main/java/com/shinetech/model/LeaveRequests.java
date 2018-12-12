@@ -126,14 +126,14 @@ public class LeaveRequests extends BaseEntity implements Serializable {
 	}
 	
 	public String getStart() {
-		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
 		String result =  sdf.format(this.leaveStartDate);
 		this.start = result;
 		return start;
 	}
 
 	public String getEnd() {
-		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
 		String result =  sdf.format(this.leaveEndDate);
 		this.end = result;
 		return end;
