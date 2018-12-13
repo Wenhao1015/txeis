@@ -49,7 +49,7 @@
                                 </label>
                             </div> -->
                             <div class="pull-right">
-                                <a href="forgetPassword">Forgot Password?</a>
+                                <a href="/<%=request.getContextPath().split("/")[1]%>/forgetPassword">Forgot Password?</a>
                             </div>
                         </div>
                         <div class="form-group account-btn">
