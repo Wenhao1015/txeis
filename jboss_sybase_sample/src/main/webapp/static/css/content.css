@@ -322,13 +322,7 @@
 }
 
 .date-group .time-right {
-  flex: 0 0 180px;
-}
-
-@media (max-width: 425px) {
-  .date-group .time-right {
-    flex: 0 0 80px;
-  }
+  flex: 1;
 }
 
 #SearchForm {

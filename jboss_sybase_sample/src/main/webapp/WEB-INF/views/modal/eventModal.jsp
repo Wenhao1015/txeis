@@ -6,7 +6,7 @@
     aria-labelledby="myModalLabel"
     aria-hidden="true"
 >
-    <div class="modal-dialog">
+    <div class="modal-dialog requestFormDialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button
@@ -17,20 +17,38 @@
                 >
                     &times;
                 </button>
-                <h4 class="modal-title">New Apply</h4>
+                <h4 class="modal-title new-title">New Request</h4>
+                <h4 class="modal-title edit-title">Edit Request</h4>
             </div>
-            <form id="requestForm"action="submitLeaveRequest" method="post">
+            <form id="requestForm" action="submitLeaveRequest" method="post">
                 <div class="modal-body requestForm">
                     <input type="hidden" name="leaveId" id="leaveId" />
-                    <div class="form-group">
-                        <label class="form-title"> Leave Type: </label>
-                        <div class="valid-wrap">
-                            <select class="form-control" name="leaveType">
-                                <option value="1">Annual Leave</option>
-                                <option value="2">Sick Leave</option>
-                            </select>
+                    <div class="line-2-flex">
+                        <div class="form-group line-left">
+                            <label class="form-title"> Leave Type: </label>
+                            <div class="valid-wrap">
+                                <select class="form-control" name="leaveType">
+                                    <option value="1">LOCAL SICK</option>
+                                    <option value="2">STATE PERSON</option>
+                                    <option value="3">JURY DUTY</option>
+                                    <option value="4">SCHOOL BUSINESS</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group line-right">
+                            <label class="form-title"> Absence Reason: </label>
+                            <div class="valid-wrap">
+                                <select class="form-control" id="absenceReason" name="absenseReason">
+                                    <option value="JURY DUTY">JURY DUTY</option>
+                                    <option value="LOCAL">LOCAL</option>
+                                    <option value="SCH BUSINESS">SCH BUSINESS</option>
+                                    <option value="STATE PERSONAL">STATE PERSONAL</option>
+                                    <option value="STATE SICK">STATE SICK</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
+
                     <div class="date-group">
                         <div class="form-group calendar-left">
                             <label class="form-title"> Start Date: </label>
@@ -49,8 +67,16 @@
                         <div class="form-group time-right">
                             <label class="form-title"> Time: </label>
                             <div class="valid-wrap">
-                                <input class="form-control" id="startTime" name="startTime" />
-                                <input type="hidden" id="startTimeValue" name="startTimeValue"/>
+                                <input
+                                    class="form-control"
+                                    id="startTime"
+                                    name="startTime"
+                                />
+                                <input
+                                    type="hidden"
+                                    id="startTimeValue"
+                                    name="startTimeValue"
+                                />
                             </div>
                         </div>
                     </div>
@@ -72,13 +98,24 @@
                         <div class="form-group time-right">
                             <label class="form-title"> Time: </label>
                             <div class="valid-wrap">
-                                <input class="form-control" id="endTime" name="endTime" />
-                                <input type="hidden" id="endTimeValue" name="endTimeValue"/>
+                                <input
+                                    class="form-control"
+                                    id="endTime"
+                                    name="endTime"
+                                />
+                                <input
+                                    type="hidden"
+                                    id="endTimeValue"
+                                    name="endTimeValue"
+                                />
                             </div>
                         </div>
                     </div>
                     <div class="form-group has-error dateValidator">
-                        <small class="help-block">The start time can not be greater than the end time!</small>
+                        <small class="help-block"
+                            >The start time can not be greater than the end
+                            time!</small
+                        >
                     </div>
                     <div class="form-group">
                         <label class="form-title"> Remarks : </label>
@@ -91,9 +128,80 @@
                             ></textarea>
                         </div>
                     </div>
+                    <table class="table responsive-table mt-3">
+                        <thead>
+                            <tr>
+                                <th>Leave Type</th>
+                                <th>Beginning Balance</th>
+                                <th>Advanced / Earned</th>
+                                <th>Pending Earned</th>
+                                <th>Used</th>
+                                <th>Pending Used</th>
+                                <th>Available</th>
+                                <th>Units</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-title="Leave Type">02 - LOCAL SICK</td>
+                                <td data-title="Beginning Balance">0.000</td>
+                                <td data-title="Advanced / Earned">5.000</td>
+                                <td data-title="Pending Earned">0.000</td>
+                                <td data-title="Used">1.500</td>
+                                <td data-title="Pending Used">1.500</td>
+                                <td data-title="Available">2.000</td>
+                                <td data-title="Units">DAYS</td>
+                            </tr>
+
+                            <tr>
+                                <td data-title="Leave Type">
+                                    08 - STATE PERSON
+                                </td>
+                                <td data-title="Beginning Balance">6.000</td>
+                                <td data-title="Advanced / Earned">5.000</td>
+                                <td data-title="Pending Earned">0.000</td>
+                                <td data-title="Used">3.000</td>
+                                <td data-title="Pending Used">1.000</td>
+                                <td data-title="Available">7.000</td>
+                                <td data-title="Units">DAYS</td>
+                            </tr>
+
+                            <tr>
+                                <td data-title="Leave Type">10 - JURY DUTY</td>
+                                <td data-title="Beginning Balance">0.000</td>
+                                <td data-title="Advanced / Earned">0.000</td>
+                                <td data-title="Pending Earned">0.000</td>
+                                <td data-title="Used">0.000</td>
+                                <td data-title="Pending Used">0.000</td>
+                                <td data-title="Available">0.000</td>
+                                <td data-title="Units">DAYS</td>
+                            </tr>
+
+                            <tr>
+                                <td data-title="Leave Type">
+                                    11 - SCHOOL BUSINESS
+                                </td>
+                                <td data-title="Beginning Balance">0.000</td>
+                                <td data-title="Advanced / Earned">0.000</td>
+                                <td data-title="Pending Earned">0.000</td>
+                                <td data-title="Used">4.500</td>
+                                <td data-title="Pending Used">0.000</td>
+                                <td data-title="Available">0.000</td>
+                                <td data-title="Units">DAYS</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary" id="save" name="save">Save</button>
+                    <button class="btn btn-primary">Submit for Approval</button>
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                        id="save"
+                        name="save"
+                    >
+                        Save
+                    </button>
                     <button
                         class="btn btn-secondary"
                         data-dismiss="modal"
@@ -122,42 +230,58 @@
 <script>
     $(function() {
         formValidator()
-        setStartTime();
-        setEndTime();
-        let nowTemp = new Date();
-        let now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
-        let haveEndDate = false;
-        var checkin = $('#startDate').fdatepicker({
-            startDate:now,
-            format: 'mm/dd/yyyy',
-            onRender: function (date) {
-                // if(checkout&&haveEndDate){
-                //     return date.valueOf() > checkout.date.valueOf() ? 'disabled' : '';
-                // }
-            }
-        }).on('changeDate', function (ev) {
-            let endDate = $("#endDate").val()
-            if (ev.date && ((ev.date.valueOf() >= checkout.date.valueOf()) || !endDate)) {
-                let newDate = new Date(ev.date)
-                newDate.setDate(newDate.getDate());
-                checkout.update(newDate);
-                $("#endDate").change();
-            }
-        }).data('datepicker');
-        var checkout =  $('#endDate').fdatepicker({
-            startDate:now,
-            format: 'mm/dd/yyyy',
-            onRender: function (date) {
-                return date.valueOf() < checkin.date.valueOf() ? 'disabled' : '';
-            }
-        }).on('changeDate', function (ev) {
-
-        }).data('datepicker');
-
+        setStartTime()
+        setEndTime()
+        let nowTemp = new Date()
+        let now = new Date(
+            nowTemp.getFullYear(),
+            nowTemp.getMonth(),
+            nowTemp.getDate(),
+            0,
+            0,
+            0,
+            0
+        )
+        let haveEndDate = false
+        var checkin = $('#startDate')
+            .fdatepicker({
+                startDate: now,
+                format: 'mm/dd/yyyy',
+                onRender: function(date) {
+                    // if(checkout&&haveEndDate){
+                    //     return date.valueOf() > checkout.date.valueOf() ? 'disabled' : '';
+                    // }
+                }
+            })
+            .on('changeDate', function(ev) {
+                let endDate = $('#endDate').val()
+                if (
+                    ev.date &&
+                    (ev.date.valueOf() >= checkout.date.valueOf() || !endDate)
+                ) {
+                    let newDate = new Date(ev.date)
+                    newDate.setDate(newDate.getDate())
+                    checkout.update(newDate)
+                    $('#endDate').change()
+                }
+            })
+            .data('datepicker')
+        var checkout = $('#endDate')
+            .fdatepicker({
+                startDate: now,
+                format: 'mm/dd/yyyy',
+                onRender: function(date) {
+                    return date.valueOf() < checkin.date.valueOf()
+                        ? 'disabled'
+                        : ''
+                }
+            })
+            .on('changeDate', function(ev) {})
+            .data('datepicker')
     })
-    
-    function setStartTime(time){
-        let maxTime = time?time:new Date(2000,0,1,23,59);
+
+    function setStartTime(time) {
+        let maxTime = time ? time : new Date(2000, 0, 1, 23, 59)
         $('#startTime')
             .mobiscroll()
             .time({
@@ -172,32 +296,40 @@
                     hour: 1,
                     minute: 30
                 },
-                max:maxTime,
+                max: maxTime,
                 onSet: function(event, inst) {
-                    $("#startTimeValue").val(event.valueText);
-                    let startDate = $("#startDate").val()
-                    let endDate = $("#endDate").val()
-                    if((new Date(startDate)).valueOf()==(new Date(endDate)).valueOf()){
+                    $('#startTimeValue').val(event.valueText)
+                    let startDate = $('#startDate').val()
+                    let endDate = $('#endDate').val()
+                    if (
+                        new Date(startDate).valueOf() ==
+                        new Date(endDate).valueOf()
+                    ) {
                         let startTime = changeFormatTime(event.valueText)
-                        let startArray = startTime.split(":")
-                        let date = new Date (2000,0,1,startArray[0],startArray[1]);
-                        date.setMinutes(date.getMinutes()+30);
+                        let startArray = startTime.split(':')
+                        let date = new Date(
+                            2000,
+                            0,
+                            1,
+                            startArray[0],
+                            startArray[1]
+                        )
+                        date.setMinutes(date.getMinutes() + 30)
                         setEndTime(date)
                     }
-                    
                 }
             })
     }
-    function setEndTime(time){
-        let minTime = time?time:new Date(2000,0,1,00,00);
-        let startDate = $("#startDate").val()
-        let endDate = $("#endDate").val()
-        if(startDate&&startDate){
-            if((new Date(startDate)).valueOf()==(new Date(endDate)).valueOf()){
+    function setEndTime(time) {
+        let minTime = time ? time : new Date(2000, 0, 1, 00, 00)
+        let startDate = $('#startDate').val()
+        let endDate = $('#endDate').val()
+        if (startDate && startDate) {
+            if (new Date(startDate).valueOf() == new Date(endDate).valueOf()) {
                 let startTime = changeFormatTime($('#startTime').val())
-                let startArray = startTime.split(":")
-                let date = new Date (2000,0,1,startArray[0],startArray[1]);
-                date.setMinutes(date.getMinutes()+30);
+                let startArray = startTime.split(':')
+                let date = new Date(2000, 0, 1, startArray[0], startArray[1])
+                date.setMinutes(date.getMinutes() + 30)
                 minTime = date
             }
         }
@@ -215,24 +347,24 @@
                     hour: 1,
                     minute: 30
                 },
-                min:minTime,
+                min: minTime,
                 onSet: function(event, inst) {
-                    $("#endTimeValue").val(event.valueText);
+                    $('#endTimeValue').val(event.valueText)
                 }
             })
     }
-    function changeFormatTime(value){
-        let array = value.split(/[,: ]/);
-        if(array[2]=='PM'){
+    function changeFormatTime(value) {
+        let array = value.split(/[,: ]/)
+        if (array[2] == 'PM') {
             let h
-            if(array[0] == 12){
+            if (array[0] == 12) {
                 h = array[0]
-            }else{
+            } else {
                 h = parseInt(array[0]) + 12
             }
-            return  h + ":" + array[1]
-        }else{
-            return array[0] + ":" + array[1]
+            return h + ':' + array[1]
+        } else {
+            return array[0] + ':' + array[1]
         }
     }
 
@@ -306,52 +438,47 @@
         })
     }
 
-    $("#save").on("click", function(){
-        var bootstrapValidator = $("#requestForm").data('bootstrapValidator');
-        bootstrapValidator.validate();
-        if(bootstrapValidator.isValid()){
-            console.log("success")
-            let startDate = $("#startDate").val()
-            let endDate = $("#endDate").val()
+    $('#save').on('click', function() {
+        var bootstrapValidator = $('#requestForm').data('bootstrapValidator')
+        bootstrapValidator.validate()
+        if (bootstrapValidator.isValid()) {
+            console.log('success')
+            let startDate = $('#startDate').val()
+            let endDate = $('#endDate').val()
             let startTime = changeFormatTime($('#startTime').val())
             let endTime = changeFormatTime($('#endTime').val())
-            let start = new Date(startDate+' '+startTime)
-            let end = new Date(endDate+' '+endTime)
+            let start = new Date(startDate + ' ' + startTime)
+            let end = new Date(endDate + ' ' + endTime)
             console.log(start)
             console.log(end)
             if (start.valueOf() >= end.valueOf()) {
-                $(".dateValidator").show()
-                return false;
-            }else{
-                $(".dateValidator").hide()
-                $("#requestForm")[0].submit();
+                $('.dateValidator').show()
+                return false
+            } else {
+                $('.dateValidator').hide()
+                $('#requestForm')[0].submit()
             }
-            
-        }
-        else return;
-
-    });
-    function submitRequest(){
-        var bootstrapValidator = $("#requestForm").data('bootstrapValidator');
-        bootstrapValidator.validate();
-        if(bootstrapValidator.isValid()){
-            console.log("success")
-            let startDate = $("#startDate").val()
-            let endDate = $("#endDate").val()
+        } else return
+    })
+    function submitRequest() {
+        var bootstrapValidator = $('#requestForm').data('bootstrapValidator')
+        bootstrapValidator.validate()
+        if (bootstrapValidator.isValid()) {
+            console.log('success')
+            let startDate = $('#startDate').val()
+            let endDate = $('#endDate').val()
             let startTime = changeFormatTime($('#startTime').val())
             let endTime = changeFormatTime($('#endTime').val())
-            let start = new Date(startDate+' '+startTime)
-            let end = new Date(endDate+' '+endTime)
+            let start = new Date(startDate + ' ' + startTime)
+            let end = new Date(endDate + ' ' + endTime)
             console.log(start)
             console.log(end)
             if (start.valueOf() >= end.valueOf()) {
-                $(".dateValidator").show()
-                return false;
-            }else{
+                $('.dateValidator').show()
+                return false
+            } else {
                 return true
             }
-            
-        }
-        else return false;
+        } else return false
     }
 </script>

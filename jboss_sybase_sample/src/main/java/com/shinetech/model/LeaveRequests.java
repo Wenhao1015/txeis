@@ -155,6 +155,7 @@ public class LeaveRequests extends BaseEntity implements Serializable {
 		jo.put("title", "Leave");
 		SimpleDateFormat sdf1 = new SimpleDateFormat("MM/dd/yyyy");
 		jo.put("LeaveType", this.getLeaveType());
+		jo.put("AbsenseReason", this.getAbsenseReason());
 		jo.put("LeaveStartDate", sdf1.format(this.getLeaveStartDate()));
 		jo.put("LeaveStartDateType", this.getLeaveStartDateType());
 		jo.put("LeaveEndDate", sdf1.format(this.getLeaveEndDate()));

@@ -101,7 +101,7 @@ public class LeaveRequestController {
     }
     
     @RequestMapping("submitLeaveRequest")
-    public ModelAndView submitLeaveRequest(HttpServletRequest req, String leaveId, String leaveType, String LeaveStartDate, String startTimeValue,
+    public ModelAndView submitLeaveRequest(HttpServletRequest req, String leaveId, String leaveType, String absenseReason, String LeaveStartDate, String startTimeValue,
 			String LeaveEndDate, String endTimeValue, String Remarks) throws ParseException{
         HttpSession session = req.getSession();
         String user = (String)session.getAttribute("user");
@@ -109,13 +109,13 @@ public class LeaveRequestController {
         if(null == user){
         	return this.getIndexPage(mav);
         }
-        this.saveLeaveRequest(leaveId, leaveType, LeaveStartDate, startTimeValue, LeaveEndDate, endTimeValue, Remarks);   
+        this.saveLeaveRequest(leaveId, leaveType, absenseReason, LeaveStartDate, startTimeValue, LeaveEndDate, endTimeValue, Remarks);   
         return this.leaveRequest(req,null,null,null);
     }
 
     
     @RequestMapping("submitLeaveRequestFromCalendar")
-    public ModelAndView submitLeaveRequestFromCalendar(HttpServletRequest req, String leaveId, String leaveType, String LeaveStartDate, String startTimeValue,
+    public ModelAndView submitLeaveRequestFromCalendar(HttpServletRequest req, String leaveId, String leaveType, String absenseReason, String LeaveStartDate, String startTimeValue,
 			String LeaveEndDate, String endTimeValue, String Remarks) throws ParseException{
         HttpSession session = req.getSession();
         String user = (String)session.getAttribute("user");
@@ -123,11 +123,11 @@ public class LeaveRequestController {
         if(null == user){
         	return this.getIndexPage(mav);
         }
-        this.saveLeaveRequest(leaveId, leaveType, LeaveStartDate, startTimeValue, LeaveEndDate, endTimeValue, Remarks);   
+        this.saveLeaveRequest(leaveId, leaveType, absenseReason, LeaveStartDate, startTimeValue, LeaveEndDate, endTimeValue, Remarks);   
         return this.getEventCalendar(req);
     }
     
-	private void saveLeaveRequest(String leaveId, String leaveType, String LeaveStartDate, String startTimeValue,
+	private void saveLeaveRequest(String leaveId, String leaveType, String absenseReason, String LeaveStartDate, String startTimeValue,
 			String LeaveEndDate, String endTimeValue, String Remarks) throws ParseException {
 		LeaveRequests request;
 		if(leaveId==null||("").equals(leaveId))
@@ -136,6 +136,7 @@ public class LeaveRequestController {
         	request = this.indexService.getleaveRequestById(Integer.parseInt(leaveId+""));
         SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy hh:mm a",Locale.ENGLISH);
         request.setLeaveType(leaveType);
+        request.setAbsenseReason(absenseReason);
         request.setLeaveStartDate(formatter.parse(LeaveStartDate + " "+ startTimeValue));
         request.setLeaveEndDate(formatter.parse(LeaveEndDate + " " + endTimeValue));
         request.setRemarks(Remarks);

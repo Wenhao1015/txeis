@@ -66,8 +66,12 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
                             let end = changeFormatTimeAm(end_arry[1])
 
 							$("#cancelAdd").hide();
-							$("#deleteLeave").show();
-							$('#requestModal').modal('show')
+                            $("#deleteLeave").show();
+                            $(".edit-title").show();
+                            $(".new-title").hide();
+                            $('#requestModal').modal('show')
+                            $("[name='leaveType']").val(calEvent.LeaveType);
+				            $("[name='absenseReason']").val(calEvent.AbsenseReason);
 							$("[name='Remarks']").text(calEvent.Remarks);
 							$("#leaveId").attr("value", calEvent.id+"");
                             $("#startDate").val(calEvent.LeaveStartDate);
@@ -89,7 +93,9 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 							$('#requestForm').data('bootstrapValidator', null)
 							formValidator()
 							$("#cancelAdd").show();
-							$("#deleteLeave").hide();
+                            $("#deleteLeave").hide();
+                            $(".edit-title").hide();
+                            $(".new-title").show();
                             $('#requestModal').modal('show')
                             //Initializes the time control when new event modal show
                             setStartTime()

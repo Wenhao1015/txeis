@@ -301,6 +301,7 @@ input {
     vertical-align: top;
     border-top: 1px solid #dee2e6;
     text-align: left;
+    word-spacing: normal;
 }
 
 .table thead th {
@@ -393,6 +394,21 @@ input {
     display: none;
     overflow: hidden;
     outline: 0;
+    .table{
+        font-size: 12px;
+        border:1px solid #dee2e6;
+        @media (max-width:768px){
+            border:0;
+            &.responsive-table{
+                tr{
+                    margin-bottom: 10px;
+                }
+            }
+        }
+        td,th{
+            padding: 5px;
+        }
+    }
     button.close {
         padding: 0;
         background-color: transparent;
@@ -408,8 +424,8 @@ input {
   
   .modal-dialog {
     position: relative;
-    width: auto;
-    margin: 0.5rem;
+    width: 95%;
+    margin: 0.5rem auto;
     pointer-events: none;
   }
   
@@ -543,6 +559,9 @@ input {
     .modal-dialog {
       max-width: 500px;
       margin: 1.75rem auto;
+      &.requestFormDialog{
+          max-width: 780px;
+      }
     }
     .modal-dialog-centered {
       min-height: calc(100% - (1.75rem * 2));
@@ -630,4 +649,14 @@ input {
 .error-hint{
     color: #ea2623;
     font-size: smaller;
+}
+.line-2-flex{
+    display: flex;
+    .line-left{
+        flex: 1;
+        padding-right: 10px;
+    }
+    .line-right{
+        flex: 1;
+    }
 }

@@ -26,8 +26,10 @@
 						<label class="form-title">Type:</label> <select id="SearchType"
 							class="form-control" name="SearchType">
 							<option value="">All</option>
-							<option value="1">Annual Leave</option>
-							<option value="2">Sick Leave</option>
+							<option value="1">LOCAL SICK</option>
+							<option value="2">STATE PERSON</option>
+							<option value="3">JURY DUTY</option>
+							<option value="4">SCHOOL BUSINESS</option>
 						</select>
 					</div>
 					<div class="form-group">
@@ -54,6 +56,7 @@
 							<tr>
 								<th>Sno.</th>
 								<th>Leave Type</th>
+								<th>Absence Reason</th>
 								<th>Leave Start Date</th>
 								<th>Leave End Date</th>
 								<th>Duration</th>
@@ -65,14 +68,20 @@
 							<c:forEach var="leave" items="${leaves}" varStatus="leaves">
 								<tr>
 									<td  data-title="Sno.">${leaves.index + 1}</td>
-									<td data-title="Leave Type">${leave.leaveType==1?"Annal Leave":"Sick Leave"}</td>
+									<td data-title="Leave Type">
+											<c:if test="${leave.leaveType==1}">LOCAL SICK</c:if>
+											<c:if test="${leave.leaveType==2}">STATE PERSON</c:if>
+											<c:if test="${leave.leaveType==3}">JURY DUTY</c:if>
+											<c:if test="${leave.leaveType==4}">SCHOOL BUSINESS</c:if>
+									</td>
+									<td data-title="Absence Reason">${leave.absenseReason }</td>
 									<td data-title="Leave Start Date">${leave.start}</td>
 									<td data-title="Leave End Date">${leave.end}</td>
 									<td data-title="Duration">${leave.leaveDuration} Days</td>
 									<td data-title="Remarks">${leave.remarks}</td>
 									<td style="width:150px;">
 										<button class="btn btn-primary sm edit-btn" id="editLeave" data-toggle="modal" data-target="#requestModal" 
-										onClick="editLeave('${leave.id}','${leave.leaveType}','${leave.start}',
+										onClick="editLeave('${leave.id}','${leave.leaveType}','${leave.absenseReason }','${leave.start}',
 										'${leave.end}','${leave.remarks}')">Edit</button>
 										<button class="btn btn-secondary sm" onClick="deleteLeave(${leave.id})">Delete</button>
 									</td>
@@ -110,7 +119,7 @@
 				});
 			});
 	
-		function editLeave(id,leaveType,leaveStartDate,leaveEndDate,remarks){
+		function editLeave(id,leaveType,absenceReason,leaveStartDate,leaveEndDate,remarks){
 				$('#requestForm')
             .data('bootstrapValidator')
             .destroy()
@@ -122,9 +131,12 @@
 				let end = end_arry[1] + " " + end_arry[2]
 				$("#cancelAdd").hide();
 				$("#deleteLeave").show();	
+				$(".edit-title").show();
+        $(".new-title").hide();
 				$("[name='Remarks']").text(remarks);
 				$("[name='leaveId']").attr("value", id+"");
 				$("[name='leaveType']").val(leaveType);
+				$("#absenceReason").val(absenceReason);
 				$("#startDate").val(start_arry[0]);
 				$("#startTime").val(start);
 				$("#startTimeValue").val(start);
@@ -151,7 +163,9 @@
         $('#requestForm').data('bootstrapValidator', null)
         formValidator()
         $('#cancelAdd').show()
-        $('#deleteLeave').hide()
+				$('#deleteLeave').hide()
+				$(".edit-title").hide();
+        $(".new-title").show();
         //Initializes the time control when edit event modal show
 				setStartTime()
 				setEndTime()
