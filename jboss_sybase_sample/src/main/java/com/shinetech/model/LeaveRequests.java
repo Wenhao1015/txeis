@@ -43,8 +43,18 @@ public class LeaveRequests extends BaseEntity implements Serializable {
     private String status;
     @Column(name = "Remarks")
     private String remarks;
+    @Column(name = "AbsenseReason")
+    private String absenseReason;
+    
+    public String getAbsenseReason() {
+		return absenseReason;
+	}
 
-    private String start;
+	public void setAbsenseReason(String absenseReason) {
+		this.absenseReason = absenseReason;
+	}
+
+	private String start;
     private String end;
     
     public int getId() {
