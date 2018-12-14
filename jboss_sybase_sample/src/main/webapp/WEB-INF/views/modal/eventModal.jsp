@@ -333,6 +333,7 @@
                 minTime = date
             }
         }
+        console.log(minTime)
         $('#endTime')
             .mobiscroll()
             .time({
@@ -364,6 +365,11 @@
             }
             return h + ':' + array[1]
         } else {
+            let h
+            if(array[0] == 12){
+                h = h = parseInt(array[0]) - 12
+                return h + ':' + array[1]
+            }
             return array[0] + ':' + array[1]
         }
     }
