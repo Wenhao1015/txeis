@@ -255,13 +255,17 @@
             })
             .on('changeDate', function(ev) {
                 let endDate = $('#endDate').val()
+                let startDate = $("#startDate").val()
                 if (
                     ev.date &&
                     (ev.date.valueOf() >= checkout.date.valueOf() || !endDate)
                 ) {
-                    let newDate = new Date(ev.date)
-                    newDate.setDate(newDate.getDate())
-                    checkout.update(newDate)
+                    // let newDate = new Date(ev.date)
+                    // newDate.setDate(newDate.getDate())
+                    startDate = new Date(startDate)
+                    startDate.setDate(startDate.getDate())
+                    checkout.update(startDate)
+                    console.log(startDate)
                     $('#endDate').change()
                 }
             })
