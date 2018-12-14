@@ -270,6 +270,12 @@
   margin: 3px;
 }
 
+@media (max-width: 500px) {
+  .content-wrapper > .content .main-title .right-btn {
+    float: none;
+  }
+}
+
 .content-wrapper > .content .content-white {
   background: #fff;
   padding: 15px;

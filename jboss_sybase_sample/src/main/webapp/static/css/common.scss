@@ -351,7 +351,8 @@ input {
 			padding-left: 140px!important;
 			white-space: normal;
 			text-align: left;
-			min-height: 30px;
+            min-height: 30px;
+            font-size: 12px;
 			&:first-child {
 				border-top: 1px solid #eee;
 			}
@@ -374,7 +375,8 @@ input {
 				padding-right: 10px;
 				white-space: nowrap;
 				text-align: left;
-				font-weight: bold;
+                font-weight: bold;
+                font-size: 12px;
 				content: attr(data-title);
 			}
 		}
@@ -538,6 +540,9 @@ input {
     justify-content: flex-end;
     padding: 1rem;
     border-top: 1px solid #e9ecef;
+    @media (max-width:320px){
+        padding: 1rem 2px;
+    }
   }
   
   .modal-footer > :not(:first-child) {

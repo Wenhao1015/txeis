@@ -392,6 +392,7 @@ input {
     white-space: normal;
     text-align: left;
     min-height: 30px;
+    font-size: 12px;
   }
   .table.responsive-table td:first-child {
     border-top: 1px solid #eee;
@@ -416,6 +417,7 @@ input {
     white-space: nowrap;
     text-align: left;
     font-weight: bold;
+    font-size: 12px;
     content: attr(data-title);
   }
 }
@@ -581,6 +583,12 @@ input {
   justify-content: flex-end;
   padding: 1rem;
   border-top: 1px solid #e9ecef;
+}
+
+@media (max-width: 320px) {
+  .modal-footer {
+    padding: 1rem 2px;
+  }
 }
 
 .modal-footer > :not(:first-child) {

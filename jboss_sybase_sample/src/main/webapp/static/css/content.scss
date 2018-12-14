@@ -218,6 +218,11 @@ margin: 0 auto;
         .btn{
             margin: 3px;
         }
+        @media (max-width:500px){
+            .right-btn{
+                float: none;
+            }
+        }
     }
     margin: 0 15px;
     .content-white{

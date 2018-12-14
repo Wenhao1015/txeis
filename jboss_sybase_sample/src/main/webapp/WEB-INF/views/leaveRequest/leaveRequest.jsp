@@ -15,9 +15,12 @@
 		<section class="content">
 			<h2 class="clearfix main-title">
 				Leave Requests List
-				<a class="btn btn-primary pull-right" href="/<%=request.getContextPath().split("/")[1]%>/leaveRequest/eventCalendar">Switch To Calendar View</a>
-				<button class="btn btn-primary pull-right" id="new-btn" data-toggle="modal" data-target="#requestModal" onclick="showRequestForm()">New
-					Apply</button>
+				<div class="pull-right right-btn">
+					<button class="btn btn-primary" id="new-btn" data-toggle="modal" data-target="#requestModal" onclick="showRequestForm()">New
+						Apply</button>
+					<a class="btn btn-primary" href="/<%=request.getContextPath().split("/")[1]%>/leaveRequest/eventCalendar">Switch To Calendar View</a>
+				</div>
+				
 				
 			</h2>
 			<div class="content-white">
