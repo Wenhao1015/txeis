@@ -1,4 +1,4 @@
-package com.shinetech.dao;
+package com.esc20.dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

@@ -1,13 +1,13 @@
-package com.shinetech.dao;
-
-import com.shinetech.model.AppUserEntity;
-import com.shinetech.model.LeaveRequests;
+package com.esc20.dao;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.esc20.model.AppUserEntity;
+import com.esc20.model.LeaveRequests;
 
 import java.util.List;
 

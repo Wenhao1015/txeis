@@ -1,14 +1,15 @@
-package com.shinetech.service;
+package com.esc20.service;
 
-import com.shinetech.dao.AppUserDao;
-import com.shinetech.dao.BaseDao;
-import com.shinetech.dao.BhrEmpJobDao;
-import com.shinetech.dao.LeaveRequestDao;
-import com.shinetech.dao.StudentDao;
-import com.shinetech.model.AppUserEntity;
-import com.shinetech.model.BhrEmpJob;
-import com.shinetech.model.LeaveRequests;
-import com.shinetech.model.StudentInfoBean;
+import com.esc20.dao.AppUserDao;
+import com.esc20.dao.BaseDao;
+import com.esc20.dao.BhrEmpJobDao;
+import com.esc20.dao.LeaveRequestDao;
+import com.esc20.dao.StudentDao;
+import com.esc20.model.AppUserEntity;
+import com.esc20.model.BhrEmpJob;
+import com.esc20.model.LeaveRequests;
+import com.esc20.model.StudentInfoBean;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

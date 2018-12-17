@@ -1,4 +1,4 @@
-package com.shinetech.model;
+package com.esc20.model;
 
 import java.io.Serializable;
 import java.util.Date;

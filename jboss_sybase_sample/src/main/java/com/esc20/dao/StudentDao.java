@@ -1,11 +1,12 @@
-package com.shinetech.dao;
+package com.esc20.dao;
 
-import com.shinetech.model.StudentInfoBean;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.esc20.model.StudentInfoBean;
 
 import java.util.List;
 
