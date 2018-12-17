@@ -9,9 +9,7 @@
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
     <%@ include file="commons/bar.jsp"%>
-   
-  
-    <main  class="content-wrapper">
+    <main class="content-wrapper">
         <section class="content">
             <div class="content-white no-title profile">
                 <div class="profile-item">
