@@ -12,9 +12,9 @@
 
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close"
           p:driverClass="com.mysql.cj.jdbc.Driver"
-          p:jdbcUrl="jdbc:mysql://localhost:3306/txeis?useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=GMT%2B8&amp;useSSL=false"
+          p:jdbcUrl="jdbc:mysql://localhost:3306/txeis?useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=GMT%2D6&amp;useSSL=false"
           p:user="root"
-		  p:password="root"
+		  p:password=""
           p:maxPoolSize="150"
           p:minPoolSize="2"
           p:initialPoolSize="2"
@@ -29,7 +29,7 @@
         <!--<property name="configLocation" value="classpath:hibernate.cfg.xml"/>-->
         <property name="packagesToScan">
             <list>
-                <value>com.shinetech</value>
+                <value>com.esc20</value>
             </list>
         </property>
         <property name="hibernateProperties">
