@@ -13,7 +13,7 @@
 		<%@ include file="../commons/bar.jsp"%>
 		<main class="content-wrapper">
 		<section class="content">
-			<h2 class="clearfix main-title">
+			<h2 class="clearfix section-title">
 				Leave Requests List
 				<div class="pull-right right-btn">
 					<button class="btn btn-primary" id="new-btn" data-toggle="modal" data-target="#requestModal" onclick="showRequestForm()">New
@@ -24,7 +24,7 @@
 				
 			</h2>
 			<div class="content-white">
-				<form id="SearchForm" action="leaveRequest" method="post">
+				<form class="no-print searchForm" id="SearchForm" action="leaveRequest" method="post">
 					<div class="form-group type-group">
 						<label class="form-title">Type:</label> <select id="SearchType"
 							class="form-control" name="SearchType">

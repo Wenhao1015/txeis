@@ -16,7 +16,7 @@ pageEncoding="UTF-8"%>
 				<main  class="content-wrapper">
 					<section class="content">
 						<div class="container-fluid">
-								<h2 class="clearfix">
+								<h2 class="clearfix section-title">
 										Current Pay Information
 								</h2>
 							<div class="content-white">

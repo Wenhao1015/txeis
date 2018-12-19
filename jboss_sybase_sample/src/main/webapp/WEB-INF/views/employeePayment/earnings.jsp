@@ -15,7 +15,7 @@ pageEncoding="UTF-8"%>
 			
 				<main class="content-wrapper" id="content">
 						<section class="content">
-							<h2 class="clearfix no-print">Earnings
+							<h2 class="clearfix no-print section-title">Earnings
 									<button class="btn btn-primary pull-right" onclick="doPrint()">Print</button>
 							</h2>
 							<div class="content-white EMP-detail earning-content">
@@ -407,8 +407,8 @@ pageEncoding="UTF-8"%>
 									</div>
 									
 									<div class="hr-black print-none"></div>
-									<div class="print-table">
-											<table class="table responsive-table payRoll-table">
+									<div class="">
+											<table class="table responsive-table payRoll-table print-table">
 												<thead>
 													<tr>
 														<th>Bank Name</th>
@@ -446,15 +446,12 @@ pageEncoding="UTF-8"%>
 		</body>
 		<script>
 				var myDate = new Date()
-				//获取当前年
-				var year = myDate.getFullYear()
-				//获取当前月
-				var month = myDate.getMonth() + 1
-				//获取当前日
-				var date = myDate.getDate()
-				var h = myDate.getHours() //获取当前小时数(0-23)
-				var m = myDate.getMinutes() //获取当前分钟数(0-59)
-				var s = myDate.getSeconds()
+        var year = myDate.getFullYear()
+        var month = myDate.getMonth() + 1
+        var date = myDate.getDate()
+        var h = myDate.getHours() //get h (0-23)
+        var m = myDate.getMinutes() //get m (0-59)
+        var s = myDate.getSeconds()
 				if (parseInt(h) < 12) {
 					var now =
 						getNow(month) +

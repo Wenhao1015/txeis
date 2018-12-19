@@ -15,7 +15,7 @@ pageEncoding="UTF-8"%>
   
     <main  class="content-wrapper">
         <section class="content">
-            <h2 class="clearfix no-print">Employee Information
+            <h2 class="clearfix no-print section-title">Employee Information
                   <button class="btn btn-primary pull-right" onclick="doPrint()">Print</button>
             </h2>
             <div class="content-white">
@@ -151,8 +151,8 @@ pageEncoding="UTF-8"%>
                                 </div>
                             </div>
                         <div class="hr-black"></div>
-                        <div class="print-table">
-                            <table class="table responsive-table payRoll-table">
+                        <div class="">
+                            <table class="table responsive-table payRoll-table print-table">
                                 <thead>
                                     <tr>
                                         <th>Bank Code</th>
