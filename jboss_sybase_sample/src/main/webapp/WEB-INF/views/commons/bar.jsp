@@ -76,7 +76,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <!-- menu-open -->
-          <li class="nav-item has-treeview" id="employeePayment">
+          <li class="nav-item has-treeview" id="inquiry">
             <a href="#" class="nav-link"><!--  active -->
               <i class="nav-icon fa fa-list"></i>
               <p>
@@ -86,37 +86,37 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="" class="nav-link" id="CalendarYearToDate">
+                <a href="/<%=request.getContextPath().split("/")[1]%>/inquiry/calendarYearToDate" class="nav-link" id="calendarYearToDate">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Calendar Year to Date</p>
                 </a>
               </li>
               <li class="nav-item" >
-                <a id="employeePayments" href="/<%=request.getContextPath().split("/")[1]%>/employeePayment/employeePayments" class="nav-link">
+                <a href="/<%=request.getContextPath().split("/")[1]%>/inquiry/calendarPayInformation" class="nav-link" id="calendarPayInformation">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Current Pay Information</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="/<%=request.getContextPath().split("/")[1]%>/inquiry/deductions" class="nav-link" id="deductions">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Deductions</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/<%=request.getContextPath().split("/")[1]%>/employeePayment/earnings" class="nav-link" id="earnings">
+                <a href="/<%=request.getContextPath().split("/")[1]%>/inquiry/earnings" class="nav-link" id="earnings">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Earnings</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="/<%=request.getContextPath().split("/")[1]%>/inquiry/w2Information" class="nav-link" id="w2Information">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>W-2 Information</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="/<%=request.getContextPath().split("/")[1]%>/inquiry/information1095" class="nav-link" id="information1095">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>1095 Information</p>
                 </a>
@@ -222,8 +222,12 @@
         var path = (window.location+"").split("/");
         var menuItem = path[path.length-2];
         var item = path[path.length -1];
+        console.log(path)
+        console.log(menuItem)
+        console.log(item)
         var menuElement = $("#"+menuItem);
         var itemElement = $("#"+item);
+        console.log(itemElement)
         if(menuElement){
             menuElement.addClass("menu-open");
             menuElement.children("ul").attr("style","display: block;");

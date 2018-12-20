@@ -16,7 +16,7 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 			
             <main class="content-wrapper">
                 <section class="content">
-                    <h2 class="clearfix main-title">
+                    <h2 class="clearfix section-title">
                         <a class="btn btn-primary pull-right" href="/<%=request.getContextPath().split("/")[1]%>/leaveRequest/leaveRequest">Switch To Table View</a>
                     </h2>
                     <div class="container-fluid"><div id="calendar"></div></div>
