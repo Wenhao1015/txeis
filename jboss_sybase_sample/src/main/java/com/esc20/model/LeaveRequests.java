@@ -17,8 +17,8 @@ import java.util.Date;
 import java.util.Calendar;
 
 @Entity
-@Table(name = "APP_LEAVE_REQUEST", schema = "txeis")
-public class LeaveRequests extends BaseEntity implements Serializable {
+@Table(name = "dbo.APP_LEAVE_REQUEST", schema = "txeis")
+public class LeaveRequests implements Serializable {
 
     private static final long serialVersionUID = 6715142900654758429L;
 
@@ -26,7 +26,7 @@ public class LeaveRequests extends BaseEntity implements Serializable {
     @GeneratedValue(generator = "leaveRequestGenerator")
     @GenericGenerator(name = "leaveRequestGenerator", strategy = "increment")
     @Column(name = "ID")
-    private int id;
+    private Integer id;
     @Column(name = "LeaveType")
     private String leaveType;
     @Column(name = "LeaveStartDate")
@@ -45,6 +45,39 @@ public class LeaveRequests extends BaseEntity implements Serializable {
     private String remarks;
     @Column(name = "AbsenseReason")
     private String absenseReason;
+	@Column(name = "CreatedAt")
+    private Date CreatedAt;
+    @Column(name = "CreatedBy")
+    private String CreatedBy;
+    @Column(name = "UpdatedAt")
+    private Date UpdatedAt;
+    @Column(name = "UpdatedBy")
+    private String UpdatedBy;
+    
+	public Date getCreatedAt() {
+		return CreatedAt;
+	}
+	public void setCreatedAt(Date createdAt) {
+		this.CreatedAt = createdAt;
+	}
+	public String getCreatedBy() {
+		return this.CreatedBy;
+	}
+	public void setCreatedBy(String createdBy) {
+		this.CreatedBy = createdBy;
+	}
+	public Date getUpdatedAt() {
+		return this.UpdatedAt;
+	}
+	public void setUpdatedAt(Date updatedAt) {
+		this.UpdatedAt = updatedAt;
+	}
+	public String getUpdatedBy() {
+		return this.UpdatedBy;
+	}
+	public void setUpdatedBy(String updatedBy) {
+		this.UpdatedBy = updatedBy;
+	}
     
     public String getAbsenseReason() {
 		return absenseReason;
@@ -53,9 +86,6 @@ public class LeaveRequests extends BaseEntity implements Serializable {
 	public void setAbsenseReason(String absenseReason) {
 		this.absenseReason = absenseReason;
 	}
-
-	private String start;
-    private String end;
     
     public int getId() {
         return id;
@@ -134,39 +164,8 @@ public class LeaveRequests extends BaseEntity implements Serializable {
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
 	}
-	
-	public String getStart() {
-		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
-		String result =  sdf.format(this.leaveStartDate);
-		this.start = result;
-		return start;
+	public void emptyID() {
+		// TODO Auto-generated method stub
+		this.id = null;
 	}
-
-	public String getEnd() {
-		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
-		String result =  sdf.format(this.leaveEndDate);
-		this.end = result;
-		return end;
-	}
-
-	public JSONObject toJSON() {
-		JSONObject jo = new JSONObject();
-		jo.put("id", this.getId());
-		jo.put("title", "Leave");
-		SimpleDateFormat sdf1 = new SimpleDateFormat("MM/dd/yyyy");
-		jo.put("LeaveType", this.getLeaveType());
-		jo.put("AbsenseReason", this.getAbsenseReason());
-		jo.put("LeaveStartDate", sdf1.format(this.getLeaveStartDate()));
-		jo.put("LeaveStartDateType", this.getLeaveStartDateType());
-		jo.put("LeaveEndDate", sdf1.format(this.getLeaveEndDate()));
-		jo.put("LeaveEndDateType", this.getLeaveEndDateType());		
-		jo.put("Remarks", this.getRemarks());
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-		String startDate = sdf.format(this.getLeaveStartDate());
-		String endDate = sdf.format(this.getLeaveEndDate());
-		jo.put("start", startDate);
-		jo.put("end", endDate);
-		return jo;
-	}
-
 }

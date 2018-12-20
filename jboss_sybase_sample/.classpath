@@ -30,5 +30,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="F:/Workspace/txeisProject/jboss_sybase_sample/local/lib/jconn4.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

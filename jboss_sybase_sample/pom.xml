@@ -199,6 +199,14 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.12</version>
     </dependency>
+    <!-- Sybase -->
+    <dependency> 
+      <groupId>local.lib.jconn</groupId>
+      <artifactId>jconn4</artifactId>
+      <version>16.0.0</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/local/lib/jconn4.jar</systemPath>
+	</dependency>
     <!--Json array start -->
         <dependency>
             <groupId>commons-beanutils</groupId>

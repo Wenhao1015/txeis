@@ -52,8 +52,9 @@ public class LeaveRequestDao {
         try{
         	if(isUpdate)
         		session.update(request);
-        	else
+        	else {
         		session.save(request);
+        	}
         	session.flush();
         }catch(Exception e) {
         	e.printStackTrace();

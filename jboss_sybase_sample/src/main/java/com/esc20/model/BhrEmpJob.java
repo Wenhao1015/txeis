@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "BHR_EMP_JOB", schema = "txeis")
+@Table(name = "dbo.BHR_EMP_JOB", schema = "txeis")
 public class BhrEmpJob implements Serializable {
 
     private static final long serialVersionUID = 6715142900654758429L;

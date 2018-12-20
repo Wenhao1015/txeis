@@ -7,7 +7,7 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "APP_USER", schema = "txeis")
+@Table(name = "dbo.APP_USER", schema = "txeis")
 public class AppUserEntity implements Serializable {
 
     private static final long serialVersionUID = 6715142900654758429L;

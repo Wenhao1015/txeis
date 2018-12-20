@@ -2,8 +2,9 @@ package com.esc20.controller;
 
 import com.esc20.model.AppUserEntity;
 import com.esc20.model.BhrEmpJob;
-import com.esc20.model.Events;
 import com.esc20.model.LeaveRequests;
+import com.esc20.nonDBModels.Events;
+import com.esc20.nonDBModels.LeaveRequestModel;
 import com.esc20.service.IndexService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -51,7 +52,8 @@ public class LeaveRequestController {
     @RequestMapping(value = "/getLeaveDetailById", method = RequestMethod.POST)
     public String getLeaveDetailById( @PathVariable String Id) {
     	LeaveRequests request = this.indexService.getleaveRequestById(Integer.parseInt(Id));
-        return request.toJSON().toString();
+    	LeaveRequestModel requestModel = new LeaveRequestModel(request);
+        return requestModel.toJSON().toString();
     }
 
     @RequestMapping("eventCalendar")
@@ -65,10 +67,15 @@ public class LeaveRequestController {
         
         LeaveRequests request = new LeaveRequests();
         List<LeaveRequests> requests = this.indexService.getLeaveRequests(request);
+        List<LeaveRequestModel> requestModels = new ArrayList<LeaveRequestModel>();
+        LeaveRequestModel model;
         JSONArray json = new JSONArray();
-        
         for(int i=0;i<requests.size();i++) {
-        	json.add(requests.get(i).toJSON());
+        	model = new LeaveRequestModel(requests.get(i));
+        	requestModels.add(model);
+        }
+        for(int i=0;i<requestModels.size();i++) {
+        	json.add(requestModels.get(i).toJSON());
         }
         mav.setViewName("/leaveRequest/fullCalendar");
         mav.addObject("leaves", json); 
@@ -92,7 +99,13 @@ public class LeaveRequestController {
         if(SearchEnd!=null&&!("").equals(SearchEnd))
         	request.setLeaveEndDate(sdf1.parse(SearchEnd));
         List<LeaveRequests> requests = this.indexService.getLeaveRequests(request);
-        mav.addObject("leaves", requests);
+        List<LeaveRequestModel> requestModels = new ArrayList<LeaveRequestModel>();
+        LeaveRequestModel model;
+        for(int i=0;i<requests.size();i++) {
+        	model = new LeaveRequestModel(requests.get(i));
+        	requestModels.add(model);
+        }
+        mav.addObject("leaves", requestModels);
         
         mav.addObject("SearchType", SearchType);
         mav.addObject("SearchStart", SearchStart);

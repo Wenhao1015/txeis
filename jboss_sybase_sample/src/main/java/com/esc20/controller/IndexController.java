@@ -2,8 +2,8 @@ package com.esc20.controller;
 
 import com.esc20.model.AppUserEntity;
 import com.esc20.model.BhrEmpJob;
-import com.esc20.model.Events;
 import com.esc20.model.LeaveRequests;
+import com.esc20.nonDBModels.Events;
 import com.esc20.service.IndexService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
