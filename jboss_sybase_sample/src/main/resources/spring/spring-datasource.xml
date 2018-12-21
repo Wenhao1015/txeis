@@ -11,18 +11,14 @@
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close"
-          p:driverClass="com.mysql.cj.jdbc.Driver"
-          p:jdbcUrl="jdbc:mysql://localhost:3306/txeis?useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=GMT%2D6&amp;useSSL=false"
-          p:user="root"
-		  p:password="zero1010"
-          p:maxPoolSize="150"
+          p:driverClass="com.sybase.jdbc4.jdbc.SybDriver"
+          p:jdbcUrl="jdbc:sybase:Tds:DESKTOP-6OIM8CT:5000/txeis"
+          p:user="sa"
+          p:password="password"
+          p:maxPoolSize="40"
           p:minPoolSize="2"
           p:initialPoolSize="2"
-          p:maxIdleTime="3000"
-          p:idleConnectionTestPeriod="1000"
-          p:preferredTestQuery="select 1 from dual"
-          p:testConnectionOnCheckout="true"
-          p:checkoutTimeout="1500"
+          p:maxIdleTime="30"
     />
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>

@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity
-@Table(name="STUDENT_INFO", schema = "txeis")
+@Table(name="dbo.STUDENT_INFO", schema = "txeis")
 public class StudentInfoBean implements Serializable {
 
     private static final long serialVersionUID = 8153550686585922384L;

@@ -1,6 +1,8 @@
-package com.esc20.model;
+package com.esc20.nonDBModels;
 
 import java.text.SimpleDateFormat;
+
+import com.esc20.model.LeaveRequests;
 
 import net.sf.json.JSONObject;
 
