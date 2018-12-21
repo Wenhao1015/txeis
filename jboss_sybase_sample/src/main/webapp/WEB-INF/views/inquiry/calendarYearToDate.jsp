@@ -65,7 +65,7 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
                             id="selectCalendar"
                         >
                             <div class="form-group in-line">
-                                <label class="form-title"
+                                <label class="form-title" for="SearchYear"
                                     >Please select a calendar year:</label
                                 >
                                 <input

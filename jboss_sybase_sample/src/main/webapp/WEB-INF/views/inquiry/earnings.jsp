@@ -168,7 +168,7 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
                                     id="selectPay"
                                 >
                                     <div class="form-group in-line">
-                                        <label class="form-title">Pay Dates:</label>
+                                        <label class="form-title" for="SearchPayDate">Pay Dates:</label>
                                         <input
                                             class="form-control"
                                             type="text"
