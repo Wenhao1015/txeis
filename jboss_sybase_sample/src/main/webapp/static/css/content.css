@@ -292,6 +292,18 @@
   margin-bottom: 15px;
 }
 
+@media (max-width: 375px) {
+  .content-wrapper > .content .content-white {
+    padding: 15px 5px;
+  }
+}
+
+@media (max-width: 375px) {
+  .content-wrapper > .content {
+    margin: 0 5px;
+  }
+}
+
 .fc-scroller {
   height: initial !important;
 }
@@ -372,6 +384,7 @@
 @media (max-width: 600px) {
   .searchForm {
     display: block;
+    margin-bottom: 10px;
   }
   .searchForm .form-group {
     padding: 0;
@@ -554,6 +567,35 @@
   word-break: break-word;
 }
 
+.self-insured-flex {
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.self-insured-flex .self-insured-tips {
+  flex: 1;
+  padding-right: 30px;
+}
+
+.self-insured-flex .self-insured-check {
+  flex: 0 0 auto;
+  padding-right: 15px;
+}
+
+.self-insured-flex .self-insured-time {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 630px) {
+  .self-insured-flex {
+    display: block;
+  }
+  .self-insured-flex .self-insured-tips, .self-insured-flex .self-insured-check, .self-insured-flex .self-insured-time {
+    margin-bottom: 5px;
+    padding: 0;
+  }
+}
+
 .print-title {
   text-align: center;
   color: #000;
@@ -685,6 +727,9 @@
   .hr-black.print-block {
     display: block;
   }
+  .hr-black.show-all-screen {
+    display: block;
+  }
   .table {
     margin-bottom: 5px;
   }
@@ -692,6 +737,7 @@
     line-height: 1;
     padding: 3px 5px;
     display: table-cell !important;
+    vertical-align: center;
   }
   .table .print-td {
     display: table-cell;
@@ -731,6 +777,37 @@
   }
   .table.print-table td:before {
     display: none;
+  }
+  .icheck {
+    opacity: 1 !important;
+    width: 15px !important;
+    height: 15px !important;
+  }
+}
+
+.earningPage .print-td {
+  display: table-cell;
+}
+
+.earningPage .print-tr {
+  display: table-row;
+}
+
+.earningPage .no-page {
+  display: none;
+}
+
+.earningPage .earning-detail, .earningPage .deduction-table {
+  display: block;
+}
+
+.earningPage .deduction-table {
+  margin-top: 75px;
+}
+
+@media (max-width: 830px) {
+  .earningPage .deduction-table {
+    margin-top: 0;
   }
 }
 

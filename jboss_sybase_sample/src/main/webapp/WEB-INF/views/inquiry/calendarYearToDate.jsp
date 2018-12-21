@@ -1,9 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> <%@ taglib
 uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%> <%@ page
 language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<html>
+<html lang="en">
     <head>
-        <title>Title</title>
+        <title>TxEIS : Employee Access -  Calendar Year to Date</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <%@ include file="../commons/header.jsp"%>
     </head>
@@ -68,15 +68,13 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
                                 <label class="form-title"
                                     >Please select a calendar year:</label
                                 >
-                                <select
-                                    id="SearchYear"
+                                <input
                                     class="form-control"
+                                    type="text"
                                     name="SearchYear"
-                                >
-                                    <option value="2018">2018</option>
-                                    <option value="2017">2017</option>
-                                    <option value="2016">2016</option>
-                                </select>
+                                    id="SearchYear"
+                                    readonly
+                                />
                             </div>
                         </form>
                         <p class="no-print table-top-title">
@@ -472,5 +470,17 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
         function doPrint() {
             window.print()
         }
+        $(function(){
+            $('#SearchYear')
+                .fdatepicker({
+                    startView:4,
+                    minView:4,
+                    format: 'yyyy',
+                })
+                .on('changeDate', function(ev) {
+                    console.log(ev)
+                })
+                .data('datepicker')
+        })
     </script>
 </html>

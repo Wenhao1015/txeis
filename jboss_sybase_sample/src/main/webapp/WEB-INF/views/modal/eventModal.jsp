@@ -3,7 +3,7 @@
     id="requestModal"
     tabindex="-1"
     role="dialog"
-    aria-labelledby="myModalLabel"
+    aria-labelledby="requestModal"
     aria-hidden="true"
 >
     <div class="modal-dialog requestFormDialog">

@@ -214,6 +214,7 @@
     overflow: hidden;
 }
 .content-wrapper > .content {
+    margin: 0 15px;
     .section-title {
         color: #000;
         .btn {
@@ -225,7 +226,6 @@
             }
         }
     }
-    margin: 0 15px;
     .content-white {
         background: #fff;
         padding: 15px;
@@ -235,6 +235,12 @@
             margin-top: 15px;
             margin-bottom: 15px;
         }
+        @media (max-width:375px){
+            padding: 15px 5px;
+        }
+    }
+    @media (max-width:375px){
+        margin: 0 5px;
     }
 }
 .fc-scroller {
@@ -298,6 +304,7 @@
     }
     @media (max-width: 600px) {
         display: block;
+        margin-bottom: 10px;
         .form-group {
             padding: 0;
         }
@@ -467,6 +474,28 @@
         word-break: break-word;
     }
 }
+.self-insured-flex{
+    justify-content: space-between;
+    margin-bottom: 15px;
+    .self-insured-tips{
+        flex: 1;
+        padding-right: 30px;
+    }
+    .self-insured-check{
+        flex: 0 0 auto;
+        padding-right: 15px;
+    }
+    .self-insured-time{
+        flex: 0 0 auto;
+    }
+    @media (max-width:630px){
+        display: block;
+        .self-insured-tips,.self-insured-check,.self-insured-time{
+            margin-bottom: 5px;
+            padding: 0;
+        }
+    }
+}
 .print-title {
     text-align: center;
     color: #000;
@@ -617,6 +646,9 @@
         &.print-block {
             display: block;
         }
+        &.show-all-screen{
+            display: block;
+        }
     }
     .table {
         margin-bottom: 5px;
@@ -624,6 +656,7 @@
             line-height: 1;
             padding: 3px 5px;
             display: table-cell !important;
+            vertical-align: center;
         }
         .print-td{
             display: table-cell;
@@ -667,8 +700,33 @@
             }
         }
     }
+    .icheck{
+        opacity: 1!important;
+        width: 15px!important;
+        height: 15px!important;
+    }
+    
 }
-
+.earningPage{
+    .print-td{
+        display: table-cell;
+    }
+    .print-tr{
+        display: table-row;
+    } 
+    .no-page{
+        display: none;
+    }
+    .earning-detail,.deduction-table{
+        display: block;
+    }
+    .deduction-table{
+        margin-top: 75px;
+        @media(max-width:830px){
+            margin-top: 0;
+        }
+    }
+}
 .profile {
     .avatar {
         width: 100px;

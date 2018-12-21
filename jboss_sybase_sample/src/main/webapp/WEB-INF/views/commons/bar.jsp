@@ -11,17 +11,17 @@
     
     <c:if test="${sessionScope.companyId == 0}">
         <a class="nav-logo" href="/">
-          <img src="/<%=request.getContextPath().split("/")[1]%>/images/logo.png">
+          <img src="/<%=request.getContextPath().split("/")[1]%>/images/logo.png" alt="esc logo">
         </a>
     </c:if>
     <c:if test="${sessionScope.companyId == 1}">
         <a class="nav-logo" href="/">
-          <img src="/<%=request.getContextPath().split("/")[1]%>/images/logo-austin.png">
+          <img src="/<%=request.getContextPath().split("/")[1]%>/images/logo-austin.png" alt="austin school logo">
         </a>
     </c:if>
     <c:if test="${sessionScope.companyId == 2}">
         <a class="nav-logo" href="/">
-          <img src="/<%=request.getContextPath().split("/")[1]%>/images/logo-saisd.png">
+          <img src="/<%=request.getContextPath().split("/")[1]%>/images/logo-saisd.png" alt="sanantonio logo">
         </a>
     </c:if>
     
@@ -29,7 +29,7 @@
     <ul class="navbar-nav nav-right">
       <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="">
+        <a class="nav-link" data-toggle="dropdown" href="/">
           <i class="fa fa-bell-o"></i>
           <span class="navbar-badge">15</span>
         </a>
@@ -133,23 +133,23 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="/<%=request.getContextPath().split("/")[1]%>/selfService/changePassword" class="nav-link" id="changePassword">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Change Password</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
+              <!-- <li class="nav-item">
+                <a href="/" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Demographic Information</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="/" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Payroll Information</p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </li>
           <li class="nav-item">
@@ -180,25 +180,25 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="/" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Approve Leave Requests</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="/" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Leave Overview</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="/" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Calendar</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="/" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Set Temporary Approvers</p>
                 </a>
@@ -213,8 +213,8 @@
     <!-- /.sidebar -->
     <ul class="sidebar-btm">
         <li><a href="/<%=request.getContextPath().split("/")[1]%>/profile" title="My Account"><i class="fa fa-user"></i></a></li>
-        <li><a href="" title="Full Screen"><i class="fa fa-arrows-alt"></i></a></li>
-        <li><a href="" title="Help"><i class="fa fa-question-circle"></i></a></li>
+        <!-- <li><a href="/" title="Full Screen"><i class="fa fa-arrows-alt"></i></a></li> -->
+        <li><a href="/" title="Help"><i class="fa fa-question-circle"></i></a></li>
         <li><a href="/<%=request.getContextPath().split("/")[1]%>/logout" title="Logout"><i class="fa fa-sign-out "></i></a></li>
     </ul>
     <script>

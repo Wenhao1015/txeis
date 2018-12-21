@@ -1,8 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<html>
+<html lang="en">
     <head>
-        <title>JBoss_Application</title>
+        <title>TxEIS : Employee Access -  Login</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/<%=request.getContextPath().split("/")[1]%>/css/font-awesome.min.css">
         <link rel="stylesheet" href="/<%=request.getContextPath().split("/")[1]%>/css/animate.css" />
@@ -18,16 +18,16 @@
             <div class="account-top">
                 <div class="account-inner">
                     <div class="account-left">
-                        <img src="/<%=request.getContextPath().split("/")[1]%>/images/ascender_pecan_logo.jpg" alt="">
+                        <img src="/<%=request.getContextPath().split("/")[1]%>/images/ascender_pecan_logo.jpg" alt="esc logo">
                     </div>
                     <div class="account-box">
                         <div class="account-logo">
-                        <img src="/<%=request.getContextPath().split("/")[1]%>/images/logo-account.png" alt="">
+                        <img src="/<%=request.getContextPath().split("/")[1]%>/images/logo-account.png" alt="esc logo">
                         </div>
                         <form id="loginForm" class="card" method="get">
                         <h1 class="title">Please sign in</h1>
                         <div class="form-group">
-                                <label class="form-title">User Name</label>
+                                <label class="form-title" for="inputEmail">User Name</label>
                                 <div class="valid-wrap icon-group">
                                     <i class="fa fa-user left-icon"></i>
                                     <input type="text" id="inputEmail" class="form-control" placeholder="User Name" name="username" autofocus>
@@ -35,26 +35,27 @@
                                 
                             </div>
                             <div class="form-group">
-                                <label  class="form-title">Password</label>
+                                <label  class="form-title" for="inputPassword">Password</label>
                                 <div class="valid-wrap icon-group">
                                     <i class="fa fa-lock left-icon"></i>
                                     <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password">
                                 </div>
                                 
                             </div>
-                        <div class="form-group clearfix">
-                            <!-- <div class="checkbox pull-left">
-                                <label>
-                                    <input class="icheck" type="checkbox"> Remember Me
-                                </label>
-                            </div> -->
-                            <div class="pull-right">
-                                <a href="/<%=request.getContextPath().split("/")[1]%>/forgetPassword">Forgot Password?</a>
+                            <p class="error-hint hide" id="errorMessage">User name or password error!</p>
+                            <div class="form-group clearfix">
+                                <!-- <div class="checkbox pull-left">
+                                    <label>
+                                        <input class="icheck" type="checkbox"> Remember Me
+                                    </label>
+                                </div> -->
+                                <div class="pull-right">
+                                    <a href="/<%=request.getContextPath().split("/")[1]%>/forgetPassword">Forgot Password?</a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group account-btn">
-                            <button id="signin" type="submit" class="btn btn-primary" name="signin" >Sign In</button>
-                        </div>
+                            <div class="form-group account-btn">
+                                <button id="signin" type="submit" class="btn btn-primary" name="signin" >Sign In</button>
+                            </div>
                         </form>
                         
                     </div>
@@ -122,6 +123,9 @@
                             if(res.isSuccess){
                                 document.location = '<%=request.getContextPath()%>/home'
                             }
+                        },
+                        error:function(res){
+                            $("#errorMessage").show()
                         }
                     });
                 }

@@ -2,9 +2,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<html>
+<html lang="en">
 <head>
-<title>Leave Requests</title>
+<title>TxEIS : Employee Access - Leave Request List</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <%@ include file="../commons/header.jsp"%>
 </head>
@@ -26,7 +26,8 @@
 			<div class="content-white">
 				<form class="no-print searchForm" id="SearchForm" action="leaveRequest" method="post">
 					<div class="form-group type-group">
-						<label class="form-title">Type:</label> <select id="SearchType"
+						<label class="form-title" for="SearchType">Type:</label> 
+						<select id="SearchType"
 							class="form-control" name="SearchType">
 							<option value="">All</option>
 							<option value="1">LOCAL SICK</option>
@@ -36,18 +37,18 @@
 						</select>
 					</div>
 					<div class="form-group">
-						<label class="form-title">From:</label> <input
+						<label class="form-title" for="SearchStartDate">From:</label> <input
 							class="form-control" type="text" name="SearchStart"
 							id="SearchStartDate" readonly value="${SearchStart}" />
 					</div>
 					<div class="form-group">
-						<label class="form-title"> To: </label> <input
+						<label class="form-title" for="SearchEndDate"> To: </label> 
+						<input
 							class="form-control" type="text" name="SearchEnd"
 							id="SearchEndDate" value="${SearchEnd}" readonly />
 					</div>
 					<div class="form-group btn-group">
-						<label class="form-title"> </label>
-						<div>
+						<div style="margin-top:20px;">
 							<input type="submit" class="btn btn-primary" value="Search" />
 						</div>
 					</div>
@@ -64,7 +65,7 @@
 								<th>Leave End Date</th>
 								<th>Duration</th>
 								<th>Remarks</th>
-								<th></th>
+								<td></td>
 							</tr>
 						</thead>
 						<tbody>

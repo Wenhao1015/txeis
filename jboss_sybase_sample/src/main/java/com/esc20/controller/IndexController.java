@@ -133,6 +133,22 @@ public class IndexController {
         
         return mav;
     }
+
+     @RequestMapping("selfService/changePassword")
+    public ModelAndView getChangePassword(HttpServletRequest req){
+        HttpSession session = req.getSession();
+        String user = (String)session.getAttribute("user");
+        AppUserEntity users = this.indexService.getUserPwd(user);
+        ModelAndView mav = new ModelAndView();
+        if(null == user){
+        	return this.getIndexPage(mav);
+        }
+        
+        mav.setViewName("changePassword");
+        mav.addObject("id", users.getId());
+        
+        return mav;
+    }
     
     @RequestMapping("logout")
     public ModelAndView logout(HttpServletRequest req, String Id){

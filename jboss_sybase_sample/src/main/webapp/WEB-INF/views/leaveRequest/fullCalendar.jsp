@@ -1,8 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> <%@ page
 language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<html>
+<html lang="en">
     <head>
-        <title>Title</title>
+        <title>TxEIS : Employee Access -  Calendar Leave Request</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="/<%=request.getContextPath().split("/")[1]%>/css/fullcalendar.min.css" />
         <%@ include file="../commons/header.jsp"%>
@@ -100,10 +100,38 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
                             //Initializes the time control when new event modal show
                             setStartTime()
 				            setEndTime()
+                        },
+                        viewRender:function(){
+                            $(".fc-day").attr("tabindex",0)
+                            $(".fc-day-number,.fc-event").attr("tabindex",0)
+                            $(".fc-day-number").keypress(function(e){
+                                console.log(e)
+                                var eCode = e.keyCode ? e.keyCode : e.which ? e.which : e.charCode;
+                                if (eCode == 13){
+                                    $(this).click()
+                                }
+                            })
+                            $(".fc-event").keypress(function(e){
+                                console.log(e)
+                                var eCode = e.keyCode ? e.keyCode : e.which ? e.which : e.charCode;
+                                if (eCode == 13){
+                                    $(this).click()
+                                }
+                            })
+                            $(".fc-day").keypress(function(e){
+                                console.log(e)
+                                var eCode = e.keyCode ? e.keyCode : e.which ? e.which : e.charCode;
+                                if (eCode == 13){
+                                    console.log("enter")
+                                    console.log($(this)[0])
+                                    $(this).trigger("dayClick");
+                                }
+                            })
                         }
                     })
                 },
                 change: function(themeSystem) {
+                    console.log("111111111")
                     $('#calendar').fullCalendar(
                         'option',
                         'themeSystem',
